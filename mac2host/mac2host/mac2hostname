@@ -1,0 +1,52 @@
+#!/bin/bash
+
+declare DEBUG=1		# set to 1 for debug messages
+declare IFACE=eth1
+declare CONFIG_FILE="$1"
+
+declare MY_HWADDR
+declare MY_HOSTNAME
+declare CONFIG_FILE
+
+if test $# -ne 1; then
+	echo "Usage: $0 config_file"
+	exit 1
+fi
+
+function getmac()
+{
+	MY_HWADDR=$(/sbin/ifconfig "$IFACE" | grep HW | awk -F '[ \t]+' '{print $5}')
+	if test $DEBUG -eq 1; then
+		echo "HWaddr is $MY_HWADDR"
+	fi
+}
+
+function hostbymac()
+{
+	MY_HOSTNAME=$(awk -f hostbymac.awk -v hwaddr="$MY_HWADDR" "$CONFIG_FILE")
+	if test $DEBUG -eq 1; then
+		echo "hostname is $MY_HOSTNAME"
+	fi
+}
+
+function setuphost()
+{
+	hostname "$MY_HOSTNAME"
+	echo "$MY_HOSTNAME" > /etc/hostname
+}
+
+function main()
+{
+	getmac
+	hostbymac
+
+	if test -z "$MY_HOSTNAME"; then
+		echo "No HW address [$MY_HWADDR] in config file [$CONFIG_FILE]"
+	fi
+
+	setuphost
+}
+
+main
+
+exit 0

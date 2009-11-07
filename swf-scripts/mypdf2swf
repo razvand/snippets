@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if test $# -ne 1; then
+	echo "Usage: $0 pdf_file"
+	exit 1
+fi
+
+PDF_FILE="$1"
+SWF_FILE=${PDF_FILE/%\.pdf/\.swf}
+
+if ! test -f $PDF_FILE; then
+	echo "PDF file $PDF_FILE does not exist"
+	exit 1
+fi
+
+echo "pdf is $PDF_FILE; swf is $SWF_FILE"
+pdf2swf -b $PDF_FILE -o $SWF_FILE
+
+exit 0

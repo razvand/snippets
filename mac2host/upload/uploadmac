@@ -1,0 +1,29 @@
+#!/bin/bash
+
+declare IFACE=eth1
+declare URL="http://anaconda.cs.pub.ro/~razvan/school/uso/lab/macs/putmac.php"
+declare DEBUG=1
+declare MY_HWADDR
+
+function getmac()
+{
+	MY_HWADDR=$(/sbin/ifconfig "$IFACE" | grep HW | awk -F '[ \t]+' '{print $5}')
+	if test $DEBUG -eq 1; then
+		echo "HWaddr is $MY_HWADDR"
+	fi
+}
+
+function uploadmac()
+{
+	wget -o /dev/null "$URL?mac=$MY_HWADDR" &> /dev/null
+}
+
+function main()
+{
+	getmac
+	uploadmac
+}
+
+main
+
+exit 0

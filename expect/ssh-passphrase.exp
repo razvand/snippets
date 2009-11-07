@@ -1,0 +1,7 @@
+#!/usr/bin/expect -f
+
+spawn ssh -l student localhost -i /tmp/gogu_id_rsa "touch test4.txt"
+
+expect "'/tmp/gogu_id_rsa':" {
+	send "rest0re\n"; exp_continue;
+}

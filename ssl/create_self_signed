@@ -1,0 +1,3 @@
+#!/bin/bash
+
+openssl x509 -req -days 365 -in $1.csr -signkey $1.key -out $1.crt

@@ -1,0 +1,56 @@
+2006, Razvan Deaconescu
+
+USO - curs 10 - bonus :-) - simple bootup program
+
+ * Avem aici un mic exemplu de creare a unui sector de boot pentru un
+ dispozitiv. Programul scris in limbaj de asamblare sintaxa AT&T este asamblat,
+ legat si apoi copiat in cadrul unei imagini de 512 octeti (dimensiunea unui
+ sector).
+
+ * Ultimii doi octeti ai imaginii sunt, in mod evident, 0x55aa pentru a permite
+ ca sectorul in cauza sa fie bootabil.
+
+ * Pentru obtinerea imaginii finale (pe care am denumit-o eu - poate nu foarte
+ inspirat hello.disk) recomand folosirea Makefile-ului.
+
+$ make
+as   -o boot_hello.o boot_hello.s
+ld -N -Ttext 0x7c00		 -e _main -o hello.out boot_hello.o
+objcopy -S -O binary hello.out hello.bin
+echo -en "\x55\xaa" > bootcode
+dd count=510 bs=1 if=/dev/zero of=disk 2> /dev/null
+dd conv=notrunc if=hello.bin of=disk 2> /dev/null
+cat disk bootcode > hello.disk
+
+You may view the output file using 
+	$ od -x hello.disk
+
+ * Pasii de compilare se incheie cu obtinerea fisierului hello.disk care
+ contine imaginea bootabila.
+
+ * Puteti scrie aceasta imagine pe un floppy disk folosind utilitarul dd:
+
+$ dd if=hello.disk of=/dev/fd0
+
+ * Daca bootati de pe discheta veti vedea un set de mesaje afisate prin
+ intermediul programului.
+
+ * Ce va recomand eu este sa folositi vmware (http://www.vmware.com) si sa
+ va creati o masina virtuala (nu trebuie sa faca _nimic_). Puteti apoi sa o
+ configurati sa foloseasca in loc de floppy disk imaginea hello.disk. Merge
+ mult mai repede si aveti avantajul de a modifca programul si de a verifica
+ imediat ce schimbari apar.
+
+ * Am atasat doua imagini care sa va arate unde anume in cadrul masinii
+ virtuale create cu vmware trebuie sa specificati respectivele configuratii
+ (editvm.png si floppy.png)
+ 
+ * Va recomand cu caldura sa incercati sa modificati programul, sa modificati
+ diversii parametri (urmariti modul de apel al intreruperilor BIOS din
+ link-urile specificate in codul sursa) si sa vedeti ce se intampla.
+
+ * Daca incercati diverse posibilitati si intampinati dificultati, va stau
+ la dispozitie (doar avem un forum rezervat cursului 10 :-) ).
+
+ Happy hacking!
+ Razvan

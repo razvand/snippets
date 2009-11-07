@@ -1,0 +1,9 @@
+#!/bin/bash
+
+expect -f - <<EOF
+spawn ssh -l student localhost -i /tmp/gogu_id_rsa "touch test5.txt"
+
+expect "'/tmp/gogu_id_rsa':" {
+	send "rest0re\n"; exp_continue;
+}
+EOF
