@@ -35,7 +35,7 @@ static unsigned long int *ebp;
  * print the interval [ebp+ccount; ebp-ccount]; ebp (rbp) points to the
  * current stack frame (that is the saved frame pointer)
  *
- * adresses are printed from top to bottom (low addresses grow down)
+ * adresses are printed from top to bottom (low addresses are down)
  * we assume the stack grows down
  *
  * the print output will show
