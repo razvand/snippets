@@ -56,15 +56,15 @@ static void print_stack_frame(const char *msg, size_t ccount)
 	puts(msg);
 
 	for (i = ccount; i >= 2; i--)
-		printf("[%p] %016lx\n", ebp + i, *(ebp + i));
+		printf("[%p] %0lx\n", ebp + i, *(ebp + i));
 
 	puts("================");
-	printf("[%p] %016lx (return address)\n", ebp + 1, *(ebp + 1));
-	printf("[%p] %016lx (saved frame pointer)\n", ebp, *ebp);
+	printf("[%p] %0lx (return address)\n", ebp + 1, *(ebp + 1));
+	printf("[%p] %0lx (saved frame pointer)\n", ebp, *ebp);
 	puts("================");
 
 	for (i = 1; i <= ccount; i++)
-		printf("[%p] %016lx\n", ebp - i, *(ebp - i));
+		printf("[%p] %0lx\n", ebp - i, *(ebp - i));
 }
 
 /*
@@ -108,6 +108,7 @@ static void standard_call(void)
 	get_ebp(ebp);
 
 	/* init array */
+	memset(a, 0, sizeof(a));
 	for (i = 0; i < ARRAY_LEN; i++)
 		a[i] = i;
 
