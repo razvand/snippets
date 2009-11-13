@@ -21,6 +21,8 @@
 #elif defined __i386__
   #define get_esp(esp) __asm__("movl %%esp, %0;":"=&r"(esp))
   #define get_ebp(ebp) __asm__("movl %%ebp, %0;":"=&r"(ebp))
+#else
+  #error "Unsupported architecture"
 #endif
 
 
@@ -77,7 +79,7 @@ static void new_call(void)
 }
 
 /*
- * standard function call; it defines and local array variable (v[5])
+ * standard function call; it defines and local array variable (a[5])
  *
  * standard stack frame is:
  * ---
