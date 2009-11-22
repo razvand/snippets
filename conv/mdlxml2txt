@@ -1,0 +1,50 @@
+#!/bin/bash
+
+if test $# -ne 1; then
+	echo "Usage: $0 xml_file"
+	exit 1
+fi
+
+cat $1 | sed -n '
+# equivalent to grep -A 3
+/^[ \t]\+<name><text>/{N;N;N;p}
+/^[ \t]\+<answer fraction=/{N;N;N;p}
+' | sed '
+# equivalent to grep -v
+/^--/d
+/^[ \t]\+<text>/d
+/^[ \t]\+<\/text>/d
+/^[ \t]\+<name>/d
+/^[ \t]*<\/name>/d
+/^[ \t]\+<questiontext format/d
+' | sed '
+# substitutions
+s/<text>//g
+s/<\/text>//g
+s/<!\[CDATA\[//g
+s/\]\]>//g
+/^[ \t]\+<answer fraction="100">/{N ; s/.*\n/+ /}
+/^[ \t]\+<answer.*/{N; s/.*\n/- /}
+s/^\([^-+]\+\)/\n1\. \1/
+' | sed '
+# font styles
+s/<span style="font-weight: bold;">\([^<]\+\)<\/span>/<b>\1<\/b>/g
+s/<span style="font-family: courier new,courier,monospace;">\([^<]\+\)<\/span>/<tt>\1<\/tt>/g
+s/<br \/>//g
+s/<!\[CDATA\[//g
+s/\]\]>//g
+' | sed '
+# diacritice
+s/\xc8\x9b/t/g
+s/\xc8\x99/s/g
+s/\xc4\x83/a/g
+s/\xc3\xa2/a/g
+s/\xc3\xae/i/g
+s/\xc8\x9a/T/g
+s/\xc8\x98/S/g
+s/\xc4\x92/A/g
+s/\xc3\x82/A/g
+s/\xc3\x8e/I/g
+s/\xc5\xa3/t/g
+s/\xc5\x9f/s/g
+'
