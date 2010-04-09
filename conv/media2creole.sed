@@ -4,6 +4,8 @@
 s/\[\(http[^]]\+\)]/[[\1]]/g
 s/<pre>/<code>/g
 s/<\/pre>/<\/code>/g
+s/<source[ \t]\+lang="\([a-z]\+\)">/<code \1>/g
+s/<\/source>/<\/code>/g
 s/<tt>/{{{/g
 s/<\/tt>/}}}/g
 s/<b>/**/g
