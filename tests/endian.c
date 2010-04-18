@@ -9,7 +9,7 @@ static void print_endianess (void)
 	printf ("System is little endian.\n");
 #elif __BYTE_ORDER == __BIG_ENDIAN
 	printf ("System is big endian.\n");
-#elif
+#else
 #error "Unknown endianess"
 #endif
 }
