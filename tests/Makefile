@@ -6,7 +6,7 @@ CFLAGS = -Wall -g
 SRC = struct_bit.c tcp_new_sock.c
 LDLIBS = -lrt
 
-all: endian struct_bit tcp_new_sock measure_time
+all: endian struct_bit tcp_new_sock measure_time stack_grow
 
 endian: endian.o
 
@@ -16,7 +16,9 @@ tcp_new_sock: tcp_new_sock.o
 
 measure_time: measure_time.o
 
+stack_grow: stack_grow.o
+
 .PHONY: clean
 
 clean:
-	-rm -f endian struct_bit tcp_new_sock measure_time *~ *.o
+	-rm -f endian struct_bit tcp_new_sock measure_time stack_grow *~ *.o
