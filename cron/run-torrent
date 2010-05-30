@@ -1,0 +1,36 @@
+#!/bin/bash
+
+BTDOWNLOADHEADLESS=/usr/bin/btdownloadheadless
+
+if test $# -ne 2; then
+	echo "Usage: $0 torrent_file download_dir" 2>&1
+	exit 1
+fi
+
+TORRENT_FILE="$1"
+DOWNLOAD_DIR="$2"
+
+file "$TORRENT_FILE" | grep "BitTorrent file" &> /dev/null
+if test $? -ne 0; then
+	echo "$TORRENT_FILE is not a BitTorrent file" 2>&1
+	exit 1
+fi
+
+if ! test -d $DOWNLOAD_DIR; then
+	echo "$DOWNLOAD_DIR is not a folder" 2>&1
+	exit 1
+fi
+
+function check_alive()
+{
+	ps -ef | grep $BTDOWNLOADHEADLESS | grep $TORRENT_FILE &> /dev/null
+}
+
+check_alive
+if test $? -ne 0; then
+	pushd . &> /dev/null
+	cd $DOWNLOAD_DIR && nohup $BTDOWNLOADHEADLESS $TORRENT_FILE &> /dev/null &
+	popd &> /dev/null
+fi
+
+exit 0
