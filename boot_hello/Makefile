@@ -25,11 +25,9 @@ hello.out: boot_hello.o
 
 # Create 2 byte file containing the bootcode (0x55aa)
 bootcode:
-	echo -en "\x55\xaa" > $@
-	
+	/bin/echo -en "\x55\xaa" > $@
 
 .PHONY: clean hello.disk
 
 clean:
 	rm -f hello.disk hello.out hello.bin bootcode disk boot_hello.o *~
-
