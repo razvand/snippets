@@ -1,13 +1,13 @@
-CFLAGS=-Wall -g
+CFLAGS = -Wall -g
 
-all: mmap file
+all: mmap file dual-mapping
 
 mmap: mmap.o
 
-dual_mapping: dual_mapping.o
+dual-mapping: dual-mapping.o
 
 clean:
-	rm -f *.o *~ mmap
+	rm -f *.o *~ mmap dual-mapping file
 
 file:
 	truncate -s 100M file
