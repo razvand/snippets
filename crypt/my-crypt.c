@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#define _XOPEN_SOURCE
 #include <sys/types.h>
+#define __USE_XOPEN
 #include <unistd.h>
 
 #define PASSWORD "anaaremere"
