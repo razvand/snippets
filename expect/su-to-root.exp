@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+
+set password [lindex $argv 0]
+
+spawn -noecho su -
+expect {
+	"ssword:" {
+		send "$password\n";
+	}
+}
+interact
