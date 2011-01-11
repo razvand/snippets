@@ -1,0 +1,76 @@
+\documentclass[a4paper,final,12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+%\usepackage{fullpage} % too big -- would end up three pages long
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{rotating}
+
+\renewcommand{\arraystretch}{1.2}
+
+\title{Booktabs Test}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+%\thispagestyle{empty}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+      Day & Timeslot & Password \\
+    \midrule
+      Saturday & 9--11 & Chahquu8 \\
+      Saturday & 11--13 & Tou2se4b \\
+      Saturday & 14--16 & ohkae4Co \\
+      Saturday & 16--18 & jaiSai8Z \\
+      Sunday & 9--11 & gaeNgie5 \\
+      Sunday & 11--13 & Xohfug6o \\
+    \bottomrule
+  \end{tabular}
+  \caption{Passwords for the Masses}
+\end{table}
+
+\begin{sidewaystable}
+  \centering
+  \begin{tabular}{@{}rrcccrccc@{}}
+    \toprule
+       & & \multicolumn{2}{c}{\textbf{Single Tracker}} & &
+       \multicolumn{3}{c}{\textbf{Unified
+       Tracker}} & \\
+    \cmidrule{3-4} \cmidrule{6-8}
+      \textit{seeders} & \textit{leechers} & \textit{mean dspeed} &
+      \textit{rel.st.dev.} & & \textit{trackers} & \textit{mean dspeed} &
+      \textit{rel.st.dev.} & \textit{improvement} \\
+    \midrule
+      $size = 16MB$\\
+      1 & 3 & 10KB/s & 7\% & & 1 & 12KB/s & 8\% & 12\% \\
+      2 & 6 & 10KB/s & 7\% & & 6 & 12KB/s & 8\% & 12\% \\
+      4 & 12 & 10KB/s & 7\% & & 4 & 12KB/s & 8\% & 12\% \\
+      8 & 24 & 10KB/s & 7\% & & 8 & 12KB/s & 8\% & 12\% \\
+      $size = 64MB$\\
+      1 & 3 & 10KB/s & 7\% & & 1 & 12KB/s & 8\% & 12\% \\
+      2 & 6 & 10KB/s & 7\% & & 6 & 12KB/s & 8\% & 12\% \\
+      4 & 12 & 10KB/s & 7\% & & 4 & 12KB/s & 8\% & 12\% \\
+      8 & 24 & 10KB/s & 7\% & & 8 & 12KB/s & 8\% & 12\% \\
+      $size = 256MB$\\
+      1 & 3 & 10KB/s & 7\% & & 1 & 12KB/s & 8\% & 12\% \\
+      2 & 6 & 10KB/s & 7\% & & 6 & 12KB/s & 8\% & 12\% \\
+      4 & 12 & 10KB/s & 7\% & & 4 & 12KB/s & 8\% & 12\% \\
+      8 & 24 & 10KB/s & 7\% & & 8 & 12KB/s & 8\% & 12\% \\
+      $size = 1024MB$\\
+      1 & 3 & 10KB/s & 7\% & & 1 & 12KB/s & 8\% & 12\% \\
+      2 & 6 & 10KB/s & 7\% & & 6 & 12KB/s & 8\% & 12\% \\
+      4 & 12 & 10KB/s & 7\% & & 4 & 12KB/s & 8\% & 12\% \\
+      8 & 24 & 10KB/s & 7\% & & 8 & 12KB/s & 8\% & 12\% \\
+    \bottomrule
+  \end{tabular}
+  \caption{Single Tracker vs. Unified Tracker Comparison}
+\end{sidewaystable}
+
+\end{document}
