@@ -1,0 +1,28 @@
+#!/bin/bash
+
+apt-get install less htop zip unzip vim-nox git-core subversion lsof
+apt-get install build-essential oprofile electric-fence gdb cscope ctags
+apt-get install strace ltrace valgrind
+apt-get install gawk
+apt-get install bash-completion
+apt-get install expect
+apt-get install netcat telnet pppoeconf host lynx curl ncftp
+apt-get install openssh-server smbclient smbfs ldap-utils
+apt-get install finger pciutils usbutils lshw mc cluster-ssh tree
+# 200MB for texlive-latex-base, >800MB after texlive-latex-extra
+apt-get install texlive-latex-base texlive-latex-extra texlive-bibtex-extra texlive-publishers highlight
+apt-get install apt-file
+apt-get install wodim genisoimage
+# 1.7GB
+apt-get install gnome update-manager-gnome apt-watch-gnome
+# 533MB
+apt-get install openoffice.org
+apt-get install flashplugin-nonfree iceweasel
+apt-get install mplayer module-assistant
+apt-get install vim-gnome nautilus-open-terminal amule deluge wbar
+apt-get install gitk xchat pidgin dia
+apt-get install aspell-ro
+apt-get install wireless-tools tcpdump nmap
+# non-free required
+apt-get install manpages-posix manpages-posix-dev make-doc glibc-doc-reference
+
