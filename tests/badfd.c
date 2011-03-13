@@ -5,9 +5,11 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#define MY_FD	42
+
 int main(void)
 {
-	int fd = 5042;
+	int fd = MY_FD;
 	ssize_t nbytes;
 
 	nbytes = write(fd, "hello", 6);
