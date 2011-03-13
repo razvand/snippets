@@ -3,7 +3,6 @@
 #
 
 CFLAGS = -Wall -g
-SRC = struct_bit.c tcp_new_sock.c
 LDLIBS = -lrt
 
 all: endian struct_bit tcp_new_sock measure_time stack_grow badfd
