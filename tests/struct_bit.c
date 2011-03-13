@@ -17,7 +17,7 @@ struct {
 
 int main (void)
 {
-	printf ("sizeof (packed) = %d, sizeof (unpacked) = %d\n",
+	printf ("sizeof (packed) = %lu, sizeof (unpacked) = %lu\n",
 			sizeof (packed), sizeof (unpacked));
 
 	return 0;
