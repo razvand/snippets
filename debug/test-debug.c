@@ -1,3 +1,11 @@
+/*
+ * simple test case for debugging macros (in debug.h)
+ *
+ * 2011, Razvan Deaconescu, razvan.deaconescu@cs.pub.ro
+ */
+
+#include <stdio.h>
+
 #include "debug.h"
 
 #define DEFAULT_VALUE	42
