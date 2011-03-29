@@ -1,0 +1,7 @@
+Compile (make) and run (./copy-on-write).
+
+Use sleep intervals to checkout page faults. Use
+
+   pidstat -r -T ALL -p $(pidof copy-on-write)
+
+Page faults in child process are visibile only after ending its execution.
