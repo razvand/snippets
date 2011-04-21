@@ -5,7 +5,7 @@
 CFLAGS = -Wall -g
 LDLIBS = -lrt
 
-all: endian struct_bit tcp_new_sock measure_time stack_grow badfd
+all: endian struct_bit tcp_new_sock measure_time stack_grow badfd platform
 
 endian: endian.o
 
@@ -19,7 +19,9 @@ stack_grow: stack_grow.o
 
 badfd: badfd.o
 
+platform: platform.o
+
 .PHONY: clean
 
 clean:
-	-rm -f endian struct_bit tcp_new_sock measure_time stack_grow badfd *~ *.o
+	-rm -f endian struct_bit tcp_new_sock measure_time stack_grow badfd platform *~ *.o
