@@ -1,0 +1,11 @@
+#!/bin/bash
+
+last_days=50
+sent_mail_folder=$HOME/Maildir/.Sent/cur
+
+for f in $(find $sent_mail_folder/ -type f -mtime -$last_days); do
+	grep '^Date:' < "$f"
+done
+
+# may pipe through ...
+# awk -F '[:, \t]+' '{print $2, $3, $4, $5;}' | sort | uniq -c | sort -n -k 1
