@@ -3,3 +3,5 @@
 /dual-mapping
 /mmap
 /mmap-overalloc
+/mmap-ftruncate
+/test.map
