@@ -1,14 +1,11 @@
 CFLAGS = -Wall -g
 
-all: mmap file dual-mapping mmap-ftruncate
+.PHONY: all clean
 
-mmap: mmap.o
-
-dual-mapping: dual-mapping.o
+all: mmap file dual-mapping mmap-overalloc mmap-ftruncate
 
 file:
 	truncate -s 100M file
 
 clean:
-	rm -f *.o *~ mmap dual-mapping file mmap-ftruncate
-
+	rm -f *.o *~ mmap file dual-mapping mmap-overalloc mmap-ftruncate
