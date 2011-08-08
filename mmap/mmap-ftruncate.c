@@ -18,7 +18,7 @@
 #define MAPPING_TYPE		MAP_SHARED
 
 /* Uncomment to enable file truncation (ftruncate(2)). */
-/*#define TRUNCATE_FILE		1 */
+/*#define TRUNCATE_FILE		1*/
 
 #define FILENAME		"test.map"
 #define MAPPING_SIZE		(getpagesize())
@@ -36,6 +36,13 @@ int main(void)
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
+
+#if TRUNCATE_FILE == 1
+	if (ftruncate(fd, MAPPING_SIZE) < 0) {
+		perror("ftruncate");
+		exit(EXIT_FAILURE);
+	}
+#endif
 
 	addr = mmap(NULL, MAPPING_SIZE, PROT_READ | PROT_WRITE, MAPPING_TYPE, fd, 0);
 	if (addr == MAP_FAILED) {
