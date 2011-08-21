@@ -1,0 +1,53 @@
+#!/bin/bash
+
+mount_point=/live/image
+
+# copy SSH keys
+mkdir ~/.ssh && (
+cp $mount_point/rd-ssh/* ~/.ssh
+chmod 644 ~/.ssh/id_rsa.pub
+chmod 600 ~/.ssh/id_rsa
+)
+
+sudo bash -c "cat > /etc/apt/sources.list" <<END
+# /etc/apt/sources.list
+
+deb http://ftp.lug.ro/debian/ squeeze main contrib non-free
+deb http://ftp.lug.ro/debian/ squeeze-updates main contrib non-free
+deb http://security.debian.org/ squeeze/updates main contrib non-free
+END
+
+sudo apt-get update
+sudo apt-get install vim git flashplugin-nonfree
+sudo cp /usr/share/vim/vim72/vimrc_example.vim /etc/vim/vimrc
+sudo update-alternatives --set editor /usr/bin/vim.basic
+
+git clone razvan@swarm.cs.pub.ro:git-repos/code.git && (
+mkdir -p ~/.vim/bkup
+ln -sf ~/code/config/vim/vimrc ~/.vimrc
+ln -sf ~/code/config/vim/ftplugin ~/.vim/
+)
+
+git config --global user.name "Razvan Deaconescu"
+git config --global user.email "razvan.deaconescu@cs.pub.ro"
+git config --global color.ui auto
+
+sudo dpkg-reconfigure tzdata
+
+echo "export LC_COLLATE=\"POSIX\"" >> ~/.bashrc
+source ~/.bashrc
+
+gconftool-2 --set /apps/gnome-terminal/profiles/Default/cursor_blink_mode --type string off
+gconftool-2 --set /apps/panel/toplevels/bottom_panel_screen0/auto_hide --type bool true
+gconftool-2 --set /apps/panel/toplevels/top_panel_screen0/auto_hide --type bool true
+gconftool-2 --set /apps/metacity/global_keybindings/run_command_terminal --type string "<Control><Alt>t"
+gconftool-2 --set /apps/gnome-terminal/profiles/Default/scrollbar_position --type string "hidden"
+gconftool-2 --set /apps/gnome-terminal/profiles/Default/default_show_menubar --type bool false
+gconftool-2 --set /apps/nautilus/preferences/always_use_browser --type bool true
+gconftool-2 --set /apps/metacity/keybinding_commands/command_1 --type string --type string "/usr/bin/nautilus --browser"
+gconftool-2 --set /apps/metacity/global_keybindings/run_command_1 --type string "<Control><Alt>b"
+
+cat > ~/.inputrc <<END
+set show-all-if-ambiguous On
+set completion-ignore-case On
+END
