@@ -3,11 +3,10 @@
 mount_point=/live/image
 
 # copy SSH keys
-mkdir ~/.ssh && (
+mkdir ~/.ssh
 cp $mount_point/rd-ssh/* ~/.ssh
 chmod 644 ~/.ssh/id_rsa.pub
 chmod 600 ~/.ssh/id_rsa
-)
 
 sudo bash -c "cat > /etc/apt/sources.list" <<END
 # /etc/apt/sources.list
