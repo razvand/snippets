@@ -17,7 +17,7 @@ deb http://security.debian.org/ squeeze/updates main contrib non-free
 END
 
 sudo apt-get update
-sudo apt-get install vim git flashplugin-nonfree
+sudo apt-get install -y vim git flashplugin-nonfree
 sudo cp /usr/share/vim/vim72/vimrc_example.vim /etc/vim/vimrc
 sudo update-alternatives --set editor /usr/bin/vim.basic
 
@@ -31,7 +31,8 @@ git config --global user.name "Razvan Deaconescu"
 git config --global user.email "razvan.deaconescu@cs.pub.ro"
 git config --global color.ui auto
 
-sudo dpkg-reconfigure tzdata
+echo "Europe/Bucharest" | sudo tee /etc/timezone > /dev/null
+sudo dpkg-reconfigure -f noninteractive tzdata
 
 echo "export LC_COLLATE=\"POSIX\"" >> ~/.bashrc
 source ~/.bashrc
