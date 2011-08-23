@@ -25,4 +25,3 @@ apt-get install aspell-ro
 apt-get install wireless-tools tcpdump nmap
 # non-free required
 apt-get install manpages-posix manpages-posix-dev make-doc glibc-doc-reference
-
