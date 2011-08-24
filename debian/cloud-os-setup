@@ -46,6 +46,10 @@ gconftool-2 --set /apps/gnome-terminal/profiles/Default/default_show_menubar --t
 gconftool-2 --set /apps/nautilus/preferences/always_use_browser --type bool true
 gconftool-2 --set /apps/metacity/keybinding_commands/command_1 --type string --type string "/usr/bin/nautilus --browser"
 gconftool-2 --set /apps/metacity/global_keybindings/run_command_1 --type string "<Control><Alt>b"
+gconftool-2 --set /apps/metacity/keybinding_commands/command_2 --type string --type string "/usr/bin/x-www-browser"
+gconftool-2 --set /apps/metacity/global_keybindings/run_command_2 --type string "<Control><Alt>w"
+gconftool-2 --set /apps/metacity/keybinding_commands/command_3 --type string --type string "/usr/bin/evolution"
+gconftool-2 --set /apps/metacity/global_keybindings/run_command_3 --type string "<Control><Alt>e"
 
 cat > ~/.inputrc <<END
 set show-all-if-ambiguous On
