@@ -25,6 +25,8 @@ git clone razvan@swarm.cs.pub.ro:git-repos/code.git && (
 mkdir -p ~/.vim/bkup
 ln -sf ~/code/config/vim/vimrc ~/.vimrc
 ln -sf ~/code/config/vim/ftplugin ~/.vim/
+ln -sf code/config/bash/bash_aliases ~/.bash_aliases
+ln -sf code/config/emacs/emacs ~/.emacs
 )
 
 git config --global user.name "Razvan Deaconescu"
@@ -34,8 +36,12 @@ git config --global color.ui auto
 echo "Europe/Bucharest" | sudo tee /etc/timezone > /dev/null
 sudo dpkg-reconfigure -f noninteractive tzdata
 
-echo "export LC_COLLATE=\"POSIX\"" >> ~/.bashrc
-source ~/.bashrc
+> /dev/null sudo tee /etc/profile <<END
+
+# Set LC_COLLATE="C". File system entries starting with capital are
+# printed out first in a directory listing.
+export LC_COLLATE="C"
+END
 
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/cursor_blink_mode --type string off
 gconftool-2 --set /apps/panel/toplevels/bottom_panel_screen0/auto_hide --type bool true
