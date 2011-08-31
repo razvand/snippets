@@ -43,6 +43,12 @@ sudo dpkg-reconfigure -f noninteractive tzdata
 export LC_COLLATE="C"
 END
 
+cat /etc/profile <<END
+
+# Set CDPATH to easily browse common folders.
+export CDPATH=.:$HOME/school/current:$HOME/projects
+END
+
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/cursor_blink_mode --type string off
 gconftool-2 --set /apps/panel/toplevels/bottom_panel_screen0/auto_hide --type bool true
 gconftool-2 --set /apps/panel/toplevels/top_panel_screen0/auto_hide --type bool true
