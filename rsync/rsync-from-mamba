@@ -1,0 +1,36 @@
+#!/bin/bash
+
+RSYNC=/usr/bin/rsync
+SSH=/usr/bin/ssh
+KEY=/home/razvan/.ssh/id_rsa
+RUSER=razvan
+RHOST=mamba.cs.pub.ro
+#OPTS="-avz --include /wiki/images --exclude /wiki/* --exclude /wiki-old --exclude /Teme/note --exclude /Teme/upload --exclude /Teme/*.auth --exclude /functions.php"
+#OPTS="-avz --exclude /wiki-old --exclude /Teme/note --exclude /Teme/upload --exclude /Teme/*.auth --exclude /functions.php"
+OPTS="-avz"
+
+#RPATH=/home/razvan/backup/mystuff/
+#LPATH=/home/razvan/mystuff/
+#mkdir $LPATH
+#echo "here"
+#cd $LPATH && $RSYNC $OPTS -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH $LPATH
+
+RPATH=/home/razvan/backup/people/
+LPATH=/home/razvan/people/
+mkdir $LPATH
+cd $LPATH && $RSYNC $OPTS -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH $LPATH
+
+#RPATH=/home/razvan/backup/official/
+#LPATH=/home/razvan/official/
+#mkdir $LPATH
+#cd $LPATH && $RSYNC $OPTS -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH $LPATH
+
+#RPATH=/home/razvan/backup/projects/
+#LPATH=/home/razvan/projects/
+#mkdir $LPATH
+#cd $LPATH && $RSYNC $OPTS -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH $LPATH
+
+RPATH=/home/razvan/backup/school/
+LPATH=/home/razvan/school/
+mkdir $LPATH
+cd $LPATH && $RSYNC $OPTS -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH $LPATH
