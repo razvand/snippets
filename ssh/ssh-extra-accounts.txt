@@ -1,0 +1,16 @@
+p2p-next-01.grid.pub.ro		root
+p2p-next-01.grid.pub.ro		p2p
+p2p-next-02.grid.pub.ro		root
+p2p-next-02.grid.pub.ro		p2p
+p2p-next-03.grid.pub.ro		root
+p2p-next-03.grid.pub.ro		p2p
+p2p-next-04.grid.pub.ro		root
+p2p-next-04.grid.pub.ro		p2p
+p2p-next-05.grid.pub.ro		root
+p2p-next-05.grid.pub.ro		p2p
+p2p-next-07.grid.pub.ro		root
+p2p-next-07.grid.pub.ro		p2p
+p2p-next-08.grid.pub.ro		root
+p2p-next-08.grid.pub.ro		p2p
+141.85.224.210			root
+141.85.224.210			p2p

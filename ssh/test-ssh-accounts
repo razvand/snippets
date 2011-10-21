@@ -1,0 +1,28 @@
+#!/bin/bash
+
+input=ssh-accounts.txt
+log=/tmp/ssh-accounts.log
+pub=/home/razvan/.ssh/id_rsa_new.pub
+priv=/home/razvan/.ssh/id_rsa_new
+
+declare -a hosts
+declare -a users
+
+n=0
+while read hostname username; do
+	hosts["$n"]="$hostname"
+	users["$n"]="$username"
+	((n++))
+done < "$input"
+
+> $log
+for ((i=0; i < $n; i++)); do
+	echo -n "Trying ${users[$i]}@${hosts[$i]}..."
+
+	>> $log 2>&1 ssh -i "$priv" -l "${users[$i]}" "${hosts[$i]}" ":"
+	if test $? -eq 0; then
+		echo "done"
+	else
+		echo "failed"
+	fi
+done
