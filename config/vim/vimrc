@@ -1,11 +1,11 @@
 set backupdir=~/.vim/bkup/
 set encoding=utf8
 
-" Mark tabs and spaces
+" Mark tabs and spaces.
 set list listchars=tab:»\ ,trail:·,extends:»,precedes:«
 
-" load manual pages
+" Load manual pages.
 runtime ftplugin/man.vim
 
-" set tex flavor
+" Set tex flavor.
 let g:tex_flavor = 'latex'
