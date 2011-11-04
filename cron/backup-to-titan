@@ -1,0 +1,24 @@
+#!/bin/bash
+
+RSYNC=/usr/bin/rsync
+SSH=/usr/bin/ssh
+KEY=/home/razvan/.ssh/id_rsa_rsync
+RUSER=root
+RHOST=titan.cs.pub.ro
+OPTS="-avz --delete-after"
+
+RPATH=/home/razvan/backup/
+LPATH=/home/razvan/projects
+$RSYNC $OPTS -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
+
+RPATH=/home/razvan/backup/
+LPATH=/home/razvan/my
+$RSYNC $OPTS -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
+
+RPATH=/home/razvan/backup/
+LPATH=/home/razvan/people
+$RSYNC $OPTS -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
+
+RPATH=/home/razvan/backup/
+LPATH=/home/razvan/school
+$RSYNC $OPTS -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
