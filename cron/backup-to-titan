@@ -6,6 +6,7 @@ KEY=/home/razvan/.ssh/id_rsa_rsync
 RUSER=root
 RHOST=titan.cs.pub.ro
 OPTS="-avz --delete-after"
+BACKUP_LOG=/home/razvan/my/cron/backup-to-titan.log
 
 RPATH=/home/razvan/backup/
 LPATH=/home/razvan/projects
@@ -22,3 +23,5 @@ $RSYNC $OPTS -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
 RPATH=/home/razvan/backup/
 LPATH=/home/razvan/school
 $RSYNC $OPTS -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
+
+echo "done at $(date)" >> $CRON_LOG
