@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if test $# -ne 2; then
+    echo "Usage: $0 file line-number" 1>&2
+    exit 1
+fi
+
+input="$1"
+line_number="$2"
+output="$input.new"
+message="let there be light"
+sed < "$input" > "$output" "
+$line_number i \\${message}
+"

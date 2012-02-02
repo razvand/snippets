@@ -1,0 +1,5 @@
+insert-at-line: use sed to insert a message at a given line number
+
+  * sample usage: ./insert-at-line test.txt 5
+    * output is written to test.txt.out
+    * you may use the -i option to sed for in place editing
