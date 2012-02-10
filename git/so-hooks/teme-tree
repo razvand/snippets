@@ -1,0 +1,37 @@
+.
+├── extra/
+│   └── cygwin-win32-make/
+├── tema0/
+│   ├── checker/
+│   ├── sol/
+│   └── util/
+├── tema1/
+│   ├── checker/
+│   ├── sol/
+│   └── util/
+├── tema2/
+│   ├── checker/
+│   ├── sol/
+│   └── util/
+├── tema2_old/
+│   ├── checker/
+│   ├── sol/
+│   └── util/
+├── tema3/
+│   ├── checker/
+│   ├── sol/
+│   └── util/
+├── tema4/
+│   ├── checker/
+│   ├── sol/
+│   └── util/
+├── tema5/
+│   ├── checker/
+│   ├── sol/
+│   └── util/
+└── tema_asistenti/
+    ├── checker/
+    ├── sol/
+    └── util/
+
+34 directories, 1 file

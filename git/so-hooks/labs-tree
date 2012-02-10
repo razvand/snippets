@@ -1,0 +1,104 @@
+.
+├── lab01/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab02/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab03/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab04/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab05/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab06/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab07/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab08/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab09/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab10/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab11/
+│   ├── extra/
+│   ├── refcard/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab12/
+│   ├── extra/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── lab13/
+│   ├── extra/
+│   ├── skel/
+│   ├── slides/
+│   └── sol/
+├── recap/
+│   ├── skel/
+│   └── sol/
+├── scripts/
+│   ├── CommentHeader.py
+│   ├── clean_win_project.py*
+│   ├── comment_file_7
+│   ├── comment_file_sample
+│   ├── do-all.py
+│   ├── header-all.sh*
+│   ├── lab_names
+│   ├── links-all.sh*
+│   ├── set-header.py
+│   └── set-links.py
+├── shared/
+│   ├── Makefile_refcard
+│   └── Makefile_slides
+└── sty/
+    ├── README.slides
+    ├── beamercolorthemeso.sty
+    ├── beamerouterthemeso.sty
+    ├── beamerthemeso.sty
+    ├── refcard.cs.pub.ro.cls
+    ├── so-logo.pdf
+    └── so.cs.pub.ro.cls
+
+82 directories, 20 files

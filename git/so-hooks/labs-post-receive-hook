@@ -1,0 +1,86 @@
+#!/bin/bash
+#
+# This script is run as a Git post-receive hook (i.e. after a push)
+# It publishes lab skeleton files, solutions until $lab_last_visible
+# and slides.
+# All files are actually visible/published except that solutions from
+# $lab_last_visible are chmod-ed to 700 such that web access is
+# disabled.
+#
+# NO configuration (or changes for that matter) should be done here.
+# Use the $config file for configuration.
+#
+# 2010, Razvan Deaconescu, razvan.deaconescu@cs.pub.ro
+#
+# 2011, Catalin Moraru, catalin.moraru@cti.pub.ro
+#      - Modify refcard publishing
+#      - Remove laboratoare-new refernces
+#
+
+config=$HOME/git-repos/hooks_config
+
+# load configuration variables
+source $config
+
+# clear publish_folder
+test -d "$lab_publish_dir" && rm -fr $lab_publish_dir/*
+
+umask 077
+
+# archive skeleton files and solutions
+echo -n " * Creating archives for lab tasks and solutions ... "
+for index in $(seq -f %02g $lab_first $lab_last); do
+	git archive --format=zip --prefix=lab$index-tasks/ HEAD:lab$index/skel/ > $lab_publish_dir/lab$index-tasks.zip
+	git archive --format=zip --prefix=lab$index-sol/ HEAD:lab$index/sol/ > $lab_publish_dir/lab$index-sol.zip
+	git archive --format=zip --prefix=lab$index-extra/ HEAD:lab$index/extra/ > $lab_publish_dir/lab$index-extra.zip 2> /dev/null || rm $lab_publish_dir/lab$index-extra.zip
+done
+echo "done"
+
+echo -n " * Configuring access rights for published lab archives ... "
+chmod a+r $lab_publish_dir/lab*-tasks.zip
+chmod a+r $lab_publish_dir/lab*-extra.zip
+# set visible solutions
+for index in $(seq -f %02g $lab_first $lab_last_visible); do
+	chmod a+r $lab_publish_dir/lab$index-sol.zip
+done
+echo "done"
+
+umask 022
+
+# clean temporary folder
+test -d $lab_slides_tmp || mkdir $lab_slides_tmp
+test -d $lab_slides_tmp/slides/ || mkdir $lab_slides_tmp/slides/
+test -d $lab_slides_tmp || rm -fr $lab_slides_tmp/*
+
+echo -n " * Creating local copy of shared folders ... "
+git archive --format=tar --prefix=shared/ HEAD:shared/ | (cd $lab_slides_tmp && tar xf -)
+git archive --format=tar --prefix=shared/ HEAD:shared/ | (cd $lab_refcard_tmp && tar xf -)
+echo "done"
+
+echo -n " * Creating local copy of slides folders ... "
+for index in $(seq -f %02g $lab_first $lab_last); do
+	git archive --format=tar --prefix=lab$index-slides/ HEAD:lab$index/slides/ | (cd $lab_slides_tmp/slides && tar xf -)
+done
+git archive --format=tar --prefix=sty/ HEAD:sty/ | (cd $lab_slides_tmp && tar xf -)
+echo "done"
+
+echo -n " * Running slides build and publish script ... "
+lab_slides_build_publish $lab_slides_tmp/slides/ $lab_publish_dir > $lab_slides_tmp/lab_slides_build_publish.err 2>&1
+echo "done"
+
+test -d $lab_refcard_tmp || mkdir $lab_refcard_tmp
+test -d $lab_refcard_tmp/refcard/ || mkdir $lab_refcard_tmp/refcard/
+
+echo -n " * Creating local copy of refcard folders ... "
+for index in $(seq -f %02g $lab_first $lab_last); do
+	git archive --format=tar --prefix=lab$index-refcard/ HEAD:lab$index/refcard/ 2> /dev/null | \
+	(cd $lab_refcard_tmp/refcard && tar xf - > $lab_refcard_tmp/lab_refcard_build_publish.err 2>&1)
+done
+echo "done"
+	
+
+echo -n " * Running refcard build and publish script ... "
+lab_refcard_build_publish $lab_refcard_tmp/refcard/ $lab_publish_dir > $lab_refcard_tmp/lab_refcard_build_publish.err 2>&1
+echo "done"
+
+exit 0

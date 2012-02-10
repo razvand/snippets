@@ -1,0 +1,61 @@
+#!/bin/bash
+#
+# configuration file for resource publishing (SO)
+#
+# this file is to be sourced by Git post-receive Bash scripts
+# DO NOT use BLANKS when assigning values to variables
+#
+# 2010, Razvan Deaconescu, razvan.deaconescu@cs.pub.ro
+#
+
+# lab publishing configuration
+lab_publish_dir=$HOME/res/current/laboratoare/
+lab_first=1
+lab_last=13
+lab_last_visible=0
+
+# slides publishing configuration
+lab_slides_tmp=$HOME/git-repos/hooks_tmp/
+
+function lab_slides_build_publish()
+{
+	working_dir=$1
+	publish_dir=$2
+
+	> $lab_slides_tmp/make-slides.log
+	pushd "$working_dir"
+	for subdir in $(find -mindepth 1 -maxdepth 1); do
+		pushd "$subdir"
+		make BASENAME=$subdir >> $lab_slides_tmp/make-slides.log 2>&1
+		popd
+	done
+	find -name '*.pdf' -exec cp {} "$publish_dir" \;
+	popd
+}
+
+# refcard publishing configuration
+lab_refcard_tmp=$HOME/git-repos/hooks_tmp/
+
+function lab_refcard_build_publish()
+{
+	working_dir=$1
+	publish_dir=$2
+
+	echo "lab_refcard_build"
+
+	> $lab_refcard_tmp/make-refcard.log
+	pushd "$working_dir"
+	for subdir in $(find -mindepth 1 -maxdepth 1); do
+		pushd "$subdir"
+		echo $subdir
+		make BASENAME=$subdir >> $lab_refcard_tmp/make-refcard.log 2>&1
+		popd
+	done
+	find -name '*.pdf' -exec cp {} "$publish_dir" \;
+	popd
+}
+
+# assignment publishing configuration
+asg_publish_dir=$HOME/res/current/teme/
+asg_first=0
+asg_last=5

@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# This script is run as a Git post-receive hook (i.e. after a push)
+# It publishes assignment checker files.
+#
+# NO configuration (or changes for that matter) should be done here.
+# Use the $config file for configuration.
+#
+# 2010, Razvan Deaconescu, razvan.deaconescu@cs.pub.ro
+#
+
+config=$HOME/git-repos/hooks_config
+
+# load configuration variables
+source $config
+
+# clear publish_folder
+test -d "$asg_publish_dir" && rm -fr $asg_publish_dir/*
+
+# archive assignment checker files
+echo -n " * Creating archives for assignment checker files ... "
+for index in $(seq $asg_first $asg_last); do
+	git archive --format=zip --prefix=tema$index-checker-lin/ HEAD:tema$index/checker/lin/ > $asg_publish_dir/tema$index-checker-lin.zip
+	git archive --format=zip --prefix=tema$index-checker-win/ HEAD:tema$index/checker/win/ > $asg_publish_dir/tema$index-checker-win.zip
+done
+echo "done"
+
+# archive and publish assignment utility files
+echo -n " * Creating archives for assignment utility files ... "
+for index in $(seq $asg_first $asg_last); do
+	git archive --format=zip --prefix=tema$index-util/ HEAD:tema$index/util/ > $asg_publish_dir/tema$index-util.zip
+	git archive --format=tar --prefix=tema$index-util/ HEAD:tema$index/util/ | ( cd $asg_publish_dir && tar xf - )
+done
+echo "done"
+
+# publish tema asistenti
+echo -n " * Publishing all files for tema asistenti ... "
+tas="tema_asistenti"
+git archive --format=zip --prefix=tema_asistenti-checker/ HEAD:$tas/checker/ > $asg_publish_dir/$tas-checker.zip
+git archive --format=zip --prefix=tema_asistenti-util/ HEAD:$tas/util/ > $asg_publish_dir/$tas-util.zip
+git archive --format=tar --prefix=tema_asistenti-util/ HEAD:$tas/util/ | ( cd $asg_publish_dir && tar xf - )
+git archive --format=zip --prefix=tema_asistenti-sol/ HEAD:$tas/sol/ > $asg_publish_dir/$tas-sol.zip
+echo "done"
+
+exit 0
