@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mysql -u root -p$(cat ~/.passwords/mysql-root) <<<"drop database redmine;"
+mysql -u root -p$(cat ~/.passwords/mysql-root) <<<"create database redmine CHARACTER SET utf8 COLLATE utf8_general_ci;"
+mysql -u root -p$(cat ~/.passwords/mysql-root) --default-character-set=utf8 redmine < ~/backup/mysql-ixlabs-redmine.sql 
+#mysqldump -u root -p$(cat ~/.passwords/mysql-root) redmine > /tmp/redmine.sql
