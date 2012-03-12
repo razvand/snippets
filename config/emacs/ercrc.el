@@ -2,6 +2,15 @@
 ;; ERC configuration (http://www.emacswiki.org/emacs/ERC)
 ;;
 
+;; user id
+(setq erc-email-userid "razvan@rosedu.org")
+(setq erc-user-full-name "Razvan Deaconescu")
+
+;; http://www.emacswiki.org/emacs/ErcAutoAway
+(setq erc-autoaway-idle-seconds 600)
+(setq erc-autojoin-channels-alist
+      '(("freenode.net" "#cs_so" "#rosedu" "#acm-seerc" "#vmxl4")))
+
 (setq erc-echo-notices-in-minibuffer-flag t)
 
 ;;(erc-spelling-mode 1)
@@ -11,21 +20,6 @@
 (setq erc-log-channels-directory "~/.erc/logs/")
 (setq erc-save-buffer-on-part t)
 (setq erc-hide-timestamps t)
-
-;; user id
-(setq erc-email-userid "razvan@rosedu.org")
-(setq erc-user-full-name "Razvan Deaconescu")
-
-;; http://www.emacswiki.org/emacs/ErcAutoAway
-(setq erc-autoaway-idle-seconds 600)
-(setq erc-autojoin-channels-alist
-      '(("freenode.net" "#cs_so" "#rosedu" "#acm-seerc" "#vmxl4")))
-(erc :server "irc.freenode.net" :port 6667 :nick "razvand")
-(require 'erc-services)
-(erc-services-mode 1)
-(setq erc-prompt-for-nickserv-password nil)
-(setq erc-nickserv-passwords
-      '((freenode (("razvand" . "saengepe")))))
 
 ;; http://www.emacswiki.org/emacs/ErcAutoQuery
 (setq erc-auto-query 'window)

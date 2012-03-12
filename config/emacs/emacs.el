@@ -167,3 +167,12 @@
 
 ;; use ERC (http://www.gnu.org/software/emacs/manual/html_mono/erc.html)
 (require 'erc)
+
+(require 'erc-services)
+(erc-services-mode 1)
+(setq erc-prompt-for-nickserv-password nil)
+(setq erc-nickserv-passwords
+      '((freenode (("razvand" . "saengepe")))))
+
+;; automatic startup connection to Freenode
+; (erc :server "irc.freenode.net" :port 6667 :nick "razvand")
