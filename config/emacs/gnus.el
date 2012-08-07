@@ -3,13 +3,34 @@
       gnus-local-organization "Departamentul de Calculatoare")
 
 ;; You need this to be able to list all labels in gmail
-(setq gnus-ignored-newsgroups "")
+; (setq gnus-ignored-newsgroups "")
+
+; remote IMAP server connection
+;(setq gnus-select-method
+;      '(nnimap "swarm"
+;	       (nnimap-address "swarm.cs.pub.ro")
+;	       (nnimap-server-port 993)
+;	       (nnimap-authenticator login)
+;	       (nnimap-stream ssl)))
+
 (setq gnus-select-method
-      '(nnimap "swarm"
-	       (nnimap-address "swarm.cs.pub.ro")
-	       (nnimap-server-port 993)
+      '(nnimap "Mail"
+	       (nnimap-address "localhost")
+	       (nnimap-stream network)
 	       (nnimap-authenticator login)
-	       (nnimap-stream ssl)))
+	       (nnimap-authinfo-file "~/.authinfo")))
+
+;(setq gnus-select-method
+;       '(nnmaildir "Mail"
+;                   (directory "~/offlineimap/swarm/razvan/")
+;                   (directory-files nnheader-directory-files-safe)
+;                   (get-new-mail nil)))
+
+;(setq imap-shell-program "dovecot -c ~/.dovecotrc --exec-mail imap")
+;(setq gnus-select-method
+;      '(nnimap "Mail"
+;	       (nnimap-stream shell)))
+
 ;; Prefer plain text
 (setq mm-discouraged-alternatives '("text/html" "text/richtext"))
 
@@ -38,7 +59,24 @@
 	 (organization "Academia CISCO - lpic.ro"))
 	("nnml:*"
 	 (From (with-current-buffer gnus-article-buffer
-		 (message-fetch-field "To"))))))
+		 (message-fetch-field "to"))))
+	((header "to" "razvan.deaconescu@cs.pub.ro")
+	 (name "Razvan Deaconescu")
+	 (address "razvan.deaconescu@cs.pub.ro")
+	 (organization "Departamentul de Calculatoare"))
+	((header "to" "razvan@rosedu.org")
+	 (name "Razvan Deaconescu")
+	 (address "razvan@rosedu.org")
+	 (organization "ROSEdu"))
+	((header "to" "razvan.deaconescu@lpic.ro")
+	 (name "Razvan Deaconescu")
+	 (address "razvan.deaconescu@lpic.ro")
+	 (organization "Academia CISCO"))
+	((header "to" "razvan.deaconescu@stagiipebune.ro")
+	 (name "Razvan Deaconescu")
+	 (address "razvan.deaconescu@stagiipebune.ro")
+	 (organization "Stagii pe Bune"))
+))
 
 ;; don't bugger me with dribbles
 (setq gnus-always-read-dribble-file t)
@@ -50,7 +88,7 @@
 
 ;; archive sent messages
 (setq gnus-message-archive-group "INBOX.Sent")
-(setq gnus-message-archive-method '(nnimap "swarm"))
+(setq gnus-message-archive-method '(nnimap "Mail"))
 
 ;; Wrap at 72 cols.
 (add-hook 'message-mode-hook
