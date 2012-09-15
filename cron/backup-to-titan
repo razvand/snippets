@@ -24,4 +24,9 @@ RPATH=/home/razvan/backup/
 LPATH=/home/razvan/school
 $RSYNC $OPTS -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
 
-echo "done at $(date)" >> $CRON_LOG
+RPATH=/home/razvan/backup/
+LPATH=/home/razvan/catedra
+
+$RSYNC $OPTS -e "$SSH -i $KEY" $LPATH $RUSER@$RHOST:$RPATH
+
+echo "done at $(date)" >> $BACKUP_LOG
