@@ -13,4 +13,4 @@ cli-example.tex: cli-example.bash
 
 .PHONY: clean
 clean:
-	rm -f $(TEXFILES) highlight.sty *~
+	rm -f $(TEXFILES) highlight.sty highlight.css *~
