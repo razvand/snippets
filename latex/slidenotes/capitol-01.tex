@@ -1,5 +1,5 @@
 % vim: set tw=78 sts=2 sw=2 ts=8 aw et ai:
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 % Comentează liniile de mai jos în cazul în care nu există cod de inclus.
 \usepackage{code/highlight}
@@ -19,6 +19,16 @@
 \usepackage{hyperref}   % use \url{http://$URL} or \href{http://$URL}{Name}
 \usepackage{underscore}   % underscores need not be escaped
 \usepackage{booktabs}     % nice looking tables
+
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape,border shrink=4mm]
+%\setbeamertemplate{footline}[page number]
+%\setbeameroption{show notes}
+%\setbeamertemplate{note page}[plain]
+%\setbeameroption{show notes on second screen=right}
+
+\usepackage{handoutWithNotes}
+\pgfpagesuselayout{8 on 1}[a4paper,border shrink=5mm]
 
 \title[Capitolul 1]{Capitolul 1}
 \subtitle{Introducere în Linux. Folosirea liniei de comandă}
@@ -63,12 +73,16 @@
 
 \begin{frame}{Nucleu/Kernel}
   \begin{itemize}
-    \item nucleul sistemului
-    \item face legătura dintre hardware și software
-    \item oferă o interfață comună către hardware
-    \item arbitrează accesul proceselor la hardware
-    \item este prima secvență de cod din sistemul de operare încărcată în
+    \item<1-> nucleul sistemului
+      \note[item]<1>{Spune că nucleu e traducerea potrivită.}
+      \note[item]<1>{Nu recomandăm miez sau \textit{core}.}
+    \item<2-> face legătura dintre hardware și software
+    \item<3-> oferă o interfață comună către hardware
+      \note<3>{apeluri de sistem}
+    \item<4-> arbitrează accesul proceselor la hardware
+    \item<5-> este prima secvență de cod din sistemul de operare încărcată în
       memorie
+      \note<5>{booting, bootloading}
   \end{itemize}
 \end{frame}
 
