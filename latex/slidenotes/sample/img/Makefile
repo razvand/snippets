@@ -1,3 +1,10 @@
+#
+# Access the wiki page below for information on processing Dia and Inkscape
+# image files.
+#
+# https://systems.cs.pub.ro/projects/projects/templates/wiki/Images
+#
+
 EPSTOPDF = epstopdf
 DIA = dia
 
