@@ -1,5 +1,5 @@
 % vim: set tw=78 sts=2 sw=2 ts=8 aw et ai:
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 % Comentează liniile de mai jos în cazul în care nu există cod de inclus.
 \usepackage{code/highlight}
@@ -20,15 +20,20 @@
 \usepackage{underscore}   % underscores need not be escaped
 \usepackage{booktabs}     % nice looking tables
 
-%\usepackage{pgfpages}
-%\pgfpagesuselayout{4 on 1}[a4paper,landscape,border shrink=4mm]
-%\setbeamertemplate{footline}[page number]
-%\setbeameroption{show notes}
-%\setbeamertemplate{note page}[plain]
-%\setbeameroption{show notes on second screen=right}
+\ifdefined\dualscreen
+  \usepackage{pgfpages}
+  \setbeameroption{show notes on second screen=left}
+\fi
 
-\usepackage{handoutWithNotes}
-\pgfpagesuselayout{8 on 1}[a4paper,border shrink=5mm]
+\ifdefined\fouronone
+  \usepackage{handoutWithNotes}
+  \pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
+\else
+  \ifdefined\eightonone
+    \usepackage{handoutWithNotes}
+    \pgfpagesuselayout{8 on 1}[a4paper,border shrink=5mm]
+  \fi
+\fi
 
 \title[Capitolul 1]{Capitolul 1}
 \subtitle{Introducere în Linux. Folosirea liniei de comandă}
