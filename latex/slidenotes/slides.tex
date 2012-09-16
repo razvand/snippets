@@ -1,39 +1,10 @@
 % vim: set tw=78 sts=2 sw=2 ts=8 aw et ai:
-\documentclass{beamer}
+\documentclass{curs}
 
-% Comentează liniile de mai jos în cazul în care nu există cod de inclus.
+% Comment out lines below in case of no code to be included.
 \usepackage{code/highlight}
-\usepackage{color}        % dacă e folosit highlight
-\usepackage{alltt}        % dacă e folosit highlight
-\usepackage{array}
-
-% uncomment the lines bellow for Romanian Language support
-% Use UTF8 file encoding when writing .tex files in Romanian
-% Romanian Language support
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}
-\PrerenderUnicode{aâîțșĂÎÂȚȘ}
-\usepackage[english,romanian]{babel}
-\usepackage{color}    % if we need highlight
-\usepackage{alltt}    % if we need highlight
-\usepackage{hyperref}   % use \url{http://$URL} or \href{http://$URL}{Name}
-\usepackage{underscore}   % underscores need not be escaped
-\usepackage{booktabs}     % nice looking tables
-
-\ifdefined\dualscreen
-  \usepackage{pgfpages}
-  \setbeameroption{show notes on second screen=left}
-\fi
-
-\ifdefined\fouronone
-  \usepackage{handoutWithNotes}
-  \pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
-\else
-  \ifdefined\eightonone
-    \usepackage{handoutWithNotes}
-    \pgfpagesuselayout{8 on 1}[a4paper,border shrink=5mm]
-  \fi
-\fi
+\usepackage{color}
+\usepackage{alltt}
 
 \title[Capitolul 1]{Capitolul 1}
 \subtitle{Introducere în Linux. Folosirea liniei de comandă}
@@ -41,14 +12,12 @@
    \texttt{razvan@rosedu.org}}
 \date{31 iulie 2012}
 
-\begin{document}
 
-% Arătăm numărul frame-ului
-\setbeamertemplate{footline}[frame number]
+\begin{document}
 
 \frame{\titlepage}
 
-% NB: Secțiunile nu sunt marcate vizual, ci doar apar în cuprins
+
 \section{Linux}
 
 \begin{frame}{Sistem de operare}
@@ -114,6 +83,7 @@
   \end{itemize}
   Exemple: Debian, Ubuntu, Gentoo, OpenSUSE, Red Hat, Slackware
 \end{frame}
+
 
 \section{Linia de comandă}
 
@@ -226,6 +196,7 @@
     \item Alt-Backspace -- șterge cuvântul anterior
   \end{itemize}
 \end{frame}
+
 
 \section{Folosirea sistemului Linux}
 
@@ -346,6 +317,7 @@
   \end{itemize}
 \end{frame}
 
+
 \section{Documentație}
 
 \begin{frame}{Documentație în Linux}
@@ -381,6 +353,7 @@
     \item \emph{q} pentru ieșire
   \end{itemize}
 \end{frame}
+
 
 \section{Gestiunea pachetelor}
 
@@ -464,6 +437,7 @@
   \end{itemize}
 \end{frame}
 
+
 \section{Concluzie}
 
 \begin{frame}{Cuvinte cheie}
@@ -479,28 +453,32 @@
         \item terminal
         \item prompt
         \item comandă
-        \item argumente
-        \item autocompletion
       \end{itemize}
     \end{column}
     \begin{column}[l]{0.5\textwidth}
       \begin{itemize}
+        \item argumente
+        \item autocompletion
         \item operații în Linux
-        \item man
-        \item /KEYWORD
-        \item apt-get
-        \item /etc/apt/sources.list
-        \item dpkg
+        \item \texttt{man}
+        \item \texttt{/KEYWORD}
+        \item \texttt{apt-get}
+        \item \texttt{/etc/apt/sources.list}
+        \item \texttt{dpkg}
       \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
 
-%\begin{frame}{Resurse utile}
-%  \begin{itemize}
-%    \item TODO
-%  \end{itemize}
-%\end{frame}
+\begin{frame}{Resurse utile}
+  \begin{itemize}
+    \item \url{http://distrowatch.com/}
+    \item \url{http://www.kernel.org/}
+    \item \url{http://www.debian.org/}
+    \item \url{http://www.redhat.com/}
+  \end{itemize}
+\end{frame}
+
 
 \section{Întrebări}
 

@@ -1,0 +1,122 @@
+%
+% ROSEdu Lectures
+%
+% Based on Workshop, based itself on OSSS.
+% Based on OSSS, based itself on CDL.
+%
+% This file may be distributed and/or modified under the GNU General Public
+% License.
+%
+% Logo from Vectoarts.net, through Great Vectors, under Creative Commons
+% Attribution 3.0
+%  http://www.vectorarts.net/misc/free-old-book-vector-graphics/
+%  http://www.greatvectors.com/2012/06/vector-book/
+%
+
+\ProvidesPackage{beamerthemeCurs}[2012/07/07]
+
+\RequirePackage{tikz}
+\RequirePackage{graphics}
+
+\mode<presentation>
+
+\useoutertheme{default}
+\usecolortheme{beaver}
+\useinnertheme{rounded}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\setbeamerfont{block title}{size={}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local defs
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\curs@frametitle{picture-section}
+\def\curs@imagenametitle{logo}
+\def\curs@titlepage{picture}
+\define@key{curs}{headline}[none]{
+  \def\curs@headline{#1}
+}
+\define@key{curs}{frametitle}[picture]{
+  \def\curs@frametitle{#1}
+}
+\define@key{curs}{imagenametitle}{
+  \def\curs@imagename{#1}
+  \pgfdeclareimage[width=0.12\textwidth,interpolate=true]{headlineimage}{\curs@imagenametitle}
+}
+\define@key{curs}{titlepage}[picture]{
+  \def\curs@titlepage{#1}
+}
+
+\def\cursoptions#1{\setkeys{curs}{#1}}
+
+% Title page
+
+\defbeamertemplate*{title page}{curs theme}{
+  \edef\tempa{picture}
+  \ifx\curs@titlepage\tempa
+    \vfill
+    \parbox{0.28\textwidth}{
+      \pgfimage[width=0.27\textwidth]{\curs@imagenametitle}
+    }\hfill
+  \parbox{0.7\textwidth}{
+    \begin{center}
+    {\usebeamerfont{title}\usebeamercolor{title}{\color{fg}\inserttitle}}
+    \ifx\insertsubtitle\@empty\\[\baselineskip]
+      \else{\\\usebeamerfont{subtitle}\usebeamercolor{subtitle}{\color{fg}\insertsubtitle}}\\[\baselineskip]\fi
+      \hrule\vskip\baselineskip
+      \ifx\insertauthor\@empty\ \\
+      \else{\usebeamerfont{author}\usebeamercolor{author}{\color{fg}\insertauthor}}\\\fi
+      \ifx\insertdate\@empty\ \\
+      \else{\usebeamerfont{date}\usebeamercolor{date}{\color{fg}\insertdate}}\\\fi
+      \ifx\insertinstitute\@empty
+      \else{\usebeamerfont{institute}\usebeamercolor{institute}{\color{fg}\insertinstitute}}\\\fi
+      \insertlogo
+      \end{center}
+  }\vfill
+  \else
+    \pgfdeclarehorizontalshading{separationtitlepagelineshading}{0.5pt}{color(0cm)=(bg);
+      color(0.5\textwidth)=(structure.fg); color(\textwidth)=(bg)}
+      \begin{center}
+      \vfill
+      {\usebeamerfont{title}\usebeamercolor{title}{\color{fg}\inserttitle}}
+
+      \ifx\insertsubtitle\@empty
+        \else{\usebeamerfont{subtitle}\usebeamercolor{subtitle}{\color{fg}\insertsubtitle}}\\[\baselineskip]\fi
+
+        \pgfuseshading{separationtitlepagelineshading}
+      \ifx\insertauthor\@empty\ \\
+        \else{\usebeamerfont{author}\usebeamercolor{author}{\color{fg}\insertauthor}}\\\fi
+        \ifx\insertdate\@empty\ \\
+        \else{\usebeamerfont{date}\usebeamercolor{date}{\color{fg}\insertdate}}\\\fi
+        \ifx\insertinstitute\@empty
+        \else{\usebeamerfont{institute}\usebeamercolor{institute}{\color{fg}\insertinstitute}}\\\fi
+        \insertlogo
+        \pgfuseshading{separationtitlepagelineshading}
+      \vfill
+        \end{center}
+      \fi
+}
+
+\setbeamertemplate{title page}[curs theme]
+
+% End: print authors and name
+
+\defbeamertemplate*{footline}{curs theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{author}%
+    \usebeamerfont{author}\insertshortauthor~~(\insertshortinstitute)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{title}%
+    \usebeamerfont{title}\insertshorttitle
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\setbeamersize{text margin left=1em,text margin right=2em}
+\mode
+<all>
