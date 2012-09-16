@@ -1,5 +1,4 @@
 # folders required throughout rules
-HIGHLIGHT_DIR = tex/code
 STY_DIR = ../../../sty
 OUT_DIR = texfiles
 CODE_DIR = code
@@ -7,9 +6,6 @@ FORMAT_DIR = format
 
 PDFLATEX = pdflatex
 
-
-# BASENAME is defined in top-level Makefile including this file.
-TEX = $(addsuffix .tex, $(BASENAME))
 
 #
 # PDF output files
@@ -19,6 +15,8 @@ TEX = $(addsuffix .tex, $(BASENAME))
 # * four slides on one A4 page (handout) with `Notes' area on the right
 # * eight slides on one A4 page (handout) (two four-slide columns)
 # * wide slides for dual screen use: slides + notes (private use)
+#
+# BASENAME is defined in top-level Makefile including this file.
 #
 SLIDES = $(addsuffix .pdf, $(BASENAME))
 NOTES = $(addsuffix -notes.pdf, $(BASENAME))
@@ -63,7 +61,7 @@ $(NOTES) $(HANDOUT) $(HANDOUT_4ON1) $(HANDOUT_8ON1) $(DUALSCREEN): $(BASENAME)-%
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
 	ln $(OUT_DIR)/$@ .
 
-$(SLIDES): $(TEX)
+$(SLIDES): slides.tex
 	# Rebuild source files, if any
 	-test -d $(CODE_DIR) && make -C $(CODE_DIR)
 	# Create out directory
