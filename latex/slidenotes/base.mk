@@ -59,7 +59,7 @@ $(NOTES) $(HANDOUT) $(HANDOUT_4ON1) $(HANDOUT_8ON1) $(DUALSCREEN): $(BASENAME)-%
 	# Twice, so TOC is also updated
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
-	ln $(OUT_DIR)/$@ .
+	ln -f $(OUT_DIR)/$@ .
 
 $(SLIDES): slides.tex
 	# Rebuild source files, if any
@@ -69,7 +69,7 @@ $(SLIDES): slides.tex
 	# Twice, so TOC is also updated
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
-	ln $(OUT_DIR)/$@ .
+	ln -f $(OUT_DIR)/$@ .
 
 
 clean:
