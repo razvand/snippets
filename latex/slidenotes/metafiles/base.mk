@@ -1,9 +1,9 @@
 # folders required throughout rules
-STY_DIR = sty
+STY_DIR = ../sty
+FORMAT_DIR = ../metafiles/format
 OUT_DIR = texfiles
 CODE_DIR = code
 IMG_DIR = img
-FORMAT_DIR = format
 
 PDFLATEX = pdflatex
 
