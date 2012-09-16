@@ -2,6 +2,7 @@
 STY_DIR = sty
 OUT_DIR = texfiles
 CODE_DIR = code
+IMG_DIR = img
 FORMAT_DIR = format
 
 PDFLATEX = pdflatex
@@ -30,7 +31,7 @@ DUALSCREEN = $(addsuffix -dualscreen.pdf, $(BASENAME))
 .PHONY: slides notes handout handout-4on1-notes handout-8on1 dualscreen
 .PHONY: 4on1 8on1
 
-# If run `make' with no arguments, only generate slides.
+# If running `make' with no arguments, only generate slides.
 main: slides
 
 # Handouts are public formats.
@@ -52,21 +53,25 @@ dualscreen: $(DUALSCREEN)
 
 
 $(NOTES) $(HANDOUT) $(HANDOUT_4ON1) $(HANDOUT_8ON1) $(DUALSCREEN): $(BASENAME)-%.pdf: $(FORMAT_DIR)/%.tex
-	# Rebuild source files, if any
+	# Rebuild source files, if any.
 	-test -d $(CODE_DIR) && make -C $(CODE_DIR)
-	# Create out directory
+	# Rebuild image files, if any.
+	-test -d $(IMG_DIR) && make -C $(IMG_DIR)
+	# Create out directory.
 	-test -d $(OUT_DIR) || mkdir $(OUT_DIR)
-	# Twice, so TOC is also updated
+	# Run twice, so TOC is also updated.
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
 	ln -f $(OUT_DIR)/$@ .
 
 $(SLIDES): slides.tex
-	# Rebuild source files, if any
+	# Rebuild source files, if any.
 	-test -d $(CODE_DIR) && make -C $(CODE_DIR)
-	# Create out directory
+	# Rebuild image files, if any.
+	-test -d $(IMG_DIR) && make -C $(IMG_DIR)
+	# Create out directory.
 	-test -d $(OUT_DIR) || mkdir $(OUT_DIR)
-	# Twice, so TOC is also updated
+	# Run twice, so TOC is also updated.
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -output-directory $(OUT_DIR) -jobname $(basename $@) $<
 	ln -f $(OUT_DIR)/$@ .
