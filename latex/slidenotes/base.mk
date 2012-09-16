@@ -1,5 +1,5 @@
 # folders required throughout rules
-STY_DIR = ../../../sty
+STY_DIR = sty
 OUT_DIR = texfiles
 CODE_DIR = code
 FORMAT_DIR = format
