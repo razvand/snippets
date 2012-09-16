@@ -6,12 +6,14 @@
 \usepackage{color}
 \usepackage{alltt}
 
+
+% Snip from LPIC-1 lecture.
+
 \title[Capitolul 1]{Capitolul 1}
 \subtitle{Introducere în Linux. Folosirea liniei de comandă}
-\author{Răzvan Deaconescu \\
-   \texttt{razvan@rosedu.org}}
+\author{Alex Juncu, Răzvan Deaconescu \\
+  \texttt{\{alex.juncu,razvan.deaconescu\}@lpic.ro}}
 \date{31 iulie 2012}
-
 
 \begin{document}
 
@@ -84,7 +86,6 @@
   Exemple: Debian, Ubuntu, Gentoo, OpenSUSE, Red Hat, Slackware
 \end{frame}
 
-
 \section{Linia de comandă}
 
 \begin{frame}{Ce înseamnă CLI?}
@@ -102,17 +103,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Ce este un shell?}
-  \begin{itemize}
-    \item interfața cu sistemul de operare
-    \item diverse forme:
-      \begin{itemize}
-        \item GUI: Explorer, Gnome, KDE
-        \item CLI: terminale
-      \end{itemize}
-  \end{itemize}
-\end{frame}
-
 \begin{frame}{Terminale}
   \begin{itemize}
     \item terminale adevărate
@@ -124,52 +114,21 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}{Terminale (2)}
-  \begin{itemize}
-    \item pseudo-terminal
-    \item gnome-terminal, konsole, xterm
-  \end{itemize}
-  \begin{figure}
-    \includegraphics[width=0.7\linewidth,hight=0.7\linehight]{img/gnome-terminal}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Terminale (3)}
-  \begin{itemize}
-    \item remote terminal
-    \item ssh/telnet, putty
-  \end{itemize}
-  \begin{figure}
-    \includegraphics[width=0.7\linewidth,hight=0.7\linehight]{img/putty}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Prompt}
-  \begin{itemize}
-    \item locul în care introducem comenzile
-    \item conține informații utile: cine și unde suntem?
-    \item diferă între CLI-uri
-  \end{itemize}
-  \begin{figure}
-    \includegraphics[width=0.7\linewidth,hight=0.7\linehight]{img/prompt}
-  \end{figure}
-\end{frame}
-
 \begin{frame}{Structura unei comenzi}
   \begin{itemize}
     \item comenzi făra argumente
     \begin{itemize}
-      \item \texttt{user@host\$ vim}
+      \item \cmd{user@host\$ vim}
     \end{itemize}
     \item comenzi cu argumente
     \begin{itemize}
       \item argumentele se separă de comandă prin spațiu
       \item argumentele între ele se separă prin spațiu
       \item unele argumente pot fi flag-uri (precedate de - sau --)
-      \item \texttt{user@host\$ ls -a}
-      \item \texttt{user@host\$ ls --all}
-      \item \texttt{user@host\$ ssh user@remotehost}
-      \item \texttt{user@host\$ cp source.file destionation.file}
+      \item \cmd{user@host\$ ls -a}
+      \item \cmd{user@host\$ ls --all}
+      \item \cmd{user@host\$ ssh user@remotehost}
+      \item \cmd{user@host\$ cp source.file destionation.file}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -185,175 +144,6 @@
     \item pentru afișarea sugestiilor se folosește TAB-TAB
   \end{itemize}
 \end{frame}
-
-\begin{frame}{Scurtături în shell}
-  \begin{itemize}
-    \item Ctrl-D -- logout
-    \item Ctrl-C -- anulare comandă
-    \item Alt-F/Alt-B -- deplasare cuvântul următor/anterior
-    \item Ctrl-A/Ctrl-E -- deplasare începutul/sfârșitul liniei
-    \item Alt-D -- șterge cuvântul curent
-    \item Alt-Backspace -- șterge cuvântul anterior
-  \end{itemize}
-\end{frame}
-
-
-\section{Folosirea sistemului Linux}
-
-\begin{frame}{Clase de aplicații/comenzi}
-  \begin{itemize}
-    \item lucrul cu sistemul de fișiere
-    \item lucrul cu procese
-    \item instalarea de aplicații
-    \item gestiunea utilizatorilor și drepturilor
-    \item dezvoltarea de aplicații
-    \item configurarea rețelei
-    \item aplicații de rețea
-    \item multimedia
-    \item gestiunea documentelor
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Lucrul cu sistemul de fișiere}
-  \begin{itemize}
-    \item fișier, director, link, separator
-    \item poziționare și parcurgere: pwd, ls, cd
-    \item crearea de fișiere: touch, mkdir, ln
-    \item ștergerea de fișiere: rm, rm -r, rmdir
-    \item afișarea fișierelor: cat, less, vi
-    \item drepturi pe sisteme de fișiere: chmod, chown
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Lucrul cu procese}
-  \begin{itemize}
-    \item procese, comunicarea între procese
-    \item crearea de procese: \texttt{./executabil}
-    \item listarea proceselor: ps, pstree, pgrep
-    \item terminarea proceselor: kill, pkill
-    \item monitorizarea proceselor: top, htop, lsof
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Instalarea de aplicații}
-  \begin{itemize}
-    \item repository, pachet
-    \item căutarea unui pachet: apt-cache search nume-pachet
-    \item instalarea unui pachet: apt-get install nume-pachet
-    \item ștergerea unui pachet: apt-get remove --purge nume-pachet
-    \item inspectarea unui pachet: apt-cache show nume-pachet
-    \item configurarea unui repository: /etc/apt/sources.list
-    \item actualizarea bazei de date locale de pachete: apt-get update
-    \item upgrade-ul sistemului: apt-get upgrade
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Gestiunea utilizatorilor și drepturilor}
-  \begin{itemize}
-    \item utilizatori, grupuri, privilegii
-    \item informații despre utilizatori: who, id, finger
-    \item crearea unui utilizator: useradd
-    \item ștergerea unui utilizator: userdel
-    \item crearea unui grup: groupadd
-    \item ștergerea unui grup: groupdel
-    \item schimbarea parolei: passwd, chpasswd
-    \item modificarea informațiilor: usermod
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Dezvoltarea de aplicații}
-  \begin{itemize}
-    \item compilare, interpretare, biblioteci
-    \item editarea codului sursă: Vim, Emacs, nano, Gedit, Kate, Jini
-    \item compilarea/interpretarea surselor: gcc, g++, javac, python, php,
-      perl, Make
-    \item depanarea aplicațiilor: gdb, printf debugging
-    \item rularea aplicațiilor: \texttt{./executabil}
-    \item profiling: gprof, perf, oprofile
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Configurarea rețelei}
-  \begin{itemize}
-    \item rețea, adresă, DNS
-    \item vizualizarea informațiile de rețea: ifconig, route, arp, netstat, ip
-    \item configurarea statică manuală: ifconfig, ip
-    \item configurarea dinamică manuală: dhclient
-    \item configurarea automată: /etc/network/interfaces
-    \item configurarea server-ului de DNS: /etc/resolv.conf
-    \item captură de pachete: tcpdump, wireshark, tshark
-    \item depanare: route -n, ping, traceroute, host
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Aplicații de rețea}
-  \begin{itemize}
-    \item web: server web, browsere, wget, curl, lynx
-    \item email: server e-mail, server SMTP, Evolution, Thunderbird, mail,
-      Mutt, Gnus
-    \item SSH: server, ssh, scp, sftp
-    \item DNS: sever, host, dig, nslookup
-    \item BitTorrent: tracker, client
-    \item monitorizare și captură: netstat, tcpdump, wireshark, lsof
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Multimedia}
-  \begin{itemize}
-    \item viewere de imagini
-    \item editoare de imagini: image-magick, Gimp
-    \item viewere de filme
-    \item convertoare de conținut de filme: ffmpeg, handbrake, kino
-    \item playere de audio
-    \item editoare de conținut audio: audacity
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Gestiunea documentelor}
-  \begin{itemize}
-    \item editoare: Vim, Emacs, nano, Gedit, Kate
-    \item suită Office: LibreOffice (OpenOffice), KOffice, Gnome Office
-    \item LaTeX: latex, pdflatex, Kile, LyX
-  \end{itemize}
-\end{frame}
-
-
-\section{Documentație}
-
-\begin{frame}{Documentație în Linux}
-  \begin{itemize}
-    \item cel mai important skill: cum să înveți să găsești singur lucruri
-    \item documentație disponibilă în sistem
-    \begin{itemize}
-       \item argumentele \texttt{-h} și \texttt{--help} la comenzi
-       \item paginile de manual (comanda \texttt{man})
-       \item paginile info (comanda \texttt{info})
-       \item comenzi ajutătorare: \texttt{which}, \texttt{apropos}, \texttt{whatis}
-    \end{itemize}
-    \item documentație externă:
-    \begin{itemize}
-       \item The Linux Documentation Project (http://tldp.org)
-       \item Google
-       \item forumuri și liste de discuții
-       \item IRC (live)
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Paginile de manual}
-  \begin{itemize}
-    \item man \texttt{comandă}
-    \item căutare cu \texttt{/KEYWORD} și \texttt{n} și \texttt{N} pentru navigare
-      \begin{itemize}
-        \item \texttt{/KEYWORD} înseamnă ,,slash'' urmat de șirul de căutare
-        \item \texttt{n} -- next
-        \item \texttt{N} -- previous
-        \item \texttt{?KEYWORD} pentru căutare înapoi
-      \end{itemize}
-    \item \emph{q} pentru ieșire
-  \end{itemize}
-\end{frame}
-
 
 \section{Gestiunea pachetelor}
 
@@ -448,20 +238,11 @@
         \item kernel
         \item Linux
         \item distribuții
-        \item CLI
-        \item shell
-        \item terminal
-        \item prompt
-        \item comandă
       \end{itemize}
     \end{column}
     \begin{column}[l]{0.5\textwidth}
       \begin{itemize}
-        \item argumente
         \item autocompletion
-        \item operații în Linux
-        \item \texttt{man}
-        \item \texttt{/KEYWORD}
         \item \texttt{apt-get}
         \item \texttt{/etc/apt/sources.list}
         \item \texttt{dpkg}
@@ -475,7 +256,6 @@
     \item \url{http://distrowatch.com/}
     \item \url{http://www.kernel.org/}
     \item \url{http://www.debian.org/}
-    \item \url{http://www.redhat.com/}
   \end{itemize}
 \end{frame}
 

@@ -20,7 +20,7 @@
 { \usetheme{Curs} }
 
 % So that we don't have to declare it a bazillion times.
-\institute[ROSEdu]{Cursuri ROSEdu}
+\institute[Academia Cisco]{LPIC-1}
 
 % Slide-urile cu mai multe părți sunt marcate cu textul (cont.)
 \setbeamertemplate{frametitle continuation}[from second]
