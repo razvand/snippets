@@ -5,18 +5,34 @@
 # https://systems.cs.pub.ro/projects/projects/templates/wiki/Images
 #
 
-EPSTOPDF = epstopdf
 DIA = dia
+INKSCAPE = inkscape
+EPSTOPDF = epstopdf
+
+DIA_FILES = so.dia
+SVG_FILES =
+EPS_FILES = $(DIA_FILES:.dia=.eps) $(SVG_FILES:.svg=.eps)
+PDF_FILES = $(DIA_FILES:.dia=.pdf) $(SVG_FILES:.svg=.pdf)
+PNG_FILES = $(DIA_FILES:.dia=.png) $(SVG_FILES:.svg=.png)
 
 .PHONY: all clean
 
-all: so.pdf
+all: $(PDF_FILES) $(PNG_FILES)
 
-so.pdf: so.eps
-	$(EPSTOPDF) $<
+%.pdf: %.eps
+		$(EPSTOPDF) $<
 
-so.eps: so.dia
-	$(DIA) -t eps-pango $<
+%.eps: %.dia
+		$(DIA) -t eps-pango -e $@ $<
+
+%.png: %.dia
+		$(DIA) -t png -e $@ $<
+
+%.eps: %.svg
+		$(INKSCAPE) -E $@ $<
+
+%.png: %.svg
+		$(INKSCAPE) -e $@ $<
 
 clean:
-	-rm -f so.eps so.pdf
+	-rm -f $(EPS_FILES) $(PDF_FILES) $(PNG_FILES)
