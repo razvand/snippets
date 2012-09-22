@@ -1,2 +1,13 @@
-/texfiles/
-/capitol-01.pdf
+texfiles/
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.toc
+*.bbl
+*.blg
+*.eps
+*.ps
+*.dvi
