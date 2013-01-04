@@ -9,7 +9,7 @@
 ;; http://www.emacswiki.org/emacs/ErcAutoAway
 (setq erc-autoaway-idle-seconds 600)
 (setq erc-autojoin-channels-alist
-      '(("freenode.net" "#cs_so" "#rosedu" "#acm-seerc" "#vmxl4")))
+      '(("freenode.net" "#cs_so" "#rosedu" "#acm-seerc" "#vmxl4" "#cs_uso")))
 
 (setq erc-echo-notices-in-minibuffer-flag t)
 
