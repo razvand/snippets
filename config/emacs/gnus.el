@@ -5,6 +5,9 @@
 ;; You need this to be able to list all labels in gmail
 ; (setq gnus-ignored-newsgroups "")
 
+;; Disable agent.
+(setq gnus-agent nil)
+
 ; remote IMAP server connection
 ;(setq gnus-select-method
 ;      '(nnimap "swarm"
@@ -41,7 +44,6 @@
       starttls-extra-arguments '("--insecure")
       smtpmail-starttls-credentials '(("swarm.cs.pub.ro" 2525 nil nil))
       smtpmail-gnutls-credentials '(("smtp.gmail.com" 587 nil nil))
-      smtpmail-auth-credentials '(("swarm.cs.pub.ro" 2525 "razvan" "Eeth]oh2"))
       smtpmail-default-smtp-server "swarm.cs.pub.ro"
       smtpmail-smtp-server "swarm.cs.pub.ro"
       smtpmail-smtp-service 2525
