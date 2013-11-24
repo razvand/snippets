@@ -2,63 +2,73 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define _GNU_SOURCE
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
 
 static void print_current_uid(void)
 {
-	uid_t uid = getuid();
-	uid_t euid = geteuid();
-	struct passwd *uid_pw;
-	struct passwd *euid_pw;
-	struct passwd buf_uid_pw, buf_euid_pw;
+	uid_t uid, euid, ssuid;
 
-	uid_pw = getpwuid(uid);
-	memcpy(&buf_uid_pw, uid_pw, sizeof(struct passwd));
-	euid_pw = getpwuid(euid);
-	memcpy(&buf_euid_pw, euid_pw, sizeof(struct passwd));
+	getresuid(&uid, &euid, &ssuid);
 
-	printf("uid: %d (%s); euid: %d (%s)\n",
-			buf_uid_pw.pw_uid, buf_uid_pw.pw_name,
-			buf_euid_pw.pw_uid, buf_euid_pw.pw_name);
+	printf("uid: %d; euid: %d; ssuid: %d\n", uid, euid, ssuid);
 }
 
-static void drop_privilege(uid_t uid, uid_t euid)
+static void drop_privilege(uid_t uid)
 {
-#ifdef _POSIX_SAVED_IDS
-	seteuid(uid);
-#else
-	setreuid(euid, uid);
-#endif
+	if (seteuid(uid) == -1)
+		perror("seteuid");
 }
 
-static void restore_privilege(uid_t uid, uid_t euid)
+static void restore_privilege(uid_t ssuid)
 {
-#ifdef _POSIX_SAVED_IDS
-	seteuid(euid);
-#else
-	setreuid(uid, euid);
-#endif
+	if (seteuid(ssuid) == -1)
+		perror("seteuid");
+}
+
+static void drop_all(uid_t uid)
+{
+	if (setresuid(uid, uid, uid) == -1)
+		perror("setresuid");
 }
 
 int main(void)
 {
-	uid_t uid = getuid();
-	uid_t euid = geteuid();
+	uid_t uid, euid, ssuid;
+	getresuid(&uid, &euid, &ssuid);
 
 	printf("initial values:\n");
 	print_current_uid();
 
-#if 0
-	drop_privilege(uid, euid);
+	drop_privilege(uid);
 	printf("after privilege drop\n");
 	print_current_uid();
 
-	restore_privilege(uid, euid);
+	restore_privilege(ssuid);
 	printf("after privilege restore\n");
 	print_current_uid();
-#endif
+
+	drop_all(1002);
+	printf("drop all privileges\n");
+	print_current_uid();
+
+	setresuid(1000, 1000, -1);
+	printf("change real uid to 1000\n");
+	print_current_uid();
+
+	setresuid(0, 0, -1);
+	printf("change real uid to 0\n");
+	print_current_uid();
+
+	drop_all(1002);
+	printf("drop all privileges\n");
+	print_current_uid();
+
+	restore_privilege(0);
+	printf("try privilege restore\n");
+	print_current_uid();
 
 	return 0;
 }
