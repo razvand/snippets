@@ -1,0 +1,482 @@
+GSSAPIAuthentication no
+
+Host macin
+	HostName 141.85.241.245
+	Port 22
+	User rd
+
+Host mamba
+	User root
+	HostName mamba.cs.pub.ro
+	Port 22
+
+Host myswarm
+	User razvan
+	HostName swarm.cs.pub.ro
+	Port 22
+
+Host swarm
+	User root
+	HostName swarm.cs.pub.ro
+	Port 22
+
+Host rosedu
+	User root
+	HostName rosedu.org
+	Port 22
+
+Host elf
+	User root
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host koala
+	User root
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host mytitan
+	User razvan
+	HostName titan.cs.pub.ro
+	Port 22
+
+Host titan
+	User root
+	HostName titan.cs.pub.ro
+	Port 22
+
+Host myprof
+	User razvan.deaconescu
+	HostName prof.cs.pub.ro
+	Port 22
+
+Host prof
+	User root
+	HostName prof.cs.pub.ro
+	Port 22
+
+Host cursuri
+	User root
+	HostName cursuri.cs.pub.ro
+	Port 22
+
+Host myixlabs
+	User razvan
+	HostName ixlabs.cs.pub.ro
+	Port 22
+
+Host ixlabs
+	User root
+	HostName ixlabs.cs.pub.ro
+	Port 22
+
+Host myanaconda
+	User razvan
+	HostName anaconda.cs.pub.ro
+	Port 22
+
+Host anaconda
+	User root
+	HostName anaconda.cs.pub.ro
+	Port 22
+
+Host sanctuary
+	User root
+	HostName sanctuary.cs.pub.ro
+	Port 22
+
+Host p2p-next
+	User p2p-next
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host acm
+	User acm
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host wiki
+	User cs-wiki
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host lpic
+	User lpic
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host so
+	User so
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host so2
+	User so2
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host uso
+	User uso
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host rl
+	User rl
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host soa
+	User soa
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host mps
+	User mps
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host pisr
+	User pisr
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host gsr
+	User pisr
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host srisp
+	User srisp
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host saisp
+	User srisp
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host l4
+	User l4
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host vmxl4
+	User vmxl4
+	HostName vmx.cs.pub.ro
+	Port 22
+
+Host karaoke
+	User karaoke
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host patinoar
+	User patinoar
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host admin
+	User admin
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host cdl
+	User cdl
+	HostName rosedu.org
+	Port 22
+
+Host soc
+	User soc
+	HostName rosedu.org
+	Port 22
+
+Host lif
+	User lif
+	HostName rosedu.org
+	Port 22
+
+Host wouso
+	User wouso
+	HostName rosedu.org
+	Port 22
+
+Host cspay
+	User cspay
+	HostName rosedu.org
+	Port 22
+
+Host myorg
+	User razvan
+	HostName org.cs.pub.ro
+	Port 22
+
+Host org
+	User root
+	HostName org.cs.pub.ro
+	Port 22
+
+Host teamwork
+	User teamwork
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host pts
+	User pts
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host acse
+	User root
+	HostName acse.pub.ro
+	Port 22
+
+Host cli
+	User cli
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host sync
+	User sync-lin
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host mxastr
+	User root
+	HostName mx.astr.ro
+	Port 22
+
+Host open-source
+	User open-source
+	HostName koala.cs.pub.ro
+	Port 22
+
+Host fep
+	User razvan.deaconescu
+	HostName fep.grid.pub.ro
+	Port 22
+	ForwardX11 yes
+
+Host oss
+	User oss
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host ndk
+	User ndk
+	HostName elf.cs.pub.ro
+	Port 22
+
+Host houdini
+	User root
+	HostName houdini.cs.pub.ro
+	Port 22
+
+Host gitlab
+	User root
+	HostName gitlab.cs.pub.ro
+	Port 22
+
+Host debianvm
+	User root
+	HostName debian.local
+	Port 22
+
+Host mydebianvm
+	User razvan
+	HostName debian.local
+	Port 22
+
+Host rlvm
+	User root
+	HostName host.local
+	Port 22
+
+Host vmx
+	User root
+	HostName vmx.cs.pub.ro
+	Port 22
+	ForwardX11 yes
+
+Host carte
+	User root
+	HostName mamba.cs.pub.ro
+	Port 60222
+
+Host macosx
+	User razvan
+	Hostname 172.16.14.55
+	Port 22
+
+Host blog
+	User root
+	Hostname blog.acs.pub.ro
+	Port 22
+
+Host gaura
+	User razvand
+	Hostname gaura.cs.pub.ro
+	Port 22
+
+Host hexcellents
+	User hexcellents
+	Hostname koala.cs.pub.ro
+	Port 22
+
+Host ctf-vm
+	User root
+	Hostname vmx.cs.pub.ro
+	Port 41022
+
+Host wousocs
+	User wouso
+	Hostname wouso.cs.pub.ro
+	Port 22
+
+Host wousoroot
+	User root
+	Hostname wouso.cs.pub.ro
+	Port 22
+
+Host wousovm
+	User wouso
+	Hostname vmx.cs.pub.ro
+	Port 50022
+
+Host myomu
+	User razvan
+	Hostname omu.cs.pub.ro
+	Port 22
+
+Host omu
+	User root
+	Hostname omu.cs.pub.ro
+	Port 22
+
+Host vmchecker
+	User root
+	Hostname checker.cs.pub.ro
+	Port 22
+
+Host dk
+	User dk
+	Hostname koala.cs.pub.ro
+	Port 22
+
+Host so2-vmx
+	User so2
+	Hostname vmx.cs.pub.ro
+	Port 22
+	ForwardAgent yes
+	ForwardX11 yes
+
+Host rrosedu
+	User rosedu
+	Hostname rosedu.org
+	Port 22
+
+Host vmchecker-vmx
+	User vmchecker
+	Hostname vmx.cs.pub.ro
+	Port 22
+	ForwardX11 yes
+
+Host workshop
+	User workshop
+	Hostname rosedu.org
+	Port 22
+Host eg202-host-07
+    User student
+    Hostname  192.168.254.73
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-16
+    User student
+    Hostname  192.168.254.100
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-15
+    User student
+    Hostname  192.168.254.108
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-04
+    User student
+    Hostname  192.168.254.128
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-20
+    User student
+    Hostname  192.168.254.130
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-08
+    User student
+    Hostname  192.168.254.134
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-14
+    User student
+    Hostname  192.168.254.144
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-02
+    User student
+    Hostname  192.168.254.157
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-09
+    User student
+    Hostname  192.168.254.166
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-13
+    User student
+    Hostname  192.168.254.170
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-03
+    User student
+    Hostname  192.168.254.177
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-18
+    User student
+    Hostname  192.168.254.184
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-17
+    User student
+    Hostname  192.168.254.185
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-12
+    User student
+    Hostname  192.168.254.189
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-06
+    User student
+    Hostname  192.168.254.62
+    Port 22
+    ForwardX11 yes
+
+Host eg202-host-19
+    User student
+    Hostname  192.168.254.135
+    Port 22
+    ForwardX11 yes
+
