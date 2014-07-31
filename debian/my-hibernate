@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Kill offlineimap (huge memory eater).
+/usr/bin/pkill -f offlineimap
+
+# Flush the Linux buffer cache.
+sudo /bin/sync && echo 3 > sudo tee /proc/sys/vm/drop_caches
+
+# Hibernate.
+sudo pm-hibernate
