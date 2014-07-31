@@ -176,3 +176,12 @@
 
 ;; automatic startup connection to Freenode
 ; (erc :server "irc.freenode.net" :port 6667 :nick "razvand")
+
+;; use iswitch
+(iswitchb-mode 1)
+(setq iswitchb-buffer-ignore '("^ " "*Completions*" "*Shell Command
+               Output*" "*Messages*" "Async Shell Command" "*BBDB*"
+               "*scratch*" "bbdb" ".newsrc-dribble" ".*_archive"
+               "*Help*" "*Disabled Command*" "*Buffer List*"))
+
+(set-default-font "Monospace 10")
