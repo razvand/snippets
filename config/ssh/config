@@ -319,7 +319,7 @@ Host gaura
 
 Host hexcellents
 	User hexcellents
-	Hostname koala.cs.pub.ro
+	Hostname security.cs.pub.ro
 	Port 22
 
 Host ctf-vm
@@ -480,3 +480,42 @@ Host eg202-host-19
     Port 22
     ForwardX11 yes
 
+Host macosxvm
+    User razvan
+    Hostname loki.local
+    Port 22
+
+Host csapcs
+    User root
+    Hostname csapcs.grid.pub.ro
+    Port 22
+
+Host wouso-csapcs
+    User wouso
+    Hostname csapcs.grid.pub.ro
+    Port 22
+
+Host acm-server
+    User acm
+    Hostname acm-server.cs.pub.ro
+    Port 22
+
+Host acm-server-root
+    User root
+    Hostname acm-server.cs.pub.ro
+    Port 22
+
+Host acm-cursuri
+    User acm
+    Hostname cursuri.cs.pub.ro
+    Port 22
+
+Host acm-server-r-hall
+    User acm
+    Hostname acm-server-r-hall
+    Port 22
+
+Host security
+    User root
+    Hostname security.cs.pub.ro
+    Port 22
