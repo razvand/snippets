@@ -31,3 +31,5 @@ apt-get install pwgen
 apt-get install lshw
 # emacs, org-mode
 apt-get install emacs org-mode emacs-goodies-el
+apt-get install screen tmux
+apt-get install ethtool mii-tool
