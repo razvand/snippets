@@ -5,3 +5,4 @@
 /stack_grow
 /struct_bit
 /tcp_new_sock
+/print-buffer
