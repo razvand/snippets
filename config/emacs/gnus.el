@@ -37,17 +37,46 @@
 ;; Prefer plain text
 (setq mm-discouraged-alternatives '("text/html" "text/richtext"))
 
-(setq send-mail-function 'smtpmail-send-it
-      message-send-mail-function 'smtpmail-send-it
-      starttls-use-gnutls t
-      starttls-gnutls-program "gnutls-cli"
-      starttls-extra-arguments '("--insecure")
-      smtpmail-starttls-credentials '(("swarm.cs.pub.ro" 2525 nil nil))
-      smtpmail-gnutls-credentials '(("smtp.gmail.com" 587 nil nil))
-      smtpmail-default-smtp-server "swarm.cs.pub.ro"
-      smtpmail-smtp-server "swarm.cs.pub.ro"
-      smtpmail-smtp-service 2525
-      smtpmail-local-domain "cs.pub.ro")
+;(setq send-mail-function 'smtpmail-send-it
+;      message-send-mail-function 'smtpmail-send-it
+;      starttls-use-gnutls t
+;      starttls-gnutls-program "gnutls-cli"
+;      starttls-extra-arguments '("--insecure")
+;      smtpmail-starttls-credentials '(("swarm.cs.pub.ro" 2525 nil nil))
+;      smtpmail-gnutls-credentials '(("smtp.gmail.com" 587 nil nil))
+;      smtpmail-default-smtp-server "swarm.cs.pub.ro"
+;      smtpmail-smtp-server "swarm.cs.pub.ro"
+;      smtpmail-smtp-service 2525
+;      smtpmail-local-domain "cs.pub.ro")
+
+(defun cg-feed-msmtp ()
+  (if (message-mail-p)
+      (save-excursion
+	(let* (
+	       (from
+		(save-restriction
+		  (message-narrow-to-headers)
+		  (message-fetch-field "from")))
+	       (account
+		(cond
+		 ((string-match "razvan@rosedu.org" from) "rosedu.org")
+		 ((string-match "razvan.deaconescu@cs.pub.ro" from) "cs.pub.ro")
+		 ((string-match "razvan@swarm.cs.pub.ro" from) "swarm.cs.pub.ro")
+		 ((string-match "razvand@gmail.com" from) "gmail.com")
+		 )
+		)
+	       )
+	  (setq message-sendmail-extra-arguments (list '"-a" account))
+	  )
+	)
+    )
+  )
+
+(setq message-sendmail-envelope-from 'header)
+(add-hook 'message-send-mail-hook 'cg-feed-msmtp)
+
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq sendmail-program "/usr/bin/msmtp")
 
 (setq gnus-posting-styles
       '(
@@ -155,3 +184,9 @@
 
 ;; use bbdb in gnus (http://bbdb.sourceforge.net/bbdb.html#SEC2)
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+
+;; Replace News/ and Mail/ folders in home directory.
+;; http://superuser.com/questions/519685/gnus-get-rid-of-mail-and-news-folders
+(setq message-directory "~/.emacs.d/mail/")
+(setq gnus-directory "~/.emacs.d/news/")
+(setq nnfolder-directory "~/.emacs.d/mail/archive")
