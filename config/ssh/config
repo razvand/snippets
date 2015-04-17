@@ -495,6 +495,21 @@ Host wouso-csapcs
     Hostname csapcs.grid.pub.ro
     Port 22
 
+Host csapcs-koala
+    User csapcs
+    Hostname koala.cs.pub.ro
+    Port 22
+
+Host csapcs-titan
+    User csapcs
+    Hostname titan.cs.pub.ro
+    Port 22
+
+Host learningpark-dev
+    User learningpark-dev
+    Hostname learningpark.ro
+    Port 22
+
 Host acm-server
     User acm
     Hostname acm-server.cs.pub.ro
@@ -516,6 +531,6 @@ Host acm-server-r-hall
     Port 22
 
 Host security
-    User root
+    User security
     Hostname security.cs.pub.ro
     Port 22
