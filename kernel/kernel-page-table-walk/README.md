@@ -4,7 +4,7 @@ This direct mapping of the _low-mem_ has the benefit of being able to directly e
 
 This kernel module (`kernel-page-table-walk.c`) does two walks:
 
-    # When the module is inserted, it walks through pages from `PAGE_OFFSET` to `high_memory` (the end of the _low-mem_ mapping in the kernel virtual address space and the start of the _high-memory_ mapping).
-    # When the module is removed, it walks through pages from `high_memory` to `VMALLOC_START`. This area is a "hole" in the kernel virtual address space that is used to catch out-out-bounds accesses in the _low-mem_ mapping. Check [the source code](http://lxr.free-electrons.com/source/arch/x86/include/asm/pgtable_32_types.h?v=3.13#L20) for more information.
+1. When the module is inserted, it walks through pages from `PAGE_OFFSET` to `high_memory` (the end of the _low-mem_ mapping in the kernel virtual address space and the start of the _high-memory_ mapping).
+2. When the module is removed, it walks through pages from `high_memory` to `VMALLOC_START`. This area is a "hole" in the kernel virtual address space that is used to catch out-out-bounds accesses in the _low-mem_ mapping. Check [the source code](http://lxr.free-electrons.com/source/arch/x86/include/asm/pgtable_32_types.h?v=3.13#L20) for more information.
 
-Each walk reads the first byte of each page and does a dumb exclusive or operation to it. The first walk is successful, going through `low_mem_sieze / PAGE_SIZE` pages. It will be successful and print out the number of pages walked. The second walk (when removing the module) will end in an oops, since we will access the "hole" in the kernel virtual address space, an invalid virtual area.
+Each walk reads the first byte of each page and does a dumb exclusive or operation to it. The first walk is successful, going through `low_mem_size / PAGE_SIZE` pages. It will be successful and print out the number of pages walked. The second walk (when removing the module) will end in an oops, since we will access the "hole" in the kernel virtual address space, an invalid virtual area.
