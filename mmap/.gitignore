@@ -5,3 +5,4 @@
 /mmap-overalloc
 /mmap-ftruncate
 /test.map
+/mmap-duration
