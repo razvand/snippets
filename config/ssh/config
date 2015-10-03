@@ -382,8 +382,9 @@ Host vmchecker-vmx
 
 Host workshop
 	User workshop
-	Hostname rosedu.org
+	Hostname iulius.rosedu.org
 	Port 22
+
 Host eg202-host-07
     User student
     Hostname  192.168.254.73
@@ -533,4 +534,39 @@ Host acm-server-r-hall
 Host security
     User security
     Hostname security.cs.pub.ro
+    Port 22
+
+Host dspace-root
+    User root
+    Hostname repository.cs.pub.ro
+    Port 22
+
+Host dspace
+    User dspace
+    Hostname repository.cs.pub.ro
+    Port 22
+
+Host asm
+    User asm
+    Hostname elf.cs.pub.ro
+    Port 22
+
+Host training
+    User training
+    Hostname koala.cs.pub.ro
+    Port 22
+
+Host ptm
+    User ptm
+    Hostname koala.cs.pub.ro
+    Port 22
+
+Host android
+    User android
+    Hostname iulius.rosedu.org
+    Port 22
+
+Host iulius
+    User root
+    Hostname iulius.rosedu.org
     Port 22
