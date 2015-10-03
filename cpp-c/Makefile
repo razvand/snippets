@@ -1,4 +1,6 @@
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -m32
+CXXFLAGS = -Wall -g -m32
+LDFLAGS = -m32
 LDLIBS = -lstdc++
 
 .PHONY: all clean
