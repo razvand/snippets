@@ -1,0 +1,1 @@
+sudo /usr/sbin/usb_modeswitch -v 12d1 -p 14fe -c '/home/razvan/packages/usb-modeswitch-data-20150627/usb_modeswitch.d/12d1:14fe'
