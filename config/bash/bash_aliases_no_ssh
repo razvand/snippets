@@ -1,0 +1,6 @@
+alias emacs-org='emacs ~/my/org/*.org'
+alias emacsorg='emacs ~/my/org/*.org'
+alias go='gnome-open'
+alias grep='grep --color=auto'
+alias grpe='grep'
+alias gpre='grep'
