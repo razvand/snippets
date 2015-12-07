@@ -302,9 +302,14 @@ Host carte
 	HostName mamba.cs.pub.ro
 	Port 60222
 
-Host macosx
+Host macmini
 	User razvan
 	Hostname 172.16.14.55
+	Port 22
+
+Host macmini2
+	User razvan
+	Hostname 172.16.7.57
 	Port 22
 
 Host blog
