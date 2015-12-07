@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export VMWARE_USE_SHIPPED_GTK=yes
+export LD_LIBRARY_PATH=/usr/lib/vmware/lib/libglibmm-2.4.so.1/:$LD_LIBRARY_PATH
+/usr/bin/vmplayer
