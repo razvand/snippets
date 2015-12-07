@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/bin/vboxmanage hostonlyif ipconfig vboxnet0 -ip 192.168.56.1 --netmask 255.255.255.0
+/usr/bin/vboxmanage dhcpserver add --ifname vboxnet0 --ip 192.168.56.1 --netmask 255.255.255.0 --lowerip 192.168.56.100 --upperip 192.168.56.200
+/usr/bin/vboxmanage dhcpserver modify --ifname vboxnet0 --enable
