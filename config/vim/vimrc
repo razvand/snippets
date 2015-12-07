@@ -10,7 +10,11 @@ runtime ftplugin/man.vim
 " Set tex flavor.
 let g:tex_flavor = 'latex'
 
-au BufNewFile,BufRead *.txt set filetype=text
+if has("autocmd")
+  autocmd BufNewFile,BufRead *.txt set filetype=text
+  " For all text files disable text wrapping.
+  autocmd FileType text setlocal textwidth=0
+endif
 
 if has("cscope")
 	" Look for a 'cscope.out' file starting from the current directory,
