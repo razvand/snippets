@@ -10,6 +10,8 @@ runtime ftplugin/man.vim
 " Set tex flavor.
 let g:tex_flavor = 'latex'
 
+au BufNewFile,BufRead *.txt set filetype=text
+
 if has("cscope")
 	" Look for a 'cscope.out' file starting from the current directory,
 	" going up to the root directory.
