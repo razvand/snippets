@@ -357,9 +357,16 @@ Host omu
 	Hostname omu.cs.pub.ro
 	Port 22
 
-Host vmchecker
+Host checker
 	User root
 	Hostname checker.cs.pub.ro
+	Port 22
+	ForwardAgent yes
+	ForwardX11 yes
+
+Host vmchecker
+	User vmchecker
+	Hostname elf.cs.pub.ro
 	Port 22
 
 Host dk
