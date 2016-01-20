@@ -582,3 +582,13 @@ Host iulius
     User root
     Hostname iulius.rosedu.org
     Port 22
+
+Host cns-jim
+    User root
+    Hostname vmx.cs.pub.ro
+    Port 12322
+
+Host cns-ray
+    User root
+    Hostname vmx.cs.pub.ro
+    Port 12422
