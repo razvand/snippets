@@ -184,6 +184,8 @@
 
 ;; use bbdb in gnus (http://bbdb.sourceforge.net/bbdb.html#SEC2)
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
+(add-hook 'message-setup-hook 'bbdb-define-all-aliases)
 
 ;; Replace News/ and Mail/ folders in home directory.
 ;; http://superuser.com/questions/519685/gnus-get-rid-of-mail-and-news-folders
