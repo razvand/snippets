@@ -592,3 +592,18 @@ Host cns-ray
     User root
     Hostname vmx.cs.pub.ro
     Port 12422
+
+Host so-checker
+    User so
+    Hostname checker.cs.pub.ro
+    Port 22
+
+Host so2-checker
+    User so2
+    Hostname checker.cs.pub.ro
+    Port 22
+
+Host asm-checker
+    User asm
+    Hostname checker.cs.pub.ro
+    Port 22
