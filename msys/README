@@ -1,0 +1,7 @@
+msys (MinGW) Makefile
+
+This simple program and Makefile is to be used under msys (MinGW) on Windows.
+It assumes MinGW is installed under C:\MinGW (/c/MinGW/ as a Unix-like path in
+msys/MinGW). It appends the path to MinGW binaries and libraries (gcc &
+friends) to the PATH environment variable and uses gcc from C:\MinGW\bin\gcc
+(/c/MinGW/bin/gcc) to compile the hello.c program.
