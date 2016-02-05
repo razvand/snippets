@@ -312,6 +312,11 @@ Host macmini2
 	Hostname 172.16.7.57
 	Port 22
 
+Host macmini-eg306
+	User razvan
+	Hostname macmini.local
+	Port 22
+
 Host blog
 	User root
 	Hostname blog.acs.pub.ro
@@ -606,4 +611,9 @@ Host so2-checker
 Host asm-checker
     User asm
     Hostname checker.cs.pub.ro
+    Port 22
+
+Host myvmx
+    User razvan
+    Hostname vmx.cs.pub.ro
     Port 22
