@@ -617,3 +617,13 @@ Host myvmx
     User razvan
     Hostname vmx.cs.pub.ro
     Port 22
+
+Host systems.cs.pub.ro
+    User razvan.deaconescu
+    Hostname systems.cs.pub.ro
+    Port 22
+
+Host acs-ixia-ctf
+    User student
+    Hostname acs-ixia-ctf.security.cs.pub.ro
+    Port 22
