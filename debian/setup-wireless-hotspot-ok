@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sudo /usr/sbin/rfkill unblock wifi
+sudo /sbin/iwconfig wlan0 mode ad-hoc
+sudo /sbin/iwconfig wlan0 key off
+sudo /sbin/iwconfig wlan0 essid PRECIS
+sudo /sbin/ip address flush dev wlan0
+sudo /sbin/ip address add 192.168.1.1/24 dev wlan0
+sudo /sbin/ip link set dev wlan0 up
+sudo /sbin/sysctl net.ipv4.ip_forward=1
+sudo /sbin/sysctl net.ipv6.conf.default.forwarding=1
+sudo /sbin/sysctl net.ipv6.conf.all.forwarding=1
+sudo /sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
