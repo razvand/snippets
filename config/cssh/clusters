@@ -3,3 +3,5 @@ p2p-next-root root@p2p-next-01.grid.pub.ro root@p2p-next-02.grid.pub.ro root@p2p
 p2p-next-p2p p2p@p2p-next-01.grid.pub.ro p2p@p2p-next-02.grid.pub.ro p2p@p2p-next-03.grid.pub.ro p2p@p2p-next-04.grid.pub.ro p2p@p2p-next-05.grid.pub.ro p2p@p2p-next-06.grid.pub.ro p2p@p2p-next-07.grid.pub.ro p2p@p2p-next-08.grid.pub.ro p2p@p2p-next-10.grid.pub.ro
 
 root-all root@mamba.cs.pub.ro root@swarm.cs.pub.ro root@rosedu.org root@koala.cs.pub.ro root@elf.cs.pub.ro root@titan.cs.pub.ro root@anaconda.cs.pub.ro root@ixlabs.cs.pub.ro root@cursuri.cs.pub.ro root@sanctuary.cs.pub.ro root@oldmail.cs.pub.ro
+
+acs-ixia-ctf-workers student@141.85.241.134 student@141.85.241.135 student@141.85.241.136 student@141.85.241.137 student@141.85.241.138 student@141.85.241.139 student@141.85.241.140 student@141.85.241.141 student@141.85.241.142 student@141.85.241.143 student@141.85.241.144 student@141.85.241.145 student@141.85.241.146 student@141.85.241.147 student@141.85.241.148
