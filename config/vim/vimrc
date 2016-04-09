@@ -1,5 +1,6 @@
 set backupdir=~/.vim/bkup/
 set encoding=utf8
+set noundofile
 
 " Mark tabs and spaces.
 set list listchars=tab:»\ ,trail:·,extends:»,precedes:«
