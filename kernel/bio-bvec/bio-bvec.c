@@ -1,21 +1,16 @@
 /*
- * Print bvec information in bio. Add 4 bvecs (pages) in a bio and then print
- * information on bvecs: bvec index and bvec data length.
+ * Print bio_vec information in bio. Add 4 bio_vecs (pages) in a bio and
+ * then print information about bio_vecs: bio_vec index and bio_vec data
+ * length. At the end destroy bio by freeing pages.
  */
 
 #include <linux/kernel.h>
 #include <linux/module.h>
-#include <linux/fs.h>
-#include <linux/wait.h>
-#include <linux/sched.h>
-#include <linux/genhd.h>
 #include <linux/blkdev.h>
 
 MODULE_AUTHOR("SO2");
-MODULE_DESCRIPTION("Test case for printing information on bvecs in bio");
+MODULE_DESCRIPTION("Test case for printing information about bvecs");
 MODULE_LICENSE("GPL");
-
-#define KERN_LOG_LEVEL		KERN_ALERT
 
 #define PHYSICAL_DISK_NAME	"/dev/sdb"
 #define KERNEL_SECTOR_SIZE	512
@@ -26,26 +21,35 @@ static struct block_device *phys_bdev;
 static struct bio *construct_bio(struct block_device *bdev)
 {
 	struct bio *bio = bio_alloc(GFP_NOIO, 4);
-	struct page *page;
 	size_t i;
+	struct page *page;
 	size_t size;
+	size_t offset;
 
 	bio->bi_bdev = bdev;
 
 	/*
 	 * We don't care about the disk sector or direction. Initialize
-	 * to 0.
+	 * both to 0: read first sector. First sector is index 0 and read
+	 * operation is 0 for bi_rw field.
 	 */
 	bio->bi_sector = 0;
 	bio->bi_rw = 0;
 
-	/* Add 4 pages (bvecs) to bio, each using a different size. */
+	/*
+	 * Add 4 pages (bio_vecs) to bio. For diversity make each bio_vec
+	 * use a different data size and a different offset.
+	 */
 	for (i = 0; i < 4; i++) {
 		page = alloc_page(GFP_NOIO);
 		size = (i + 1) * KERNEL_SECTOR_SIZE;
-		bio_add_page(bio, page, size, 0);
+		offset = (4 - i) * KERNEL_SECTOR_SIZE;
+		bio_add_page(bio, page, size, offset);
+		pr_info("Add page (bio_vec) in bio: bio_vec idx %u, %u bytes"
+				" starting from offset %u\n",
+				i, size, offset);
 	}
-	/* Use all bvecs in bio: start (bi_idx) is 0. */
+	/* Use all bio_vecs in bio: start (bi_idx) is 0. */
 	bio->bi_idx = 0;
 
 	return bio;
@@ -56,9 +60,9 @@ static void print_info_bio(struct bio *bio)
 	size_t idx;
 	struct bio_vec *bvec;
 
-	pr_alert("bio uses %u bvecs\n", bio->bi_vcnt);
+	pr_alert("bio uses %u bio_vecs\n", bio->bi_vcnt);
 	bio_for_each_segment(bvec, bio, idx) {
-		pr_alert("bvec %u uses %u bytes starting from offset %u\n",
+		pr_alert("bio_vec %u uses %u bytes starting from offset %u\n",
 				idx, bvec->bv_len, bvec->bv_offset);
 		pr_alert("bio_cur_bytes is %u\n", bio_cur_bytes(bio));
 	}
@@ -69,8 +73,11 @@ static void destroy_bio(struct bio *bio)
 	size_t idx;
 	struct bio_vec *bvec;
 
+	/* Free bio pages. Start from the beginning (bi_idx = 0). */
+	bio->bi_idx = 0;
 	bio_for_each_segment(bvec, bio, idx) {
 		__free_page(bvec->bv_page);
+		pr_info("Free bio page for bio_vec %u\n", idx);
 	}
 	bio_put(bio);
 }
@@ -80,10 +87,8 @@ static struct block_device *open_disk(char *name)
 	struct block_device *bdev;
 
 	bdev = blkdev_get_by_path(name, FMODE_READ | FMODE_WRITE | FMODE_EXCL, THIS_MODULE);
-	if (IS_ERR(bdev)) {
-		printk(KERN_ERR "blkdev_get_by_path\n");
+	if (IS_ERR(bdev))
 		return NULL;
-	}
 
 	return bdev;
 }
@@ -94,7 +99,7 @@ static int __init bio_bvec_init(void)
 
 	phys_bdev = open_disk(PHYSICAL_DISK_NAME);
 	if (phys_bdev == NULL) {
-		printk(KERN_ERR "[relay_init] No such device\n");
+		pr_err("Error opening device %s\n", PHYSICAL_DISK_NAME);
 		return -EINVAL;
 	}
 
