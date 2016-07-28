@@ -1,0 +1,33 @@
+#!/usr/bin/expect -f
+
+# Shamelessly copied from: http://stackoverflow.com/a/7013379
+
+# If it all goes pear shaped the script will timeout after 20 seconds.
+set timeout 20
+
+# First argument is assigned to the hostname.
+set hostname [lindex $argv 0]
+
+# Second argument is assigned to the user.
+set user [lindex $argv 1]
+
+# Third argument is assigned to the password.
+set password [lindex $argv 2]
+
+# This spawns the telnet program and connects it to the hostname.
+spawn telnet $hostname
+
+# The script expects "login:" string.
+expect "login:"
+
+# The script sends the user.
+send "$user\r"
+
+# The script expects "Password:" string.
+expect "Password:"
+
+# The script sends the password.
+send "$password\r"
+
+# This hands control of the keyboard over to you.
+interact
