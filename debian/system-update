@@ -1,9 +1,3 @@
 #!/bin/bash
 
-#apt-get clean && apt-get autoclean && apt-get -y autoremove && \
-#	apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade && \
-#	apt-get clean && apt-get autoclean && apt-get -y autoremove
-
-apt-get clean && apt-get autoclean && \
-	apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade && \
-	apt-get clean && apt-get autoclean
+sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade
