@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sudo /usr/bin/pkill nm-applet
+sudo /bin/systemctl stop network-manager.service
+sudo /sbin/modprobe -r iwldvm
+/bin/sleep 1
+sudo /sbin/modprobe -r iwlwifi
+/bin/sleep 2
+sudo /sbin/modprobe iwlwifi
+/bin/sleep 1
+sudo /sbin/modprobe iwldvm
+sudo /bin/systemctl start network-manager.service
+/usr/bin/nm-applet > /dev/null 2>&1 &
+/bin/sleep 5
+sudo /bin/systemctl restart network-manager.service
