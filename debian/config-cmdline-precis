@@ -1,0 +1,14 @@
+#!/bin/bash
+
+sudo ifconfig wlan0 down
+sudo ip a f dev wlan0
+sleep 1
+sudo rfkill block wifi
+sleep 1
+sudo rfkill unblock wifi
+sleep 1
+sudo ifconfig wlan0 up
+sleep 2
+sudo iwconfig wlan0 essid PRECIS
+sleep 2
+sudo dhclient wlan0
