@@ -1,5 +1,6 @@
 set backupdir=~/.vim/bkup/
 set encoding=utf8
+set noundofile
 
 " Mark tabs and spaces.
 set list listchars=tab:»\ ,trail:·,extends:»,precedes:«
@@ -9,6 +10,12 @@ runtime ftplugin/man.vim
 
 " Set tex flavor.
 let g:tex_flavor = 'latex'
+
+if has("autocmd")
+  autocmd BufNewFile,BufRead *.txt set filetype=text
+  " For all text files disable text wrapping.
+  autocmd FileType text setlocal textwidth=0
+endif
 
 if has("cscope")
 	" Look for a 'cscope.out' file starting from the current directory,
@@ -50,9 +57,7 @@ if has("cscope")
 endif
 
 " When /etc/vim/vimrc is not initialized from /usr/share/vim/vimXY/vimrc_example.vim.
-set bg=dark
 set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
@@ -60,6 +65,7 @@ set incsearch		" do incremental searching
 map Q gq
 
 set autoindent		" always set autoindenting on
+syntax on		" enable syntax highlighting
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
