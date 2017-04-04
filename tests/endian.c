@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <endian.h>
 
-#define TEST_VALUE	0x00000001	/* 1 */
+#define TEST_VALUE	0x00000001	/* 1 (ro. unu, en. one, fr. une, de. einz) */
 
 static void print_endianess (void)
 {
