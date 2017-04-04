@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/bin/xdg-mime default chromium-browser-chromium.desktop x-scheme-handler/https
+/usr/bin/xdg-mime default chromium-browser-chromium.desktop x-scheme-handler/http
+/usr/bin/xdg-mime default chromium-browser-chromium.desktop text/html
