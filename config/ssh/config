@@ -39,6 +39,7 @@ Host mytitan
 	User razvan
 	HostName titan.cs.pub.ro
 	Port 22
+	ForwardX11 yes
 
 Host titan
 	User root
@@ -320,6 +321,11 @@ Host macmini-eg306
 Host blog
 	User root
 	Hostname blog.acs.pub.ro
+	Port 22
+
+Host boboc
+	User root
+	Hostname boboc.cs.pub.ro
 	Port 22
 
 Host gaura
@@ -623,7 +629,200 @@ Host systems.cs.pub.ro
     Hostname systems.cs.pub.ro
     Port 22
 
-Host acs-ixia-ctf
+Host ctf
     User student
-    Hostname acs-ixia-ctf.security.cs.pub.ro
+    Hostname ctf.security.cs.pub.ro
+    Port 22
+
+Host root-ctf
+    User root
+    Hostname ctf.security.cs.pub.ro
+    Port 22
+
+Host macmini-708
+    User razvan
+    Hostname 172.19.7.62
+    Port 22
+    ServerAliveCountMax 3
+    ServerAliveInterval 10
+    GSSAPIKeyExchange no
+
+Host debian-708
+    User razvan
+    Hostname 172.19.7.77
+    Port 22
+
+Host gaura2
+    User razvand
+    Hostname 141.85.232.11
+    Port 22
+
+Host upir
+    User upir-admin
+    Hostname 176.223.202.151
+    Port 18876
+
+Host owasp-ctf-01
+    User root
+    Hostname 141.85.248.21
+    Port 22
+
+Host owasp-ctf-02
+    Hostname 141.85.248.22
+    User root
+    Port 22
+
+Host owasp-ctf-03
+    Hostname 141.85.248.23
+    User root
+    Port 22
+
+Host owasp-ctf-04
+    Hostname 141.85.248.24
+    User root
+    Port 22
+
+Host owasp-ctf-05
+    Hostname 141.85.248.25
+    User root
+    Port 22
+
+Host owasp-ctf-06
+    Hostname 141.85.248.26
+    User root
+    Port 22
+
+Host owasp-ctf-07
+    Hostname 141.85.248.27
+    User root
+    Port 22
+
+Host owasp-ctf-08
+    Hostname 141.85.248.28
+    User root
+    Port 22
+
+Host owasp-ctf-09
+    Hostname 141.85.248.29
+    User root
+    Port 22
+
+Host owasp-ctf-10
+    Hostname 141.85.248.30
+    User root
+    Port 22
+
+Host owasp-ctf-11
+    Hostname 141.85.248.31
+    User root
+    Port 22
+
+Host owasp-ctf-12
+    Hostname 141.85.248.32
+    User root
+    Port 22
+
+Host owasp-ctf-13
+    Hostname 141.85.248.33
+    User root
+    Port 22
+
+Host owasp-ctf-14
+    Hostname 141.85.248.34
+    User root
+    Port 22
+
+Host owasp-ctf-15
+    Hostname 141.85.248.35
+    User root
+    Port 22
+
+Host owasp-ctf-16
+    Hostname 141.85.248.36
+    User root
+    Port 22
+
+Host owasp-ctf-17
+    Hostname 141.85.248.37
+    User root
+    Port 22
+
+Host owasp-ctf-18
+    Hostname 141.85.248.38
+    User root
+    Port 22
+
+Host owasp-ctf-19
+    Hostname 141.85.248.39
+    User root
+    Port 22
+
+Host owasp-ctf-20
+    Hostname 141.85.248.40
+    User root
+    Port 22
+
+Host cns-ctf-01
+    User root
+    Hostname 141.85.224.100
+    Port 22
+
+Host cns-ctf-02
+    Hostname 141.85.224.101
+    User root
+    Port 22
+
+Host cns-ctf-03
+    Hostname 141.85.224.102
+    User root
+    Port 22
+
+Host cns-ctf-04
+    Hostname 141.85.224.103
+    User root
+    Port 22
+
+Host cns-ctf-05
+    Hostname 141.85.224.104
+    User root
+    Port 22
+
+Host cns-ctf-06
+    Hostname 141.85.224.105
+    User root
+    Port 22
+
+Host cns-ctf-07
+    Hostname 141.85.224.106
+    User root
+    Port 22
+
+Host iPhone-filip
+    Hostname 172.19.10.67
+    User root
+    Port 22
+
+Host iPhone-razvan
+    Hostname 172.19.10.85
+    User root
+    Port 22
+
+Host iPhone-razvan2
+    Hostname 172.19.7.64
+    User root
+    Port 22
+
+Host iPhone-razvan-rosedu
+    Hostname 192.168.2.102
+    User root
+    Port 22
+
+Host malus-vmx
+    Hostname vmx.cs.pub.ro
+    User malus
+    Port 22
+
+Host iPhone4
+    Hostname 172.19.9.29
+    User root
     Port 22
