@@ -19,7 +19,7 @@ main:
     mov rbp, rsp
 
     mov rdi, msg
-    call printf
+    call printf WRT ..plt
 
     leave
     ret
