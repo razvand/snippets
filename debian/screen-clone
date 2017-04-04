@@ -1,2 +1,17 @@
 #!/bin/sh
-xrandr --output DP3 --off --output DP2 --off --output DP1 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output LVDS1 --mode 1024x768 --pos 0x0 --rotate normal --output VGA1 --mode 1024x768 --pos 0x0 --rotate normal
+
+# Available resolutions:
+# 1600x900
+# 1440x900
+# 1360x768
+# 1152x864
+# 1024x768
+# 800x600
+
+duplicate_resolution=1024x768
+local_resolution=1600x900
+
+local_screen=$(xrandr | grep '^LVDS' | cut -d ' ' -f 1)
+remote_screen=$(xrandr | grep '^VGA' | cut -d ' ' -f 1)
+
+xrandr --output DP3 --off --output DP2 --off --output DP1 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output "$local_screen" --mode "$duplicate_resolution" --pos 0x0 --rotate normal --output "$remote_screen" --mode "$duplicate_resolution" --pos 0x0 --rotate normal
