@@ -31,3 +31,5 @@ clean:
 	-rm -f *~
 	-rm -f vuln.o vuln_32.o vuln_pie.o
 	-rm -f vuln vuln_32 vuln_pie vuln_static vuln_stripped
+	-rm -f core
+	-rm -f peda-session*
