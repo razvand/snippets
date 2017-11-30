@@ -13,5 +13,7 @@ local_resolution=1600x900
 
 local_screen=$(xrandr | grep '^LVDS' | cut -d ' ' -f 1)
 remote_screen=$(xrandr | grep '^VGA' | cut -d ' ' -f 1)
+echo "local_screen is $local_screen"
+echo "remote_screen is $remote_screen"
 
 xrandr --output DP3 --off --output DP2 --off --output DP1 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output "$local_screen" --mode "$duplicate_resolution" --pos 0x0 --rotate normal --output "$remote_screen" --mode "$duplicate_resolution" --pos 0x0 --rotate normal
