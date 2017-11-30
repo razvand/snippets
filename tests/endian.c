@@ -19,9 +19,9 @@ int main (void)
 	unsigned int value = TEST_VALUE;
 	unsigned char *ptr = (unsigned char *) &value;
 
-	print_endianess ();
-	printf ("real: %08x\n", value);
-	printf ("in memory: %02x %02x %02x %02x\n", *ptr, *(ptr+1),
+	print_endianess();
+	printf("real: 0x%08x\n", value);
+	printf("in memory: 0x%02x 0x%02x 0x%02x 0x%02x\n", *ptr, *(ptr+1),
 			*(ptr+2), *(ptr+3));
 
 	return 0;
