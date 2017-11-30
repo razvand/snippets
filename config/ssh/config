@@ -10,6 +10,11 @@ Host mamba
 	HostName mamba.cs.pub.ro
 	Port 22
 
+Host mymamba
+	User razvan
+	HostName mamba.cs.pub.ro
+	Port 22
+
 Host myswarm
 	User razvan
 	HostName swarm.cs.pub.ro
@@ -649,7 +654,7 @@ Host macmini-708
 
 Host debian-708
     User razvan
-    Hostname 172.19.7.77
+    Hostname 172.19.7.82
     Port 22
 
 Host gaura2
@@ -662,105 +667,105 @@ Host upir
     Hostname 176.223.202.151
     Port 18876
 
-Host owasp-ctf-01
-    User root
-    Hostname 141.85.248.21
-    Port 22
-
-Host owasp-ctf-02
-    Hostname 141.85.248.22
-    User root
-    Port 22
-
-Host owasp-ctf-03
-    Hostname 141.85.248.23
-    User root
-    Port 22
-
-Host owasp-ctf-04
-    Hostname 141.85.248.24
-    User root
-    Port 22
-
-Host owasp-ctf-05
-    Hostname 141.85.248.25
-    User root
-    Port 22
-
-Host owasp-ctf-06
-    Hostname 141.85.248.26
-    User root
-    Port 22
-
-Host owasp-ctf-07
-    Hostname 141.85.248.27
-    User root
-    Port 22
-
-Host owasp-ctf-08
-    Hostname 141.85.248.28
-    User root
-    Port 22
-
-Host owasp-ctf-09
-    Hostname 141.85.248.29
-    User root
-    Port 22
-
-Host owasp-ctf-10
-    Hostname 141.85.248.30
-    User root
-    Port 22
-
-Host owasp-ctf-11
-    Hostname 141.85.248.31
-    User root
-    Port 22
-
-Host owasp-ctf-12
-    Hostname 141.85.248.32
-    User root
-    Port 22
-
-Host owasp-ctf-13
-    Hostname 141.85.248.33
-    User root
-    Port 22
-
-Host owasp-ctf-14
-    Hostname 141.85.248.34
-    User root
-    Port 22
-
-Host owasp-ctf-15
-    Hostname 141.85.248.35
-    User root
-    Port 22
-
-Host owasp-ctf-16
-    Hostname 141.85.248.36
-    User root
-    Port 22
-
-Host owasp-ctf-17
-    Hostname 141.85.248.37
-    User root
-    Port 22
-
-Host owasp-ctf-18
-    Hostname 141.85.248.38
-    User root
-    Port 22
-
-Host owasp-ctf-19
-    Hostname 141.85.248.39
-    User root
-    Port 22
-
-Host owasp-ctf-20
-    Hostname 141.85.248.40
-    User root
-    Port 22
+#Host owasp-ctf-01
+#    User root
+#    Hostname 141.85.248.21
+#    Port 22
+#
+#Host owasp-ctf-02
+#    Hostname 141.85.248.22
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-03
+#    Hostname 141.85.248.23
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-04
+#    Hostname 141.85.248.24
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-05
+#    Hostname 141.85.248.25
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-06
+#    Hostname 141.85.248.26
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-07
+#    Hostname 141.85.248.27
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-08
+#    Hostname 141.85.248.28
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-09
+#    Hostname 141.85.248.29
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-10
+#    Hostname 141.85.248.30
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-11
+#    Hostname 141.85.248.31
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-12
+#    Hostname 141.85.248.32
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-13
+#    Hostname 141.85.248.33
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-14
+#    Hostname 141.85.248.34
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-15
+#    Hostname 141.85.248.35
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-16
+#    Hostname 141.85.248.36
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-17
+#    Hostname 141.85.248.37
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-18
+#    Hostname 141.85.248.38
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-19
+#    Hostname 141.85.248.39
+#    User root
+#    Port 22
+#
+#Host owasp-ctf-20
+#    Hostname 141.85.248.40
+#    User root
+#    Port 22
 
 Host cns-ctf-01
     User root
@@ -812,6 +817,16 @@ Host iPhone-razvan2
     User root
     Port 22
 
+Host iPhone-razvan3
+    Hostname 172.19.8.181
+    User root
+    Port 22
+
+Host iPhone-razvan4
+    Hostname 172.19.9.81
+    User root
+    Port 22
+
 Host iPhone-razvan-rosedu
     Hostname 192.168.2.102
     User root
@@ -824,5 +839,135 @@ Host malus-vmx
 
 Host iPhone4
     Hostname 172.19.9.29
+    User root
+    Port 22
+
+Host iPhone-razvan-home
+    Hostname 192.168.0.248
+    User root
+    Port 22
+
+Host ncsu-server
+    Hostname sgnp.csc.ncsu.edu
+    User upb
+    Port 22
+
+Host malus-ncsu
+    Hostname cascades.csc.ncsu.edu
+    User malus
+    Port 22
+
+Host loris-nus
+    Hostname loris-7.ddns.comp.nus.edu.sg
+    User razvan
+    Port 22
+
+Host myvmx-galaciuc
+    Hostname vmx.cs.pub.ro
+    User razvan
+    Port 23459
+
+Host macOS-ncsu
+    Hostname sgnp.csc.ncsu.edu
+    User upb
+    Port 22
+
+Host owasp-ctf-01
+    Hostname 141.85.224.70
+    User root
+    Port 22
+
+Host owasp-ctf-02
+    Hostname 141.85.224.99
+    User root
+    Port 22
+
+Host owasp-ctf-03
+    Hostname 141.85.224.100
+    User root
+    Port 22
+
+Host owasp-ctf-04
+    Hostname 141.85.224.101
+    User root
+    Port 22
+
+Host owasp-ctf-05
+    Hostname 141.85.224.102
+    User root
+    Port 22
+
+Host owasp-ctf-06
+    Hostname 141.85.224.103
+    User root
+    Port 22
+
+Host owasp-ctf-07
+    Hostname 141.85.224.104
+    User root
+    Port 22
+
+Host owasp-ctf-08
+    Hostname 141.85.224.105
+    User root
+    Port 22
+
+Host owasp-ctf-09
+    Hostname 141.85.224.106
+    User root
+    Port 22
+
+Host owasp-ctf-10
+    Hostname 141.85.224.107
+    User root
+    Port 22
+
+Host owasp-ctf-11
+    Hostname 141.85.224.108
+    User root
+    Port 22
+
+Host owasp-ctf-12
+    Hostname 141.85.224.109
+    User root
+    Port 22
+
+Host owasp-ctf-13
+    Hostname 141.85.224.110
+    User root
+    Port 22
+
+Host owasp-ctf-14
+    Hostname 141.85.224.114
+    User root
+    Port 22
+
+Host owasp-ctf-15
+    Hostname 141.85.224.115
+    User root
+    Port 22
+
+Host owasp-ctf-16
+    Hostname 141.85.224.116
+    User root
+    Port 22
+
+Host owasp-ctf-17
+    Hostname 141.85.224.117
+    User root
+    Port 22
+
+Host owasp-ctf-18
+    Hostname 141.85.224.118
+    User root
+    Port 22
+
+Host owasp-ctf-19
+    Hostname 141.85.224.119
+    User root
+    Port 22
+
+Host owasp-ctf-20
+    Hostname 141.85.224.157
     User root
     Port 22
