@@ -1,2 +1,4 @@
 /hello
-/hello-static
+/hello_static
+/hello_syscall
+/read_write_syscall
