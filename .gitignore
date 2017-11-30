@@ -20,4 +20,4 @@ TAGS
 *.pyc
 .gdb_history
 peda-session-*.txt
-
+core
