@@ -1,0 +1,25 @@
+#!/bin/bash
+
+RSYNC=/usr/bin/rsync
+OPTS="-avz --delete-after"
+BACKUP_LOG=/home/razvan/my/cron/backup-to-disk.log
+DISK_BASE=/mnt/sdb3/razvan
+
+RPATH="$DISK_BASE"/backup/
+
+LPATH=/home/razvan/projects
+$RSYNC $OPTS "$LPATH" "$RPATH"
+
+LPATH=/home/razvan/my
+$RSYNC $OPTS "$LPATH" "$RPATH"
+
+LPATH=/home/razvan/people
+$RSYNC $OPTS "$LPATH" "$RPATH"
+
+LPATH=/home/razvan/school
+$RSYNC $OPTS "$LPATH" "$RPATH"
+
+LPATH=/home/razvan/catedra
+$RSYNC $OPTS "$LPATH" "$RPATH"
+
+echo "done at $(date)" >> $BACKUP_LOG
