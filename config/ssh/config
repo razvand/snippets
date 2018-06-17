@@ -539,6 +539,16 @@ Host learningpark-dev
     Hostname learningpark.ro
     Port 22
 
+Host learningpark-wouso
+    User wouso
+    Hostname learningpark.ro
+    Port 22
+
+Host learningpark-root
+    User root
+    Hostname learningpark.ro
+    Port 22
+
 Host acm-server
     User acm
     Hostname acm-server.cs.pub.ro
@@ -654,7 +664,7 @@ Host macmini-708
 
 Host debian-708
     User razvan
-    Hostname 172.19.7.82
+    Hostname 172.19.7.123
     Port 22
 
 Host gaura2
@@ -970,4 +980,9 @@ Host owasp-ctf-19
 Host owasp-ctf-20
     Hostname 141.85.224.157
     User root
+    Port 22
+
+Host pr708-test
+    Hostname 172.19.7.87
+    User razvan
     Port 22
