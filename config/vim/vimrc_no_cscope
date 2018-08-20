@@ -1,0 +1,18 @@
+set backupdir=~/.vim/bkup/
+set encoding=utf8
+set noundofile
+
+" Mark tabs and spaces.
+set list listchars=tab:»\ ,trail:·,extends:»,precedes:«
+
+" Load manual pages.
+runtime ftplugin/man.vim
+
+" Set tex flavor.
+let g:tex_flavor = 'latex'
+
+if has("autocmd")
+  autocmd BufNewFile,BufRead *.txt set filetype=text
+  " For all text files disable text wrapping.
+  autocmd FileType text setlocal textwidth=0
+endif
