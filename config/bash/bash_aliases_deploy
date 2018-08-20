@@ -1,0 +1,8 @@
+alias go='gnome-open'
+alias grep='grep --color=auto'
+alias grpe='grep'
+alias gpre='grep'
+alias gti='git'
+alias gigt='git'
+alias cal='ncal -M'
+alias ncal='ncal -M'
