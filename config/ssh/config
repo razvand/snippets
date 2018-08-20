@@ -1,4 +1,5 @@
 GSSAPIAuthentication no
+XAuthLocation /opt/X11/bin/xauth
 
 Host macin
 	HostName 141.85.241.245
@@ -660,11 +661,11 @@ Host macmini-708
     Port 22
     ServerAliveCountMax 3
     ServerAliveInterval 10
-    GSSAPIKeyExchange no
+#    GSSAPIKeyExchange no
 
 Host debian-708
     User razvan
-    Hostname 172.19.7.123
+    Hostname 172.19.7.175
     Port 22
 
 Host gaura2
@@ -857,6 +858,11 @@ Host iPhone-razvan-home
     User root
     Port 22
 
+Host iPhone-razvan-pitesti
+    Hostname 192.168.0.102
+    User root
+    Port 22
+
 Host ncsu-server
     Hostname sgnp.csc.ncsu.edu
     User upb
@@ -982,7 +988,20 @@ Host owasp-ctf-20
     User root
     Port 22
 
+Host so2-vmx
+    ForwardX11 yes
+    ForwardX11Trusted yes
+    Hostname vmx.cs.pub.ro
+    User so2
+    Port 22
+
 Host pr708-test
+    #ForwardX11 yes
     Hostname 172.19.7.87
+    User razvan
+    Port 22
+
+Host razvan-vmx
+    Hostname vmx.cs.pub.ro
     User razvan
     Port 22
