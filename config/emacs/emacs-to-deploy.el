@@ -37,19 +37,6 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 ;;
-;; Tab Bar Mode configuration (http://www.emacswiki.org/emacs/TabBarMode)
-;;
-
-(require 'tabbar)
-(tabbar-mode 1)
-
-(global-set-key (kbd "C-x <right>") 'tabbar-forward)
-(global-set-key (kbd "C-x C-<right>") 'tabbar-forward)
-(global-set-key (kbd "C-x <left>") 'tabbar-backward)
-(global-set-key (kbd "C-x <up>") 'tabbar-forward-group)
-(global-set-key (kbd "C-x <down>") 'tabbar-backward-group)
-
-;;
 ;; Window and aspect configuration
 ;;
 
@@ -108,15 +95,5 @@
 (require 'whitespace)
 (setq whitespace-style '(face trailing tab-mark))
 (global-whitespace-mode 1)
-
-;; automatic startup connection to Freenode
-; (erc :server "irc.freenode.net" :port 6667 :nick "razvand")
-
-;; use iswitch
-(iswitchb-mode 1)
-(setq iswitchb-buffer-ignore '("^ " "*Completions*" "*Shell Command
-               Output*" "*Messages*" "Async Shell Command" "*BBDB*"
-               "*scratch*" "bbdb" ".newsrc-dribble" ".*_archive"
-               "*Help*" "*Disabled Command*" "*Buffer List*"))
 
 (set-default-font "Monospace 10")
