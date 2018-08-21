@@ -7,4 +7,4 @@ alias gigt='git'
 alias cal='ncal -M'
 alias ncal='ncal -M'
 alias boot-cli='systemctl set-default multi-user.target'
-alias boot-gui='systemctl set-default graphical.target"
+alias boot-gui='systemctl set-default graphical.target'
