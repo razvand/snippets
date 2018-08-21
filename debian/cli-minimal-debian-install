@@ -17,7 +17,7 @@ sudo apt -y install manpages-posix manpages-posix-dev make-doc glibc-doc-referen
 sudo apt -y install pwgen
 sudo apt -y install lshw inxi
 sudo apt -y install emacs org-mode emacs-goodies-el
-sudo apt -y install screen tmux
+sudo apt -y install screen tmux tmux-plugin-manager
 sudo apt -y install ethtool net-tools
 sudo apt -y install imagemagick
 sudo apt -y install pdftk
