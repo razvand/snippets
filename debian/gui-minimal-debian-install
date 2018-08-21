@@ -2,3 +2,4 @@
 
 sudo apt -y install xsel xclip
 sudo apt -y install scrot shutter
+sudo apt -y install dconf-tools
