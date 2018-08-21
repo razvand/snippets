@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo apt -y install xsel xclip
+sudo apt -y install scrot shutter
