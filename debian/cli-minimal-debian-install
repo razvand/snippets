@@ -1,0 +1,26 @@
+#!/bin/bash
+
+sudo apt -y install less htop zip unzip vim-nox git subversion lsof
+sudo apt -y install build-essential gdb cscope exuberant-ctags
+sudo apt -y install strace ltrace valgrind
+sudo apt -y install gawk
+sudo apt -y install bash-completion
+sudo apt -y install expect
+sudo apt -y install netcat telnet lynx curl ncftp
+sudo apt -y install host dnsutils
+sudo apt -y install openssh-server smbclient cifs-utils ldap-utils
+sudo apt -y install finger pciutils usbutils lshw mc tree
+sudo apt -y install apt-file
+sudo apt -y install genisoimage
+sudo apt -y install tcpdump nmap
+sudo apt -y install manpages-posix manpages-posix-dev make-doc glibc-doc-reference
+sudo apt -y install pwgen
+sudo apt -y install lshw inxi
+sudo apt -y install emacs org-mode emacs-goodies-el
+sudo apt -y install screen tmux
+sudo apt -y install ethtool net-tools
+sudo apt -y install imagemagick
+sudo apt -y install pdftk
+sudo apt -y install iotop sysstat
+sudo apt -y install unrar p7zip lzma xz-utils
+sudo apt -y install moreutils
