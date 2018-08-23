@@ -45,7 +45,7 @@ Host mytitan
 	User razvan
 	HostName titan.cs.pub.ro
 	Port 22
-	ForwardX11 yes
+#	ForwardX11 yes
 
 Host titan
 	User root
