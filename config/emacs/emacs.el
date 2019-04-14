@@ -98,14 +98,14 @@
 ;; Tab Bar Mode configuration (http://www.emacswiki.org/emacs/TabBarMode)
 ;;
 
-(require 'tabbar)
-(tabbar-mode 1)
-
-(global-set-key (kbd "C-x <right>") 'tabbar-forward)
-(global-set-key (kbd "C-x C-<right>") 'tabbar-forward)
-(global-set-key (kbd "C-x <left>") 'tabbar-backward)
-(global-set-key (kbd "C-x <up>") 'tabbar-forward-group)
-(global-set-key (kbd "C-x <down>") 'tabbar-backward-group)
+; (require 'tabbar)
+; (tabbar-mode 1)
+;
+; (global-set-key (kbd "C-x <right>") 'tabbar-forward)
+; (global-set-key (kbd "C-x C-<right>") 'tabbar-forward)
+; (global-set-key (kbd "C-x <left>") 'tabbar-backward)
+; (global-set-key (kbd "C-x <up>") 'tabbar-forward-group)
+; (global-set-key (kbd "C-x <down>") 'tabbar-backward-group)
 
 ;;
 ;; Window and aspect configuration
@@ -185,10 +185,22 @@
 ; (erc :server "irc.freenode.net" :port 6667 :nick "razvand")
 
 ;; use iswitch
-(iswitchb-mode 1)
-(setq iswitchb-buffer-ignore '("^ " "*Completions*" "*Shell Command
-               Output*" "*Messages*" "Async Shell Command" "*BBDB*"
-               "*scratch*" "bbdb" ".newsrc-dribble" ".*_archive"
-               "*Help*" "*Disabled Command*" "*Buffer List*"))
-
-(set-default-font "Monospace 10")
+; (iswitchb-mode 1)
+; (setq iswitchb-buffer-ignore '("^ " "*Completions*" "*Shell Command
+;                Output*" "*Messages*" "Async Shell Command" "*BBDB*"
+;                "*scratch*" "bbdb" ".newsrc-dribble" ".*_archive"
+;                "*Help*" "*Disabled Command*" "*Buffer List*"))
+;
+; (set-default-font "Monospace 10")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/my/org/todo.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
