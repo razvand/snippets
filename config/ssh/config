@@ -888,109 +888,209 @@ Host macOS-ncsu
     User upb
     Port 22
 
-Host owasp-ctf-01
+Host ctf-student-01
+    Hostname 141.85.224.70
+    User student
+    Port 22
+
+Host ctf-student-02
+    Hostname 141.85.224.99
+    User student
+    Port 22
+
+Host ctf-student-03
+    Hostname 141.85.224.100
+    User student
+    Port 22
+
+Host ctf-student-04
+    Hostname 141.85.224.101
+    User student
+    Port 22
+
+Host ctf-student-05
+    Hostname 141.85.224.102
+    User student
+    Port 22
+
+Host ctf-student-06
+    Hostname 141.85.224.103
+    User student
+    Port 22
+
+Host ctf-student-07
+    Hostname 141.85.224.104
+    User student
+    Port 22
+
+Host ctf-student-08
+    Hostname 141.85.224.105
+    User student
+    Port 22
+
+Host ctf-student-09
+    Hostname 141.85.224.106
+    User student
+    Port 22
+
+Host ctf-student-10
+    Hostname 141.85.224.107
+    User student
+    Port 22
+
+Host ctf-student-11
+    Hostname 141.85.224.108
+    User student
+    Port 22
+
+Host ctf-student-12
+    Hostname 141.85.224.109
+    User student
+    Port 22
+
+Host ctf-student-13
+    Hostname 141.85.224.110
+    User student
+    Port 22
+
+Host ctf-student-14
+    Hostname 141.85.224.114
+    User student
+    Port 22
+
+Host ctf-student-15
+    Hostname 141.85.224.115
+    User student
+    Port 22
+
+Host ctf-student-16
+    Hostname 141.85.224.116
+    User student
+    Port 22
+
+Host ctf-student-17
+    Hostname 141.85.224.117
+    User student
+    Port 22
+
+Host ctf-student-18
+    Hostname 141.85.224.118
+    User student
+    Port 22
+
+Host ctf-student-19
+    Hostname 141.85.224.119
+    User student
+    Port 22
+
+Host ctf-student-20
+    Hostname 141.85.224.157
+    User student
+    Port 22
+
+Host ctf-root-01
     Hostname 141.85.224.70
     User root
     Port 22
 
-Host owasp-ctf-02
+Host ctf-root-02
     Hostname 141.85.224.99
     User root
     Port 22
 
-Host owasp-ctf-03
+Host ctf-root-03
     Hostname 141.85.224.100
     User root
     Port 22
 
-Host owasp-ctf-04
+Host ctf-root-04
     Hostname 141.85.224.101
     User root
     Port 22
 
-Host owasp-ctf-05
+Host ctf-root-05
     Hostname 141.85.224.102
     User root
     Port 22
 
-Host owasp-ctf-06
+Host ctf-root-06
     Hostname 141.85.224.103
     User root
     Port 22
 
-Host owasp-ctf-07
+Host ctf-root-07
     Hostname 141.85.224.104
     User root
     Port 22
 
-Host owasp-ctf-08
+Host ctf-root-08
     Hostname 141.85.224.105
     User root
     Port 22
 
-Host owasp-ctf-09
+Host ctf-root-09
     Hostname 141.85.224.106
     User root
     Port 22
 
-Host owasp-ctf-10
+Host ctf-root-10
     Hostname 141.85.224.107
     User root
     Port 22
 
-Host owasp-ctf-11
+Host ctf-root-11
     Hostname 141.85.224.108
     User root
     Port 22
 
-Host owasp-ctf-12
+Host ctf-root-12
     Hostname 141.85.224.109
     User root
     Port 22
 
-Host owasp-ctf-13
+Host ctf-root-13
     Hostname 141.85.224.110
     User root
     Port 22
 
-Host owasp-ctf-14
+Host ctf-root-14
     Hostname 141.85.224.114
     User root
     Port 22
 
-Host owasp-ctf-15
+Host ctf-root-15
     Hostname 141.85.224.115
     User root
     Port 22
 
-Host owasp-ctf-16
+Host ctf-root-16
     Hostname 141.85.224.116
     User root
     Port 22
 
-Host owasp-ctf-17
+Host ctf-root-17
     Hostname 141.85.224.117
     User root
     Port 22
 
-Host owasp-ctf-18
+Host ctf-root-18
     Hostname 141.85.224.118
     User root
     Port 22
 
-Host owasp-ctf-19
+Host ctf-root-19
     Hostname 141.85.224.119
     User root
     Port 22
 
-Host owasp-ctf-20
+Host ctf-root-20
     Hostname 141.85.224.157
     User root
     Port 22
 
 Host so2-vmx
-    ForwardX11 yes
-    ForwardX11Trusted yes
+    #ForwardX11 yes
+    #ForwardX11Trusted yes
     Hostname vmx.cs.pub.ro
     User so2
     Port 22
@@ -998,6 +1098,11 @@ Host so2-vmx
 Host pr708-test
     #ForwardX11 yes
     Hostname 172.19.7.87
+    User razvan
+    Port 22
+
+Host pr708-drone
+    Hostname 172.19.7.207
     User razvan
     Port 22
 
