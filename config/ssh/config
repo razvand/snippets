@@ -1106,6 +1106,11 @@ Host pr708-drone
     User razvan
     Port 22
 
+Host pr708-drone
+    Hostname 172.19.7.207
+    User razvan
+    Port 22
+
 Host razvan-vmx
     Hostname vmx.cs.pub.ro
     User razvan
