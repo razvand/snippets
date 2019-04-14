@@ -1106,27 +1106,6 @@ Host pr708-drone
     User razvan
     Port 22
 
-Host pr708-drone
-    Hostname 172.19.7.207
-    User razvan
-    Port 22
-
-<<<<<<< HEAD
-=======
-Host so2-vmx
-    ForwardX11 yes
-    ForwardX11Trusted yes
-    Hostname vmx.cs.pub.ro
-    User so2
-    Port 22
-
-Host pr708-test
-    #ForwardX11 yes
-    Hostname 172.19.7.87
-    User razvan
-    Port 22
-
->>>>>>> Add macOS-centric SSH config
 Host razvan-vmx
     Hostname vmx.cs.pub.ro
     User razvan
