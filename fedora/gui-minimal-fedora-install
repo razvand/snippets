@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo dnf --rpmverbosity=critical -y install xsel xclip
+sudo dnf --rpmverbosity=critical -y install scrot shutter
+sudo dnf --rpmverbosity=critical -y install dconf-editor

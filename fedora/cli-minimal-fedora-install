@@ -1,0 +1,24 @@
+#!/bin/bash
+
+sudo dnf install -y --rpmverbosity=critical less htop zip unzip git subversion lsof
+sudo dnf install -y --rpmverbosity=critical gcc-c++ gdb cscope ctags-etags
+sudo dnf install -y --rpmverbosity=critical strace ltrace valgrind
+sudo dnf install -y --rpmverbosity=critical gawk
+sudo dnf install -y --rpmverbosity=critical bash-completion
+sudo dnf install -y --rpmverbosity=critical expect
+sudo dnf install -y --rpmverbosity=critical telnet lynx curl ncftp
+sudo dnf install -y --rpmverbosity=critical bind-utils
+sudo dnf install -y --rpmverbosity=critical openssh-server samba-client cifs-utils openldap-clients
+sudo dnf install -y --rpmverbosity=critical finger pciutils usbutils lshw mc tree
+sudo dnf install -y --rpmverbosity=critical genisoimage
+sudo dnf install -y --rpmverbosity=critical tcpdump nmap
+sudo dnf install -y --rpmverbosity=critical man-pages man-db libstdc++-docs
+sudo dnf install -y --rpmverbosity=critical pwgen
+sudo dnf install -y --rpmverbosity=critical lshw inxi
+sudo dnf install -y --rpmverbosity=critical emacs emacs-goodies-el
+sudo dnf install -y --rpmverbosity=critical screen tmux
+sudo dnf install -y --rpmverbosity=critical ethtool net-tools
+sudo dnf install -y --rpmverbosity=critical ImageMagick
+sudo dnf install -y --rpmverbosity=critical iotop sysstat
+sudo dnf install -y --rpmverbosity=critical p7zip lzma xz
+sudo dnf install -y --rpmverbosity=critical moreutils
