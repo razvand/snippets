@@ -261,7 +261,7 @@ Host fep
 	User razvan.deaconescu
 	HostName fep.grid.pub.ro
 	Port 22
-	ForwardX11 yes
+	#ForwardX11 yes
 
 Host oss
 	User oss
@@ -302,7 +302,6 @@ Host vmx
 	User root
 	HostName vmx.cs.pub.ro
 	Port 22
-	ForwardX11 yes
 
 Host carte
 	User root
@@ -378,8 +377,8 @@ Host checker
 	User root
 	Hostname checker.cs.pub.ro
 	Port 22
-	ForwardAgent yes
-	ForwardX11 yes
+#	ForwardAgent yes
+#	ForwardX11 yes
 
 Host vmchecker
 	User vmchecker
@@ -888,106 +887,6 @@ Host macOS-ncsu
     User upb
     Port 22
 
-Host ctf-student-01
-    Hostname 141.85.224.70
-    User student
-    Port 22
-
-Host ctf-student-02
-    Hostname 141.85.224.99
-    User student
-    Port 22
-
-Host ctf-student-03
-    Hostname 141.85.224.100
-    User student
-    Port 22
-
-Host ctf-student-04
-    Hostname 141.85.224.101
-    User student
-    Port 22
-
-Host ctf-student-05
-    Hostname 141.85.224.102
-    User student
-    Port 22
-
-Host ctf-student-06
-    Hostname 141.85.224.103
-    User student
-    Port 22
-
-Host ctf-student-07
-    Hostname 141.85.224.104
-    User student
-    Port 22
-
-Host ctf-student-08
-    Hostname 141.85.224.105
-    User student
-    Port 22
-
-Host ctf-student-09
-    Hostname 141.85.224.106
-    User student
-    Port 22
-
-Host ctf-student-10
-    Hostname 141.85.224.107
-    User student
-    Port 22
-
-Host ctf-student-11
-    Hostname 141.85.224.108
-    User student
-    Port 22
-
-Host ctf-student-12
-    Hostname 141.85.224.109
-    User student
-    Port 22
-
-Host ctf-student-13
-    Hostname 141.85.224.110
-    User student
-    Port 22
-
-Host ctf-student-14
-    Hostname 141.85.224.114
-    User student
-    Port 22
-
-Host ctf-student-15
-    Hostname 141.85.224.115
-    User student
-    Port 22
-
-Host ctf-student-16
-    Hostname 141.85.224.116
-    User student
-    Port 22
-
-Host ctf-student-17
-    Hostname 141.85.224.117
-    User student
-    Port 22
-
-Host ctf-student-18
-    Hostname 141.85.224.118
-    User student
-    Port 22
-
-Host ctf-student-19
-    Hostname 141.85.224.119
-    User student
-    Port 22
-
-Host ctf-student-20
-    Hostname 141.85.224.157
-    User student
-    Port 22
-
 Host ctf-root-01
     Hostname 141.85.224.70
     User root
@@ -1088,6 +987,106 @@ Host ctf-root-20
     User root
     Port 22
 
+Host ctf-student-01
+    Hostname 141.85.224.70
+    User student
+    Port 22
+
+Host ctf-student-02
+    Hostname 141.85.224.99
+    User student
+    Port 22
+
+Host ctf-student-03
+    Hostname 141.85.224.100
+    User student
+    Port 22
+
+Host ctf-student-04
+    Hostname 141.85.224.101
+    User student
+    Port 22
+
+Host ctf-student-05
+    Hostname 141.85.224.102
+    User student
+    Port 22
+
+Host ctf-student-06
+    Hostname 141.85.224.103
+    User student
+    Port 22
+
+Host ctf-student-07
+    Hostname 141.85.224.104
+    User student
+    Port 22
+
+Host ctf-student-08
+    Hostname 141.85.224.105
+    User student
+    Port 22
+
+Host ctf-student-09
+    Hostname 141.85.224.106
+    User student
+    Port 22
+
+Host ctf-student-10
+    Hostname 141.85.224.107
+    User student
+    Port 22
+
+Host ctf-student-11
+    Hostname 141.85.224.108
+    User student
+    Port 22
+
+Host ctf-student-12
+    Hostname 141.85.224.109
+    User student
+    Port 22
+
+Host ctf-student-13
+    Hostname 141.85.224.110
+    User student
+    Port 22
+
+Host ctf-student-14
+    Hostname 141.85.224.114
+    User student
+    Port 22
+
+Host ctf-student-15
+    Hostname 141.85.224.115
+    User student
+    Port 22
+
+Host ctf-student-16
+    Hostname 141.85.224.116
+    User student
+    Port 22
+
+Host ctf-student-17
+    Hostname 141.85.224.117
+    User student
+    Port 22
+
+Host ctf-student-18
+    Hostname 141.85.224.118
+    User student
+    Port 22
+
+Host ctf-student-19
+    Hostname 141.85.224.119
+    User student
+    Port 22
+
+Host ctf-student-20
+    Hostname 141.85.224.157
+    User student
+    Port 22
+
 Host so2-vmx
     #ForwardX11 yes
     #ForwardX11Trusted yes
@@ -1109,4 +1108,14 @@ Host pr708-drone
 Host razvan-vmx
     Hostname vmx.cs.pub.ro
     User razvan
+    Port 22
+
+Host pr708-drone
+    Hostname 172.19.7.207
+    User razvan
+    Port 22
+
+Host cocos
+    Hostname 141.85.248.2
+    User rd
     Port 22
