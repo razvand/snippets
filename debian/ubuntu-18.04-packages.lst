@@ -40,6 +40,7 @@ texlive-latex-extra
 texlive-bibtex-extra
 texlive-publishers
 texlive-science
+texlive-lang-european
 highlight
 apt-file
 wodim
