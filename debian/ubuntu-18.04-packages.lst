@@ -74,3 +74,5 @@ ethtool
 net-tools
 python3-sphinx
 python3-pip
+imagemagick
+inkscape
