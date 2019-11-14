@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# Update apt and apt-file cached data.
+sudo apt update
+
+# Install and configure Git.
+sudo apt install -y git
+git config --global color.ui auto
+git config --global user.name "Razvan Deaconescu"
+git config --global user.email "razvan.deaconescu@cs.pub.ro"
+sudo su -c 'git config --global color.ui auto'
+sudo su -c 'git config --global user.name "Razvan Deaconescu"'
+sudo su -c 'git config --global user.email "razvan.deaconescu@cs.pub.ro"'
+
+# Install and configure Vim.
+sudo apt install -y vim
+sudo cp /usr/share/vim/vim*/vimrc_example.vim /etc/vim/vimrc
+mkdir -p ~/.vim/bkup
+cp vim/vimrc_no_cscope ~/.vimrc
+cp -r vim/ftplugin/ ~/.vim/
+sudo mkdir -p /root/.vim/bkup
+sudo cp vim/vimrc_no_cscope /root/.vimrc
+sudo cp -r vim/ftplugin/ /root/.vim/
+
+# Install and configure Emacs.
+sudo apt install -y emacs
+cp emacs/emacs-to-deploy-nox.el ~/.emacs
+sudo cp emacs/emacs-to-deploy-nox.el /root/.emacs
+
+# Set vim.nox as default editor.
+sudo update-alternatives --set editor /usr/bin/vim.basic
+
+# Disable cursor blinking in terminal.
+# http://www.jurta.org/en/prog/noblink#Linux_Console
+(
+echo -e '#!/bin/bash'
+cat <<END
+
+echo 0 | sudo tee /sys/class/graphics/fbcon/cursor_blink > /dev/null
+for i in 1 2 3 4 5 6 7 8; do
+    TERM=linux setterm --foreground white --bold on -store | sudo tee /dev/tty$i > /dev/null
+done
+END
+) | sudo tee /etc/rc.local > /dev/null
+sudo chmod a+x /etc/rc.local
+/etc/rc.local
+
+# Set collation to show capitalized names first. Requires reboot.
+sudo locale-gen en_US.UTF-8
+sudo update-locale LC_ALL="en_US.UTF-8"
+sudo update-locale LC_CTYPE="en_US.UTF-8"
+sudo update-locale LC_COLLATE=C
+
+# Configure Bash aliases.
+cp bash/bash_aliases_no_ssh ~/.bash_aliases
+sudo cp bash/bash_aliases_no_ssh /root/.bash_aliases
+
+# Trim Bash prompt when too large.
+echo "export PROMPT_DIRTRIM=3" | sudo tee -a /etc/bash.bashrc > /dev/null
+
+# Install and configure tmux.
+sudo apt install -y tmux tmux-plugin-manager
+cp tmux/tmux_debian.conf ~/.tmux.conf
+sudo tmux/tmux_debian.conf /root/.tmux.conf
+
+# Disable DNS usage in SSH server:
+sudo apt install -y openssh-server
+grep 'UseDNS' /etc/ssh/sshd_config > /dev/null
+if test "$?" -eq 0; then
+    sudo sed -i 's/^.*UseDNS.*$/UseDNS no/g' /etc/ssh/sshd_config
+else
+    echo "UseDNS no" | sudo tee -a /etc/ssh/sshd_config > /dev/null
+fi
+
+# Print actions to be done interactively.
+echo ; echo
+cat <<END
+* To configure tmux plugins, do the actions below:
+Run "tmux" and then press "Ctrl+v" and then "I".
+Run "sudo tmux" and then press "Ctrl+v" and then "I".
+END
