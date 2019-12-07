@@ -1,6 +1,7 @@
 #!/bin/bash
 
-OFFLINEIMAP=/opt/local/bin/offlineimap
+#OFFLINEIMAP=/opt/local/bin/offlineimap
+OFFLINEIMAP=/usr/bin/offlineimap
 LOGFILE=~/.log/offlineimap-cron.log
 
 function check_alive()
@@ -10,7 +11,7 @@ function check_alive()
 
 check_alive
 if test $? -ne 0; then
-	nohup nice -n 19 "$OFFLINEIMAP" >> "$LOGFILE" 2>&1 &
+	nohup ionice -c 3 -n 19 python2 "$OFFLINEIMAP" >> "$LOGFILE" 2>&1 &
 fi
 
 exit 0
