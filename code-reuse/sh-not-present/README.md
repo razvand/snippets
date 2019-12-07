@@ -1,0 +1,1 @@
+Even if `system()` is present in the executable, we still need to find the address of `/bin/sh` in libc. And by doing that it becomes easy to also find the address of `system()` in libc. So we removed `system()` alltogether from the executable.

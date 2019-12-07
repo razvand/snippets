@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void hidden(void)
-{
-	system("ls");
-}
-
 static void reader(void)
 {
 	char buffer[32];
