@@ -2,7 +2,7 @@
 
 /* global test variable */
 static size_t g = 0x42424242;
-static char g_array[256];
+static char g_array[4096];
 
 static void warcraft(void)
 {
@@ -26,7 +26,7 @@ static void reader(void)
 	char buffer[64];
 
 	printf("gimme initial message: ");
-	fgets(g_array, 256, stdin);
+	fgets(g_array, 4096, stdin);
 
 	printf("gimme message: ");
 	fgets(buffer, 90, stdin);
