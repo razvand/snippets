@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo service fwupd restart
+sudo fwupdmgr refresh
+sudo fwupdmgr update
