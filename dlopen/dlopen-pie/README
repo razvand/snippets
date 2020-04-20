@@ -1,0 +1,5 @@
+Use dlopen() against PIE executable. This works on Linux:
+https://stackoverflow.com/a/6618319/4804196
+
+Compile dlopen and test executables using make. Run ./dlopen which will use
+dlopen() to open ./test and call do_print() function.
