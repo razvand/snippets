@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if test $# -ne 1; then
+    echo "Usage: $0 <gdrive_file_id>" 1>&2
+    exit 1
+fi
+
+id="$1"
+
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id='"$id" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=$id" -O downloaded_file && rm -rf /tmp/cookies.txt
+
+echo -e "\n\nOutput is in 'downloaded_file'"
