@@ -9,7 +9,7 @@
 
 #define PASSWORD "anaaremere"
 #define ALG_TYPE "6"
-#define SALT	 "abcdef"
+#define SALT	 "abcdefghabcdefgh"
 
 int main(void)
 {
