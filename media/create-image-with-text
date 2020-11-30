@@ -1,0 +1,3 @@
+#!/bin/bash
+
+convert -size 1920x1080 xc:black -font "FreeMono" -pointsize 64 -fill white -gravity center -annotate +0+0 'BREAK\n\nPart 2 starts in a few seconds' image.png
