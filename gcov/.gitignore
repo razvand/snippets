@@ -1,4 +1,5 @@
 /idea
-/idea.gcda
-/idea.gcno
-/idea.c.gcov
+/sum_test
+/*.gcda
+/*.gcno
+/*.gcov
