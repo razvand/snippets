@@ -1,0 +1,3 @@
+SRCS = empty.c
+
+include ../common.mk
