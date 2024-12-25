@@ -1,0 +1,18 @@
+FROM gcc:13.2.0-bookworm AS build
+
+COPY helloworld.c /helloworld.c
+
+RUN gcc -Wall -Wextra -o /helloworld /helloworld.c
+
+# Create from zero.
+# Copy only necessary files.
+FROM scratch
+
+# Executable
+COPY --from=build /helloworld /helloworld
+
+# Dynamic libraries
+COPY --from=build /lib/x86_64-linux-gnu/libc.so.6 /lib/x86_64-linux-gnu/libc.so.6
+COPY --from=build /lib64/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
+
+CMD ["/helloworld"]

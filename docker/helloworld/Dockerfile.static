@@ -1,0 +1,14 @@
+FROM gcc:13.2.0-bookworm AS build
+
+COPY helloworld.c /helloworld.c
+
+RUN gcc -Wall -Wextra -static -o /helloworld /helloworld.c
+
+# Create from zero.
+# Copy only necessary files.
+FROM scratch
+
+# Executable
+COPY --from=build /helloworld /helloworld
+
+CMD ["/helloworld"]
