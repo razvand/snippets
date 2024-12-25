@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get -y install less htop zip unzip vim-nox git subversion lsof
+sudo apt-get -y install less htop zip unzip vim-nox git subversion lsof libarchive-tools
 sudo apt-get -y install build-essential electric-fence gdb cscope exuberant-ctags
 sudo apt-get -y install strace ltrace valgrind
 sudo apt-get -y install gawk
@@ -9,6 +9,7 @@ sudo apt-get -y install expect
 sudo apt-get -y install netcat telnet pppoeconf host lynx curl ncftp
 sudo apt-get -y install openssh-server smbclient cifs-utils ldap-utils
 sudo apt-get -y install finger pciutils usbutils lshw mc cluster-ssh tree
+sudo apt-get -y install tree ncal
 # 200MB for texlive-latex-base, >800MB after texlive-latex-extra
 sudo apt-get -y install texlive-latex-base texlive-latex-extra texlive-bibtex-extra texlive-publishers highlight
 sudo apt-get -y install apt-file
@@ -33,3 +34,8 @@ sudo apt-get -y install lshw
 sudo apt-get -y install emacs org-mode emacs-goodies-el
 sudo apt-get -y install screen tmux
 sudo apt-get -y install ethtool net-tools
+# i3
+sudo apt-get -y install i3
+# dev
+sudo apt-get -y install gcc-aarch64-linux-gnu
+sudo apt-get -y install flex bison build-essential gcc-multilib libncurses5-dev qemu-system-x86 qemu-system-arm python3 minicom
