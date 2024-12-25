@@ -1,0 +1,5 @@
+[package]
+name = "hello_world"
+version = "0.1.0"
+authors = ["a@b.com"]
+build = "hello.rs"
