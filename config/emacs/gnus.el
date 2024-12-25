@@ -1,4 +1,4 @@
-(setq user-mail-address "razvan.deaconescu@cs.pub.ro"
+(setq user-mail-address "razvan.deaconescu@upb.ro"
       user-full-name "Razvan Deaconescu"
       gnus-local-organization "Departamentul de Calculatoare")
 
@@ -8,46 +8,16 @@
 ;; Disable agent.
 (setq gnus-agent nil)
 
-; remote IMAP server connection
-;(setq gnus-select-method
-;      '(nnimap "swarm"
-;	       (nnimap-address "swarm.cs.pub.ro")
-;	       (nnimap-server-port 993)
-;	       (nnimap-authenticator login)
-;	       (nnimap-stream ssl)))
-
 (setq gnus-select-method
       '(nnimap "Mail"
-	       (nnimap-address "localhost")
-	       (nnimap-stream network)
-	       (nnimap-authenticator login)
-	       (nnimap-authinfo-file "~/.authinfo")))
-
-;(setq gnus-select-method
-;       '(nnmaildir "Mail"
-;                   (directory "~/offlineimap/swarm/razvan/")
-;                   (directory-files nnheader-directory-files-safe)
-;                   (get-new-mail nil)))
-
-;(setq imap-shell-program "dovecot -c ~/.dovecotrc --exec-mail imap")
-;(setq gnus-select-method
-;      '(nnimap "Mail"
-;	       (nnimap-stream shell)))
+		(nnimap-address "localhost")
+		(nnimap-server-port "imap")
+		(nnimap-stream network)
+		(nnimap-authenticator login)
+		(nnimap-authinfo-file "~/.authinfo")))
 
 ;; Prefer plain text
 (setq mm-discouraged-alternatives '("text/html" "text/richtext"))
-
-;(setq send-mail-function 'smtpmail-send-it
-;      message-send-mail-function 'smtpmail-send-it
-;      starttls-use-gnutls t
-;      starttls-gnutls-program "gnutls-cli"
-;      starttls-extra-arguments '("--insecure")
-;      smtpmail-starttls-credentials '(("swarm.cs.pub.ro" 2525 nil nil))
-;      smtpmail-gnutls-credentials '(("smtp.gmail.com" 587 nil nil))
-;      smtpmail-default-smtp-server "swarm.cs.pub.ro"
-;      smtpmail-smtp-server "swarm.cs.pub.ro"
-;      smtpmail-smtp-service 2525
-;      smtpmail-local-domain "cs.pub.ro")
 
 (defun cg-feed-msmtp ()
   (if (message-mail-p)
@@ -61,8 +31,10 @@
 		(cond
 		 ((string-match "razvan@rosedu.org" from) "rosedu.org")
 		 ((string-match "razvan.deaconescu@cs.pub.ro" from) "cs.pub.ro")
+		 ((string-match "razvan.deaconescu@upb.ro" from) "upb.ro")
 		 ((string-match "razvan@swarm.cs.pub.ro" from) "swarm.cs.pub.ro")
 		 ((string-match "razvand@gmail.com" from) "gmail.com")
+		 ((string-match "razvand@unikraft.io" from) "unikraft.io")
 		 )
 		)
 	       )
@@ -80,34 +52,19 @@
 
 (setq gnus-posting-styles
       '(
-	("^INBOX.rosedu"
-	 (name "Razvan Deaconescu")
-	 (address "razvan@rosedu.org")
-	 (organization "ROSEdu"))
-	("^INBOX.projects.lpic"
-	 (name "Razvan Deaconescu")
-	 (address "razvan.deaconescu@lpic.ro")
-	 (organization "Academia CISCO - lpic.ro"))
-	("nnml:*"
-	 (From (with-current-buffer gnus-article-buffer
-		 (message-fetch-field "to"))))
-	((header "to" "razvan.deaconescu@cs.pub.ro")
-	 (name "Razvan Deaconescu")
-	 (address "razvan.deaconescu@cs.pub.ro")
-	 (organization "Departamentul de Calculatoare"))
-	((header "to" "razvan@rosedu.org")
-	 (name "Razvan Deaconescu")
-	 (address "razvan@rosedu.org")
-	 (organization "ROSEdu"))
-	((header "to" "razvan.deaconescu@lpic.ro")
-	 (name "Razvan Deaconescu")
-	 (address "razvan.deaconescu@lpic.ro")
-	 (organization "Academia CISCO"))
-	((header "to" "razvan.deaconescu@stagiipebune.ro")
-	 (name "Razvan Deaconescu")
-	 (address "razvan.deaconescu@stagiipebune.ro")
-	 (organization "Stagii pe Bune"))
-))
+       ((header "from" ".*razvan.deaconescu@upb.ro")
+        (eval (setq gnus-message-archive-group "nnimap+Mail:upb.ro/razvan.deaconescu/Sent Items")))
+       ((header "from" ".*razvan.deaconescu@cs.pub.ro")
+        (eval (setq gnus-message-archive-group "nnimap+Mail:upb.ro/razvan.deaconescu/Sent Items")))
+       ((header "from" ".*razvand@gmail.com")
+        (eval (setq gnus-message-archive-group "nnimap+Mail:gmail.com/razvand/[Gmail]/Sent Mail")))
+       ((header "from" ".*razvand@unikraft.io")
+        (eval (setq gnus-message-archive-group "nnimap+Mail:unikraft.io/razvand/[Gmail]/Sent Mail")))
+       ((header "from" ".*razvan@rosedu.org")
+        (eval (setq gnus-message-archive-group "nnimap+Mail:rosedu.org/razvan/[Gmail]/Sent Mail")))
+       ((header "from" ".*razvan@swarm.cs.pub.ro")
+        (eval (setq gnus-message-archive-group "nnimap+Mail:swarm.cs.pub.ro/razvan/Sent")))
+       ))
 
 ;; don't bugger me with dribbles
 (setq gnus-always-read-dribble-file t)
@@ -118,8 +75,7 @@
 (setq gnus-gcc-mark-as-read t)
 
 ;; archive sent messages
-(setq gnus-message-archive-group "INBOX.Sent")
-(setq gnus-message-archive-method '(nnimap "Mail"))
+(setq gnus-message-archive-group "nnimap+Mail:Sent")
 
 ;; Wrap at 72 cols.
 (add-hook 'message-mode-hook
@@ -152,43 +108,72 @@
 (setq gnus-thread-hide-subtree t)
 (setq gnus-thread-ignore-subject t)
 
-;; disable format flowed (http://www.emacswiki.org/emacs/GnusFormatFlowed)
-(setq fill-flowed-display-column nil)
-(add-hook 'gnus-article-mode-hook
-	  (lambda ()
-	    (setq
-	     truncate-lines nil
-	     word-wrap t)))
-(setq-default
- gnus-summary-line-format "%U%R%z %(%&user-date;  %-20,20f  %B%s%)\n"
- gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M"))
- gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references
- gnus-thread-sort-functions '(gnus-thread-sort-by-date)
- gnus-sum-thread-tree-false-root ""
- gnus-sum-thread-tree-indent " "
- gnus-sum-thread-tree-leaf-with-other "├► "
- gnus-sum-thread-tree-root ""
- gnus-sum-thread-tree-single-leaf "╰► "
- gnus-sum-thread-tree-vertical "│")
-;(setq gnus-summary-line-format "%O%U%R%z%d %B%(%[%4L: %-22,22f%]%) %s\n")
-;(setq gnus-summary-mode-line-format "Gnus: %p [%A / Sc:%4z] %Z")
+; https://emacs.stackexchange.com/questions/39415/how-to-clear-underlines-after-disabling-flyspell
+(flyspell-mode 0)
 
-;; http://www.xsteve.at/prg/gnus/
-(setq gnus-ignored-from-addresses "Razvan Deaconescu")
-
-(setq message-kill-buffer-on-exit t)
-
-;; configure browser
-(setq gnus-button-url 'browse-url-generic
-      browse-url-browser-function gnus-button-url)
-
-;; use bbdb in gnus (http://bbdb.sourceforge.net/bbdb.html#SEC2)
+; https://emacs.stackexchange.com/questions/39167/bbdb-buffer-always-pops-up
+(require 'bbdb)
+(require 'bbdb-gnus)
+(bbdb-initialize 'gnus 'message)
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
-(add-hook 'message-setup-hook 'bbdb-define-all-aliases)
+;;(add-hook 'message-setup-hook 'bbdb-mail-aliases)
+(setq bbdb-use-pop-up nil)
+(setq bbdb-mua-pop-up nil)
+(setq bbdb-mua-auto-update-p nil)
 
-;; Replace News/ and Mail/ folders in home directory.
-;; http://superuser.com/questions/519685/gnus-get-rid-of-mail-and-news-folders
-(setq message-directory "~/.emacs.d/mail/")
-(setq gnus-directory "~/.emacs.d/news/")
-(setq nnfolder-directory "~/.emacs.d/mail/archive")
+;; If you don't live in Northern America, you should disable the
+;; syntax check for telephone numbers by saying
+(setq bbdb-north-american-phone-numbers-p nil)
+;; Tell bbdb about your email address:
+(setq bbdb-user-mail-names
+      (regexp-opt '("razvan.deaconescu@cs.pub.ro"
+		    "razvan.deaconescu@upb.ro"
+		    "razvand@gmail.com"
+		    "razvan@rosedu.org"
+		    "razvand@unikraft.io"
+		    "razvan.deaconescu@lpic.ro"
+		    "razvan@swarm.cs.pub.ro")))
+
+;; use bbdb in gnus (http://bbdb.sourceforge.net/bbdb.html#SEC2)
+
+;; https://ding.gnus.narkive.com/ymacizFO/bbdb-v3-integration
+;; https://blog.petitepomme.net/post/28547901478/installing-and-configuring-bbdb-3
+
+;; file where things will be saved
+; (setq bbdb-file "~/.emacs.d/bbdb")
+;(require 'bbdb-loaddefs)
+
+(bbdb-mua-auto-update-init 'gnus 'message) ;; use 'gnus for incoming messages too
+;(setq bbdb-mua-auto-update-p 'query) ;; or 'create to create without asking
+
+;; What do we do when invoking bbdb interactively.
+(setq bbdb-mua-update-interactive-p '(query . create))
+
+;(setq bbdb-update-records-p '(query . create))
+
+(setq bbdb-complete-mail-allow-cycling t)
+
+;; size of the bbdb popup
+(setq bbdb-pop-up-window-size 10)
+
+;; Make sure we look at every address in a message and not only the
+;; first one
+(setq bbdb-message-all-addresses t)
+(add-hook 'message-setup-hook 'bbdb-mail-aliases)
+
+;; use ; on a message to invoke bbdb interactively
+(add-hook
+ 'gnus-summary-mode-hook
+ (lambda ()
+   (define-key gnus-summary-mode-map (kbd ";") 'bbdb-mua-edit-field)
+   ))
+
+;; auto-complete emacs address using bbdb UI
+(add-hook 'message-mode-hook
+          '(lambda ()
+             (flyspell-mode t)
+             (local-set-key (kbd "TAB") 'bbdb-complete-name)))
+
+;; Doesn't work in BBDB 3.2.
+;;(add-hook 'message-setup-hook 'bbdb-define-all-aliases)
