@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Docker
+sudo apt-get -y update
+sudo apt-get -y install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get -y update
+
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
+# Firecracker
+FC_VERSION=v1.7.0
+mkdir ~/packages/firecracker
+wget https://github.com/firecracker-microvm/firecracker/releases/download/v1.7.0/firecracker-${FC_VERSION}-x86_64.tgz -O ~/packages/firecracker/firecracker-${FC_VERSION}-x86.tgz
+tar -C ~/packages/firecracker -xf ~/packages/firecracker/firecracker-${FC_VERSION}-x86.tgz
+sudo cp ~/packages/firecracker/release-v1.7.0-x86_64/firecracker-${FC_VERSION}-x86_64 /usr/local/bin/firecracker-x86_64
+sudo ln -sfn /usr/local/bin/firecracker-x86_64 /usr/local/bin/firecracker
+
+# Snap
+sudo snap install discord
+sudo snap install slack
+sudo snap install telegram-desktop
+sudo snap install element-desktop
+sudo snap install teams-for-linux
+sudo snap install spotify
+sudo snap install webcamoid
+
+# GitHub CLI
+(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
+&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+&& wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+&& sudo apt update \
+&& sudo apt install gh -y
