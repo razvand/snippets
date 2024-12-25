@@ -1,0 +1,153 @@
+IMAPAccount upb.ro
+Host outlook.office365.com
+Port 993
+User razvan.deaconescu@upb.ro
+PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/token"
+SSLType IMAPS
+SSLVersions TLSv1.2
+AuthMechs XOAUTH2
+
+IMAPStore upb.ro-remote
+Account upb.ro
+
+MaildirStore upb.ro-local
+SubFolders Verbatim
+Path /home/razvan/.mbsync/upb.ro/razvan.deaconescu/
+Inbox /home/razvan/.mbsync/upb.ro/razvan.deaconescu/INBOX
+
+Channel upb.ro-c
+Near :upb.ro-local:
+Far :upb.ro-remote:
+MaxMessages 200
+ExpireUnread no
+Patterns * "INBOX"
+Create Both
+SyncState *
+Sync All
+SyncState /home/razvan/.mbsync/imap-transfer
+
+Group upb.ro
+Channel upb.ro-c
+
+
+IMAPAccount gmail.com
+Host imap.gmail.com
+User razvand@gmail.com
+PassCmd "cat ~/.authinfo | grep 'razvand@gmail.com' | cut -d ' ' -f 8- | tr -d '\"'"
+SSLType IMAPS
+AuthMechs LOGIN
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail.com-remote
+Account gmail.com
+
+MaildirStore gmail.com-local
+SubFolders Verbatim
+Path /home/razvan/.mbsync/gmail.com/razvand/
+Inbox /home/razvan/.mbsync/gmail.com/razvand/INBOX
+
+Channel gmail.com-c
+Far :gmail.com-remote:
+Near :gmail.com-local:
+MaxMessages 200
+ExpireUnread no
+Create Both
+Patterns *
+SyncState *
+Sync All
+
+Group gmail.com
+Channel gmail.com-c
+
+
+IMAPAccount rosedu.org
+Host imap.gmail.com
+User razvan@rosedu.org
+PassCmd "cat ~/.authinfo | grep 'razvan@rosedu.org' | cut -d ' ' -f 8- | tr -d '\"'"
+SSLType IMAPS
+AuthMechs LOGIN
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore rosedu.org-remote
+Account rosedu.org
+
+MaildirStore rosedu.org-local
+SubFolders Verbatim
+Path /home/razvan/.mbsync/rosedu.org/razvan/
+Inbox /home/razvan/.mbsync/rosedu.org/razvan/INBOX
+
+Channel rosedu.org-c
+Far :rosedu.org-remote:
+Near :rosedu.org-local:
+MaxMessages 200
+ExpireUnread no
+Create Both
+Patterns *
+SyncState *
+Sync All
+
+Group rosedu.org
+Channel rosedu.org-c
+
+
+IMAPAccount unikraft.io
+Host imap.gmail.com
+User razvand@unikraft.io
+PassCmd "cat ~/.authinfo | grep 'razvand@unikraft.io' | cut -d ' ' -f 8- | tr -d '\"'"
+SSLType IMAPS
+AuthMechs LOGIN
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore unikraft.io-remote
+Account unikraft.io
+
+MaildirStore unikraft.io-local
+SubFolders Verbatim
+Path /home/razvan/.mbsync/unikraft.io/razvand/
+Inbox /home/razvan/.mbsync/unikraft.io/razvand/INBOX
+
+Channel unikraft.io-c
+Far :unikraft.io-remote:
+Near :unikraft.io-local:
+MaxMessages 200
+ExpireUnread no
+Create Both
+Patterns *
+SyncState *
+Sync All
+
+Group unikraft.io
+Channel unikraft.io-c
+
+
+Group swarm.cs.pub.ro
+Channel swarm.cs.pub.ro-c
+
+IMAPAccount swarm.cs.pub.ro
+Host swarm.cs.pub.ro
+User razvan
+PassCmd "cat ~/.authinfo | grep 'swarm.cs.pub.ro' | cut -d ' ' -f 8- | tr -d '\"'"
+SSLType IMAPS
+AuthMechs LOGIN
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore swarm.cs.pub.ro-remote
+Account swarm.cs.pub.ro
+
+MaildirStore swarm.cs.pub.ro-local
+SubFolders Verbatim
+Path /home/razvan/.mbsync/swarm.cs.pub.ro/razvan/
+Inbox /home/razvan/.mbsync/swarm.cs.pub.ro/razvan/INBOX
+
+Channel swarm.cs.pub.ro-c
+Far :swarm.cs.pub.ro-remote:
+Near :swarm.cs.pub.ro-local:
+MaxMessages 50
+ExpireUnread no
+Create Both
+Patterns *
+SyncState *
+Sync All
+
+Group swarm.cs.pub.ro
+Channel swarm.cs.pub.ro-c
