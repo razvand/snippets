@@ -2,6 +2,13 @@
 ;; Editing configuration
 ;;
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq global-font-lock-mode t)
 (setq x-select-enable-clipboard t)
 (setq c-default-style "linux")
@@ -96,4 +103,17 @@
 (setq whitespace-style '(face trailing tab-mark))
 (global-whitespace-mode 1)
 
-(set-default-font "Monospace 10")
+(set-frame-font "Monospace 10" nil t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Projects/org.git/todo.org")))
+ '(package-selected-packages (quote (## bbdb org htmlize))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
