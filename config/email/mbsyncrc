@@ -2,7 +2,7 @@ IMAPAccount upb.ro
 Host outlook.office365.com
 Port 993
 User razvan.deaconescu@upb.ro
-PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/token"
+PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/upb.ro-microsoft-token"
 SSLType IMAPS
 SSLVersions TLSv1.2
 AuthMechs XOAUTH2
@@ -156,7 +156,7 @@ Channel swarm.cs.pub.ro-c
 IMAPAccount eduapps.ro
 Host imap.gmail.com
 User razvan.deaconescu@formator.eduapps.ro
-PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/eduapps.ro-token"
+PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/eduapps.ro-google-token"
 SSLType IMAPS
 SSLVersions TLSv1.2
 AuthMechs XOAUTH2
