@@ -1,0 +1,19 @@
+[user]
+	email = razvan.deaconescu@upb.ro
+	name = Razvan Deaconescu
+[color]
+	ui = auto
+[sendemail]
+	from = Razvan Deaconescu <razvan.deaconescu@upb.ro>
+	smtpserver = mail.upb.ro
+	smtpuser = razvan.deaconescu@upb.ro
+	smtpencryption = ssl
+	confirm = auto
+[format]
+	thread = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

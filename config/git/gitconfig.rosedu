@@ -1,0 +1,19 @@
+[user]
+	email = razvan@rosedu.org
+	name = Razvan Deaconescu
+[color]
+	ui = auto
+[sendemail]
+	from = Razvan Deaconescu <razvan@rosedu.org>
+	smtpserver = mail.google.com
+	smtpuser = razvan@rosedu.org
+	smtpencryption = ssl
+	confirm = auto
+[format]
+	thread = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

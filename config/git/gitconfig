@@ -1,0 +1,37 @@
+[user]
+	email = razvan.deaconescu@upb.ro
+	name = Razvan Deaconescu
+[color]
+	ui = auto
+[sendemail]
+	from = Razvan Deaconescu <razvan.deaconescu@upb.ro>
+	smtpserver = mail.upb.ro
+	smtpuser = razvan.deaconescu@upb.ro
+	smtpencryption = ssl
+	confirm = auto
+[format]
+	thread = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+
+[includeIf "gitdir:~/orgs/unikraft/"]
+	path = .gitconfig.unikraft
+[includeIf "gitdir:~/orgs/unikraft-io/"]
+	path = .gitconfig.unikraft
+[includeIf "gitdir:~/projects/rosedu/"]
+	path = .gitconfig.rosedu
+[includeIf "gitdir:~/orgs/rosedu/"]
+	path = .gitconfig.rosedu
+[safe]
+	directory = /go/src/kraftkit.sh/third_party/github.com/libgit2/git2go/v31
+	directory = /go/src/kraftkit.sh/third_party/github.com/libgit2/git2go/v31
+[alias]
+	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
+[init]
+	defaultBranch = main
+[alias]
+	lg = log --pretty=fuller
