@@ -1,27 +1,27 @@
 #!/bin/bash
 
-sudo apt-get -y install less htop zip unzip vim-nox git subversion lsof libarchive-tools
+sudo apt-get -y install less htop zip unzip vim vim-nox git subversion lsof libarchive-tools
 sudo apt-get -y install build-essential electric-fence gdb cscope exuberant-ctags
 sudo apt-get -y install strace ltrace valgrind
 sudo apt-get -y install gawk
 sudo apt-get -y install bash-completion
 sudo apt-get -y install expect
-sudo apt-get -y install netcat telnet pppoeconf host lynx curl ncftp
+sudo apt-get -y install netcat-traditional telnet pppoeconf host lynx curl ncftp
 sudo apt-get -y install openssh-server smbclient cifs-utils ldap-utils
-sudo apt-get -y install finger pciutils usbutils lshw mc cluster-ssh tree
+sudo apt-get -y install finger pciutils usbutils lshw mc clusterssh tree
 sudo apt-get -y install tree ncal
+sudo apt-get -y install wget curl lynx links elinks
 # 200MB for texlive-latex-base, >800MB after texlive-latex-extra
 sudo apt-get -y install texlive-latex-base texlive-latex-extra texlive-bibtex-extra texlive-publishers highlight
 sudo apt-get -y install apt-file
 sudo apt-get -y install wodim genisoimage
 # 1.7GB
-sudo apt-get -y install gnome update-manager-gnome apt-watch-gnome
+sudo apt-get -y install gnome
 # 533MB
 sudo apt-get -y install libreoffice
-sudo apt-get -y install flashplugin-nonfree iceweasel
 sudo apt-get -y install mplayer2 module-assistant
-sudo apt-get -y install vim-gnome nautilus-open-terminal deluge wbar
-sudo apt-get -y install gitk xchat pidgin dia
+sudo apt-get -y install vim-gui-common nautilus-open-terminal deluge wbar
+sudo apt-get -y install gitk hexchat pidgin dia
 sudo apt-get -y install aspell-ro
 sudo apt-get -y install wireless-tools tcpdump nmap
 # non-free required
@@ -38,4 +38,4 @@ sudo apt-get -y install ethtool net-tools
 sudo apt-get -y install i3
 # dev
 sudo apt-get -y install gcc-aarch64-linux-gnu
-sudo apt-get -y install flex bison build-essential gcc-multilib libncurses5-dev qemu-system-x86 qemu-system-arm python3 minicom
+sudo apt-get -y install flex bison build-essential libncurses5-dev qemu-system-x86 qemu-system-arm python3 python-is-python3 minicom
