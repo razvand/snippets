@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update apt and apt-file cached data.
-sudo apt update
+sudo apt -y update
 
 # Install and configure Git.
 sudo apt install -y git
@@ -45,6 +45,9 @@ END
 sudo chmod a+x /etc/rc.local
 /etc/rc.local
 
+# Disable system event sounds.
+dconf write /org/gnome/desktop/sound/event-sounds "false"
+
 # Set collation to show capitalized names first. Requires reboot.
 sudo locale-gen en_US.UTF-8
 sudo update-locale LC_ALL="en_US.UTF-8"
@@ -61,7 +64,7 @@ echo "export PROMPT_DIRTRIM=3" | sudo tee -a /etc/bash.bashrc > /dev/null
 # Install and configure tmux.
 sudo apt install -y tmux tmux-plugin-manager
 cp tmux/tmux_debian.conf ~/.tmux.conf
-sudo tmux/tmux_debian.conf /root/.tmux.conf
+sudo cp tmux/tmux_debian.conf /root/.tmux.conf
 
 # Disable DNS usage in SSH server:
 sudo apt install -y openssh-server
