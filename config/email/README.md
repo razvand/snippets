@@ -16,6 +16,7 @@ mkdir -p ~/.mbsync/gmail.com/razvand
 mkdir -p ~/.mbsync/unikraft.io/razvand
 mkdir -p ~/.mbsync/rosedu.org/razvan
 mkdir -p ~/.mbsync/swarm.cs.pub.ro/razvan
+mkdir -p ~/.mbsync/eduapps.ro/razvan.deaconescu
 ```
 
 Copy configurations of Emacs, Gnus, `mbsync` and `msmtprc`:

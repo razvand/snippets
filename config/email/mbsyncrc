@@ -151,3 +151,37 @@ Sync All
 
 Group swarm.cs.pub.ro
 Channel swarm.cs.pub.ro-c
+
+
+IMAPAccount eduapps.ro
+Host imap.gmail.com
+User razvan.deaconescu@formator.eduapps.ro
+PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/eduapps.ro-token"
+SSLType IMAPS
+SSLVersions TLSv1.2
+AuthMechs XOAUTH2
+#PassCmd "cat ~/.authinfo | grep 'razvan.deaconescu@formator.eduapps.ro' | cut -d ' ' -f 8- | tr -d '\"'"
+#SSLType IMAPS
+#AuthMechs LOGIN
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore eduapps.ro-remote
+Account eduapps.ro
+
+MaildirStore eduapps.ro-local
+SubFolders Verbatim
+Path /home/razvan/.mbsync/eduapps.ro/razvan.deaconescu
+Inbox /home/razvan/.mbsync/eduapps.ro/razvan.deaconescu/INBOX
+
+Channel eduapps.ro-c
+Far :eduapps.ro-remote:
+Near :eduapps.ro-local:
+MaxMessages 200
+ExpireUnread no
+Create Both
+Patterns *
+SyncState *
+Sync All
+
+Group eduapps.ro
+Channel eduapps.ro-c
