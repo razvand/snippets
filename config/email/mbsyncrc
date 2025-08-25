@@ -170,7 +170,7 @@ Account eduapps.ro
 
 MaildirStore eduapps.ro-local
 SubFolders Verbatim
-Path /home/razvan/.mbsync/eduapps.ro/razvan.deaconescu
+Path /home/razvan/.mbsync/eduapps.ro/razvan.deaconescu/
 Inbox /home/razvan/.mbsync/eduapps.ro/razvan.deaconescu/INBOX
 
 Channel eduapps.ro-c
