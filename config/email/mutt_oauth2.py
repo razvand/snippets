@@ -61,8 +61,8 @@ registrations = {
         'smtp_endpoint': 'smtp.gmail.com',
         'sasl_method': 'OAUTHBEARER',
         'scope': 'https://mail.google.com/',
-        'client_id': '',
-        'client_secret': '',
+        'client_id': '406964657835-aq8lmia8j95dhl1a2bvharmfk3t1hgqj.apps.googleusercontent.com',
+        'client_secret': 'kSmqreRr0qwBWJgbf5Y-PjSU',
     },
     'microsoft': {
         'authorize_endpoint': 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
