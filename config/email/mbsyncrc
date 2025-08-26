@@ -120,9 +120,6 @@ Group unikraft.io
 Channel unikraft.io-c
 
 
-Group swarm.cs.pub.ro
-Channel swarm.cs.pub.ro-c
-
 IMAPAccount swarm.cs.pub.ro
 Host swarm.cs.pub.ro
 User razvan
@@ -160,10 +157,6 @@ PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oaut
 SSLType IMAPS
 SSLVersions TLSv1.2
 AuthMechs XOAUTH2
-#PassCmd "cat ~/.authinfo | grep 'razvan.deaconescu@formator.eduapps.ro' | cut -d ' ' -f 8- | tr -d '\"'"
-#SSLType IMAPS
-#AuthMechs LOGIN
-#CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore eduapps.ro-remote
 Account eduapps.ro
