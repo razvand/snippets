@@ -33,10 +33,10 @@ Channel upb.ro-c
 IMAPAccount gmail.com
 Host imap.gmail.com
 User razvand@gmail.com
-PassCmd "cat ~/.authinfo | grep 'razvand@gmail.com' | cut -d ' ' -f 8- | tr -d '\"'"
+PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/gmail.com-google-token"
 SSLType IMAPS
-AuthMechs LOGIN
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+SSLVersions TLSv1.2
+AuthMechs XOAUTH2
 
 IMAPStore gmail.com-remote
 Account gmail.com
@@ -63,10 +63,10 @@ Channel gmail.com-c
 IMAPAccount rosedu.org
 Host imap.gmail.com
 User razvan@rosedu.org
-PassCmd "cat ~/.authinfo | grep 'razvan@rosedu.org' | cut -d ' ' -f 8- | tr -d '\"'"
+PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/rosedu.org-google-token"
 SSLType IMAPS
-AuthMechs LOGIN
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+SSLVersions TLSv1.2
+AuthMechs XOAUTH2
 
 IMAPStore rosedu.org-remote
 Account rosedu.org
@@ -93,10 +93,10 @@ Channel rosedu.org-c
 IMAPAccount unikraft.io
 Host imap.gmail.com
 User razvand@unikraft.io
-PassCmd "cat ~/.authinfo | grep 'razvand@unikraft.io' | cut -d ' ' -f 8- | tr -d '\"'"
+PassCmd "/usr/bin/python3 /home/razvan/.oauth2/mutt_oauth2.py /home/razvan/.oauth2/unikraft.io-google-token"
 SSLType IMAPS
-AuthMechs LOGIN
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+SSLVersions TLSv1.2
+AuthMechs XOAUTH2
 
 IMAPStore unikraft.io-remote
 Account unikraft.io
