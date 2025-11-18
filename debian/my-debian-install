@@ -24,6 +24,7 @@ sudo apt-get -y install vim-gui-common nautilus-open-terminal deluge wbar
 sudo apt-get -y install gitk hexchat pidgin dia
 sudo apt-get -y install aspell-ro
 sudo apt-get -y install wireless-tools tcpdump nmap
+sudo apt-get -y install brigthnessctl
 # non-free required
 sudo apt-get -y install manpages-posix manpages-posix-dev make-doc glibc-doc-reference
 # pwgen
