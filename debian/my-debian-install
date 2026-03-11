@@ -17,6 +17,7 @@ sudo apt-get -y install apt-file
 sudo apt-get -y install wodim genisoimage
 # 1.7GB
 sudo apt-get -y install gnome
+sudo apt-get -y install vim-gtk
 # 533MB
 sudo apt-get -y install libreoffice
 sudo apt-get -y install mplayer2 module-assistant
