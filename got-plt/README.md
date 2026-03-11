@@ -1,7 +1,7 @@
 # Analysis of GOT in ELF Programs
 
 Addresses of global symbols (global variables and functions) are only known at load time for dynamically linked libraries; the program is built to work with different versions of dynamic libraries; each version uses different symbol addresses.
-Moreover, program and library code will most likely randomly placed in memory (via ASLR - *Address Space Layout Randomization*).
+Moreover, program and library code will be most likely randomly placed in memory (via ASLR - *Address Space Layout Randomization*).
 Lastly, [IFUNC (*indirect functions*) support](https://sourceware.org/glibc/wiki/GNU_IFUNC) provides multiple implementations of a given function, the address of which will only be known at runtime.
 
 In ELF programs, GOT (*Global Offset Table*) stores **addresses** that are **unknown until load time**.
@@ -33,13 +33,13 @@ We require GDB for dynamic analysis.
 ## Demo Files
 
 There are two source code files (`main.c` and `basket.c`), a header file (`basket.h`) and a `Makefile`.
-The `bascket.c` file will be compiled into a shared library (`libbasket.so`).
+The `basket.c` file will be compiled into a shared library (`libbasket.so`).
 The `main.c` will be compiled and linked against the shared library, resulting in an executable `main`.
 We investigate the resulting files: the `main` executable and the `libbasket.so` library.
 
 To limit the amount of unnecessary information (such as additional sections and functions added by the default compilation and the use of the standard C library), we use the `nostdlib/` folder.
 When building files in `nostdlib/`, as its name tells, there will be no use of the standard C library, reducing the unnecessary information.
-To build and run without standard C library support, we require a small assembly file (`start.s`) that defines the program entry point (`_start`) and wraps the call to the `main()` function.
+To build and run without standard C library support, we require a small assembly file (`start.s`) that defines the program entry point (`_start`) (using `-e_start` as a linker option) and wraps the call to the `main()` function.
 
 Build the `main` executable and the `libbasket.so` library:
 ```
@@ -51,7 +51,7 @@ ld -shared -o libbasket.so basket.o
 ld -e_start -pie -dynamic-linker=/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 -rpath=. -o main start.o main.o -L. -lbasket
 ```
 
-Running the program prints nothing, but that's not relevant or our investigation:
+Running the program prints nothing, but that's not relevant for our investigation:
 ```
 $ ./main
 ```
@@ -161,7 +161,7 @@ Hex dump of section `.got.plt`:
 ```
 
 The `.got` section contains one entry (8 bytes), while the `.got.plt` section contains four entries (32 bytes).
-Both section are zero-filled (with some exceptions that we won't delve into).
+Both sections are zero-filled (with some exceptions that we won't delve into).
 Their useful content (variable and function addresses) is unknown until load time.
 
 We see how the `.got` section is used by the program, in the `.text` section (where the `main()` function resides):
@@ -191,7 +191,7 @@ Disassembly of section .text:
  3b3:	c3                   	ret
 ```
 
-At address `39f` above, the instruction accesses the `200ff8` address, marked as refering the `basket_size` symbol.
+At address `39f` above, the instruction accesses the `200ff8` address, marked as referring the `basket_size` symbol.
 The `0x200ff8` is the address of the entry in `.got`.
 
 We see how the `.got.plt` section is used by the trampoline code in the `.plt` section:
@@ -214,8 +214,8 @@ Disassembly of section .plt:
  37b:	e9 e0 ff ff ff       	jmp    360 <.plt>
 ```
 
-At address `370` above, the instruction accesses the `2010181` address, marked as refering the `flowers` symbol.
-The `0x201018` address is the last (4th) entry in the `.got.plt` section.
+At address `370` above, the instruction accesses the `201018` address, marked as referring the `flowers` symbol.
+`0x201018` is the address of the last (4th) entry in the `.got.plt` section.
 
 With static analysis, we found that:
 * The `.got` and `.got.plt` sections are not filled with actual data (with some exceptions in `.got.plt` that we don't delve into).
@@ -223,6 +223,8 @@ With static analysis, we found that:
 * The `.got.plt` section is used by the trampoline code in the `.plt` section.
 
 ## Dynamic Analysis
+
+**Note**: Similarly to the static analysis section, addresses shown as part of the dynamic analysis will differ from your own.
 
 We use GDB for dynamic analysis.
 Our goal is to check the contents of the `.got` and `.got.plt` sections at runtime, after being filled with the actual addresses.
@@ -252,6 +254,8 @@ Exec file:
     [...]
 ```
 The runtime address is `0x555555754ff8` for the `.got` section, and `0x555555755000` for the `.got.plt` section.
+Note that, because `main` is a position-independent executable, these addresses differ from the ones found when doing static analysis: `0x200ff8` and `0x201000`.
+Even so, their relative placement and page address (the last 3 hex digits) are identical.
 
 ### .got
 
@@ -282,7 +286,7 @@ We now check the contents of the `.got` section entry for the `basket_size` symb
 ```
 The `.got` entry is no longer zero-filled.
 It stores the address `0x00007ffff7dd2018`, the actual address of the `basket_size` variable.
-After loading the `libbasket.so` library in memory, the loader was able to determine the addres of the `basket_size` variable and place it the corresponding `.got` memory entry.
+After loading the `libbasket.so` library in memory, the loader was able to determine the address of the `basket_size` variable and place it the corresponding `.got` memory entry.
 
 We validate that the address `0x00007ffff7dd2018` is indeed the address of the `basket_size` variable by using GDB print and checking its contents:
 ```
@@ -293,7 +297,8 @@ $1 = (<data variable, no debug info> *) 0x7ffff7dd2018 <basket_size>
 ```
 The value `3` is the initial value of the `basket_size` variable.
 
-As expected, the `basket_size` variable (at address `0x7ffff7dd2018`) is part of the `.data` section (for global data) of the `libbasket.so` shared library:
+As expected, the `basket_size` variable (at address `0x7ffff7dd2018`) is part of the `.data` section (for global data) of the `libbasket.so` shared library.
+Use the `Enter`/`Return` key in the `maint info sections ALLOBJ` command below to reach the listing of sections in the `libbasket.so` object:
 ```
 (gdb) maint info sections ALLOBJ
     [...]
@@ -319,9 +324,9 @@ We use the address from the output of the `maint info sections ALLOBJ`:
 
 The 4th instruction in the assembler code dump (marked as `flowers@plt`) uses address `0x555555755018`.
 This is an address in the `.got.plt` section, belonging to the `flowers` symbol.
-The `flowers@plt` address (`0x555555554370`) is used main to call the `flowers()` function, as shown in the `main` assembler code dump.
+The `flowers@plt` address (`0x555555554370`) is used in the `main()` function to call the `flowers()` function, as shown in the `main` assembler code dump.
 
-We check the contents of the `.got.plt` entry belonging the `flowers` symbol:
+We check the contents of the `.got.plt` entry belonging to the `flowers` symbol:
 ```
 (gdb) x/gx 0x555555755018
 0x555555755018:	0x0000555555554376
@@ -333,7 +338,7 @@ It stores the address `0x0000555555554376`, which is a trampoline address:
    0x555555554376 <flowers@plt+6>:	push   0x0
    0x55555555437b <flowers@plt+11>:	jmp    0x555555554360
 ```
-The address now stored in the `.got.plt` entry is the address of tne next instruction in `.plt` (`0x555555554376`).
+The address now stored in the `.got.plt` entry is the address of the next instruction in `.plt` (`0x555555554376`).
 It basically said: *Get back where you came from!*
 This is a feature of the loader, called [lazy binding](https://docs.oracle.com/cd/E23824_01/html/819-0690/chapter3-7.html).
 The actual function address is not determined at load time, but the first time the function is called.
@@ -414,6 +419,6 @@ We used `nm`, `objdump` and `readelf` for static analysis and GDB for dynamic an
 * We saw the use of GOT by disassembling the program code and the `.plt` section.
 With this, we saw how and when GOT entries are populated and used by programs.
 
-While GOT and PLT are particular to ELF programs, the feature itself is used for other executable formats.
+While GOT and PLT are particular to ELF programs, the feature itself is used by other executable formats.
 Microsoft Windows PE (*Portable Executable*) programs use [*Import Address Table* (IAT)](http://sandsprite.com/CodeStuff/Understanding_imports.html).
 Apple macOS/iOS Mach-O programs [use](https://www.apriorit.com/dev-blog/225-dynamic-linking-mach-o) the `__TEXT.__stubs`, `__TEXT.__stub_helpers` and `__DATA.__la_symbol_ptr` sections.
