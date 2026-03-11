@@ -33,7 +33,54 @@ cp mutt_oauth2.py ~/.oauth2/mutt_oauth2.py
 
 Fill `~/.authinfo` with passwords.
 
-Configure OAUTH2 for UPB account (using Outlook) following instructions [here](https://simondobson.org/2024/02/03/getting-email/).
+Configure OAUTH2 for UPB account (using Outlook) following instructions [here](https://simondobson.org/2024/02/03/getting-email/):
+
+```console
+$ python mutt_oauth2.py --authorize upb.ro-microsoft-token
+Available app and endpoint registrations: google microsoft
+OAuth2 registration: microsoft
+Preferred OAuth2 flow ("authcode" or "localhostauthcode" or "devicecode"): localhostauthcode
+Account e-mail address: razvan.deaconescu@upb.ro
+[...]
+Exchanging the authorization code for an access token
+[...]
+
+$ python mutt_oauth2.py --authorize gmail.com-google-token
+Available app and endpoint registrations: google microsoft
+OAuth2 registration: google
+Preferred OAuth2 flow ("authcode" or "localhostauthcode" or "devicecode"): localhostauthcode
+Account e-mail address: razvand@gmail.com
+[...]
+Exchanging the authorization code for an access token
+[...]
+
+$ python mutt_oauth2.py --authorize rosedu.org-google-token
+Available app and endpoint registrations: google microsoft
+OAuth2 registration: google
+Preferred OAuth2 flow ("authcode" or "localhostauthcode" or "devicecode"): localhostauthcode
+Account e-mail address: razvan@rosedu.org
+[...]
+Exchanging the authorization code for an access token
+[...]
+
+$ python mutt_oauth2.py --authorize unikraft.io-google-token
+Available app and endpoint registrations: google microsoft
+OAuth2 registration: google
+Preferred OAuth2 flow ("authcode" or "localhostauthcode" or "devicecode"): localhostauthcode
+Account e-mail address: razvand@unikraft.io
+[...]
+Exchanging the authorization code for an access token
+[...]
+
+$ python mutt_oauth2.py --authorize eduapps.ro-google-token
+Available app and endpoint registrations: google microsoft
+OAuth2 registration: google
+Preferred OAuth2 flow ("authcode" or "localhostauthcode" or "devicecode"): localhostauthcode
+Account e-mail address: razvan.deaconescu@formator.eduapps.ro
+[...]
+Exchanging the authorization code for an access token
+[...]
+```
 
 Run `mbsync` to populate local e-mail directories:
 
