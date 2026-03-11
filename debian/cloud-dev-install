@@ -34,7 +34,6 @@ sudo snap install telegram-desktop
 sudo snap install element-desktop
 sudo snap install signal-desktop
 sudo snap install spotify
-sudo snap install webcamoid
 
 # GitHub CLI
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
